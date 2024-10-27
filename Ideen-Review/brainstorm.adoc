@@ -1,0 +1,39 @@
+= erste Gedanken zu umzusetzenden Quests
+
+== Beschreibung der Idee
+* *Problem:* 
+** bisher werden Stimmen von Wahlen nur analog ausgewertet -> enormer Aufwand/ Fehleranfälligkeit und viele Freiwillige nötig
+** Briefwahl/Wahllokale mit viel Material- und Kostenaufwand
+* *Idee:*
+** Online-Wahlplattform, die Nutzer verifiziert, einen Schritt-für-Schritt-Wahlprozess ermöglicht und die Stimmen digital auswertet
+** *Ziel*: Wahlbeteiligung erhöhen, Kosten und Aufwand reduzieren, Fehler minimieren
+
+== Aussehen der Idee in idealer Welt
+* einfache, intuitive Benutzeroberfläche mit Barrierefreiheit und Mehrsprachigkeit
+** Dashboard mit allen wichtigen Informationen (Wahltermin, Auswertung vergangener Wahlen, etc.)
+** Schritt-für-Schritt-Wahlprozess mit Erklärungen und Hilfestellungen
+* einfacher Zugang als Web-App, auch für ältere Menschen
+* schnell und sichere Online-Verifizierung
+* Sicherheit, Vertraulichkeit und Datenschutz gewährleistet
+* einfache Auswertung der Stimmen und schnelle Ergebnisse in Form von Diagrammen bereitgestellt
+
+== Was soll App nicht sein?
+* kein Ersatz für Wahllokale oder Briefwahl, sondern Ergänzung
+* keine politisches Meinungs- und Diskussionsportal
+* keine Informationsplattform für Parteien und Programme
+* keine universelle Beteilungsplattform, sondern nur für Wahlen und offizielle Bürgerumfragen (keine Petitionen, etc.)
+
+== Kernfunktionen
+* Benutzerregistrierung und -verifizierung
+* Dashboard mit: Wahltermin, Auswertung vergangener Wahlen, etc.
+* Schritt-für-Schritt-Wahlprozess mit Erklärungen und Hilfestellungen
+* Barrierefreiheit v.A. für ältere Menschen und Sehbehinderte (z.B. Sprachausgabe)
+
+== Zusätzliche/ Optionale Funktionen
+* Mehrsprachigkeit
+* E-Mail-Benachrichtigung bei neuen Wahlen
+* Dark-Mode/ individuelle Designanpassungen
+* Bestätigungs- und Korrektuseite vor Absenden der Stimme **(evt. auch Kernfunktion)**
+
+== Ähnliche Applikation
+* Swiss Post E-Voting App (Online-Wahlplattform einiger Schweizer Kantone als Pilotprojekt für elektronische Wahlen)
