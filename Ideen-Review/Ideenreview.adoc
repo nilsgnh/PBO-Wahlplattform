@@ -1,4 +1,4 @@
-= erste Gedanken zu umzusetzenden Quests
+= Ideenreview
 
 == Beschreibung der Idee
 * *Problem:* 
