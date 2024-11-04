@@ -1,0 +1,46 @@
+= interne Evalution vom Feedback aus dem Review
+*The Judgement Day: Internal Assessment:* Evaluate internally the results that the other group has presented / given you.
+
+Folgend sind die *Anmerkungen des anderen Teams* fett markiert in numerischer Auflistung aufgelistet und unsere Evaluierung in normaler Schrift jeweils darunter notiert.
+
+== Kritikpunkte:
+1. *mangelnde Sicherheitsvorkehrungen*
+* _Unsere Einschätzung:_ Die Gefahr der Manipulation von Wahlergebnissen ist ein sehr wichtiger Punkt, der unbedingt berücksichtigt werden muss. Daher wollen wir das Konzept mit Identifikation und Verifizierung durch BundID mittels dem Konzept einer Zwei-Faktor-Authentifizierung absichern. So ist es ähnlich wie bei der Briefwahl möglich, dass nur die eine Person pro Wahlberechtigten wählen kann. Das wäre als PIN per Post oder Handynummer-Verifizierung möglich.
+Auch ist die Gefahr von Hackerangriffen gegeben und muss bei so einem sensiblen demokratischen Prozess natürlich auch berücksichtigt werden. 
+So soll die Plattform konzeptuell mit einer Ende-zu-Ende-Verschlüsselung und weiteren Sicherheitsverfahren geschützt werden. Wir haben uns jedoch bewusst gegen eine zu detaillierte Beschreibung/ Ausarbeitung der Sicherheitsvorkehrungen entschieden, da dies den Rahmen des Moduls sprengen würde. In einem realen Projekt wäre dies jedoch ein zentraler Punkt, der genauestens geplant und umgesetzt werden müsste.
+
+2. *Kooperation mit BundID schwierig zu realisieren (Sicherheitszugänge etc.)*
+* _Unsere Einschätzung:_ Da in dem Modul "Programmieren von Benutzeroberflächen" die Umsetzung des tatsächlichen Projektumfangs nicht vorgesehen ist, haben wir uns für diese grobe Konzeption entschieden. So werden wir die BundID-Kooperation nur grafisch anzeigen und mit einem Zwei-Faktor-Authentifizierungs-Fenster so die Verifizierung simulieren. Die tatsächliche Umsetzung und Kooperation mit BundID müsste bei Bedarf natürlich über das Modul hinausgehend erfolgen und bedürfte einer genauen Absprache mit BundID und einer detaillierten Planung.
+
+3. *Übersicht über vergangene Wahlausgänge unnötig, im schlimmsten Fall ablenkend/manipulierend*
+* _Unsere Einschätzung:_ Das ist ein berechtigter Kritikpunkt. Daher passen wir das Konzept an. Da wir es dennoch wichtig finden, dass die Plattform nach der Wahl einen zuverlässigen/zentralen Zugang zu den korrekten Wahlergebnissen bietet, wollen wir die Wahlergebnisse direkt nach der jeweiligen Wahl trotzdem anzeigen. Diese sollen dann dort aber nicht lange zur Verfügung stehen um manipulierende/ablenkende Effekte auf Wähler zu vermeiden. So sollen die Daten spätestens am Ende des Jahres archiviert werden. Falls eine weitere Wahl im gleichen Jahr stattfindet, werden die Daten bereits vor dem Zeitfenster der neuen Wahl (z.B. eine Woche vorher) archiviert.
+
+4. *Wireframes hatten zu viele konkrete Designelemente*
+* _Unsere Einschätzung:_ Diese Kritik nehmen wir für die Zukunft an. Wir haben so bemerkt, dass einige der Wireframes sehr detailliert waren und so den Eindruck erwecken konnten, dass es sich um fertige Designs handelt. Aufgrunddessen, dass die konkretisierten Designelemente bereits in den Wireframes enthalten sind, wollen wir nicht rückschrittig arbeiten und die Wireframes nicht noch einmal überarbeiten. Wir werden jedoch in Zukunft darauf achten, dass die Wireframes nur die groben Strukturen und Funktionen zeigen und nicht zu detailliert sind.
+
+== Fragen:
+1. *Wie wollt ihr eindeutige Nutzeridentifikation und -Authentifikation sicherstellen (Missbrauch vermeiden?)*
+* _Unsere Antwort:_ Wir wollen mit BundID kooperieren bzw. dies für das Projekt simulieren. Außerdem wird eine 2-Faktor-Authentifizierung mit Handynummer oder PIN per Post dargestellt. Damit hat jede Nummer/ Anschrift+Name nur einen Account, wodurch Missbrauch minimiert wird.
+
+2. *Ihr wolltet eine Übersicht über Parteiprogramme anbieten, wie stellt ihr sicher, dass diese hinreichend neutral präsentiert werden?*
+* _Unsere Antwort:_ Die Parteiprogramme werden nur verlinkt und die Verlinkungen sind neutral, da die Programme aller teilnehmenden Parteien verlinkt werden. Zu konkretem Inhalt der Parteiprogramme hat die App dann keinen Bezug. Das haben wir im Konzept zu unkonkret formuliert.
+
+3. *Warum wollt ihr vergangene Wahlergebnisse in der App zur Anzeige bringen?*
+* _Unsere Antwort:_ Wir wollen die letzte Wahl anzeigen um eine sichere und zuverlässige Quelle zu bieten, mit der man auf die Ergebnisse der vor kurzem getätigten Wahl zuzugreifen kann. Es soll aber keine vollständige Anzeige aller Wahlergebnisse jedes Jahres sein.
+
+== Positives Feedback:
+1. *Dark Mode*
+* _Unsere Einschätzung:_ Mit diesem Feedback würden wir das Dark-Mode-Feature innerhalb der optionalen Funktionen höher priorisieren.
+2. *niedrigschwelliges und barrierefreies Wahlangebot prinzipiell zu begrüßen*
+* _Unsere Einschätzung:_ Das Feedback bestärkt uns, die Barrierefreiheit damit als wichtiges Kernfeature versuchen zu etablieren.
+3. *Verfügbarkeit als mobile und Web app*
+4. *übersichtliche und intuitive Organisation (soweit die Wireframes für die tatsächlichen Views repräsentativ sind)*
+* _Unsere Einschätzung:_ Wir werden darauf achten, dass die App auch in der tatsächlichen Umsetzung übersichtlich und intuitiv bleibt und eng an den Wireframes orientiert ist.
+5. *Realtime-Informationen über die aktuelle Wahl und abgegebenen Stimmen (ab 18.00 Uhr d. Wahltages)*
+
+== Verbesserungsvorschläge:
+1. *Fokus auf reine Durchführung des Wahlvorgangs - keine vergangenen Wahlergebnisse/Wahlinformationen anzeigen*
+* _Unsere Einschätzung:_ Wir haben durch das Feedback das Konzept angepasst und wollen die Wahlergebnisse nur kurzzeitig nach der Wahl anzeigen, damit eine Beeinflussung späterer Wahlen ausgeschlossen wird. So soll die App vor der nächsten Wahl (spätestens aber am Ende des Jahres der Wahl) keine früheren Wahlergebnisse mehr anzeigen. Ganz rausnehmen wollen wir die Funktion jedoch nicht, da wir es wichtig finden, dass die Plattform nach der Wahl einen zuverlässigen/zentralen Zugang zu den korrekten Wahlergebnissen bietet (siehe Antwort auf Kritikpunkt 3).
+
+2. *Sicherheitskonzept erarbeiten (Video-Ident-Verfahren oder Pin per Post zusätzlich zu BundID)*
+* _Unsere Einschätzung:_ Das Sicherheitskonzept, analog zur Briefwahl, haben wir durch den Verbesserungsvorschlag mit in unser Gesamtkonzept aufgenommen. Die Zwei-Faktor-Authentifizierung mit Handynummer oder, wie vorgeschlagen, ein PIN-per-Post-Verfahren soll Missbrauch minimieren. Für ein weitergehendes Sicherheitskonzept müsste eine detaillierte Planung und Absprache mit BundID erfolgen, was den Rahmen des Moduls sprengen würde (siehe Antwort Kritikpunkt 1&2).
