@@ -1,0 +1,36 @@
+= Feedback/ Review zur Idee "Housekeeper"
+
+== The Nitpick Chronicles: Four Points of Frustration
+-> _Find and write down at least 4 things that you don't like (or don't understand)._
+
+* Wireframes zeigen nur sehr grob die Oberfläche bzw. noch nicht fertiges Layout 
+** teils nur rechteckige Boxen bisher eingefügt, welche noch nicht skaliert und angeordnet wurden 
+** viel leere Fläche in den Wireframes
+* sehr ähnlich zu der App Tody -> Grundfunktionalität gibt es im Prinzip schon
+* Zusatzfeature „Sprachfunktion“ wird wohl nicht sehr stark genutzt/ ist weniger relevant in einer Haushaltsapp
+* Lernmodul für viele Haushalte (z.B. Familien) nicht sehr relevant, da viele schon Haushaltserfahrung haben (evt. wenig genutzt)
+
+== Curiosity Quest: Three Questions to Clarity
+-> _Ask at least 3 questions about the concept._
+
+* Wie genau soll das Lernmodul aussehen?
+** Ist es eher eine Auswahl von speziellen Themen und Artikeln dazu oder geführtes/spielerisches Schritt-für-Schritt-Lernen von den Basics an?
+* Soll man neue Aufgaben (die nicht in der Standardauswahl sind) hinterlegen/ neu erstellen können? 
+** d.h. Hinzufügen von sehr spezifische Aufgabentypen, die der Entwickler nicht berücksichtigt und nicht einprogrammiert hat (z.B. Uhr aufhängen)
+* Plant ihr eine Dark-Mode-Option oder weitere Designoptionen?
+
+== The Appreciation Station: Five Thumbs Up
+-> _Find and write down at least 5 things that you like or think are good._
+
+* Die Erweiterung zur Synchronisierung zugewiesener Aufgaben mit Kalender sind sehr praktisch. Allgemein die Erinnerungsfeatures beziehen sich auf das Vergessen von Aufgaben und sind für eine Haushaltsapp so sehr hilfreich.
+* Die Idee eines Lernmoduls, beispielsweise für Personen, die in die erste Wohnung ziehen, ist sehr innovativ. Für diese ist es sehr praktisch, gesammelte Infos zu haben.
+* Das Belohnungssystem ist eine gute Idee, da dieses eventuell Personen zusätzlich dazu motiviert, die teils lästigen Haushaltsaufgaben zu erledigen.
+* Das Feature von einstellbaren Routinen wird die Nutzung der App für Nutzer viel angenehmer und effizienter gestalten und ist so eine gute Ide. So muss man Aufgaben nicht immer neu einstellen.
+* Die Unterteilung für Familie oder WG ist sehr praktisch, da beide Wohnformen unterschiedliche Anforderungen oder Nutzformen für die App haben und diese damit berücksichtigt werden können.
+
+== Constructive Critics: The Improvement Duo
+-> _Make at least 2 suggestions for improvement._
+
+* Kleine Tipps einfügen zu den jeweiligen Aufgaben als Anhang, damit beispielsweise Nutzer, die sich unsicher sind, wie sie eine Aufgabe erledigen sollen, eine Hilfestellung haben
+* Dark-Mode/ individuelle Designanpassungen hinzufügen, um die App für Nutzer angenehmer zu gestalten
+* Angabe auf welchem informationstechnischen Stand die jeweiligen Hausmitglieder bzgl. des Themas Haushalt sind (d.h. ist es ihre 1. Wohnung/…)
