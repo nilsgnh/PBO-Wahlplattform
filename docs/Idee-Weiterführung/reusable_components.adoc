@@ -1,0 +1,11 @@
+# Reusable Components
+
+* _Modular Mastery: Identify Reusable Components:_ (Create a list of components that can be reused (e.g. buttons, lists, navigation elements, ...))
+** Header-Komponente, inkl. Logo, evtl. Namen der App, Einstellungs-Button und Home-Button
+** Icon-Buttons (z.B. für Einstellungen, Home, Sicherheit, Support)
+** Navigations-Buttons, wie z.B. "Weiter", "Zurück", "Bestätigen", "Abbrechen"
+** Auflistungsfeld/Abstimmungsfeld einer Partei
+** Balken- oder Kreisdiagramm nur mit veränderbaren Werten
+** Menüleiste mit Startseite, Support, Einstellungen, FAQ, Sicherheit, Impressum
+** Fortschrittsanzeige (für Wahlprozess) auf jeder Seite mit nur einem veränderbaren Wert (Fortschritt)
+** Seitentitel-Anzeige (für Dashboard, Wahlprozess, Auswertung, Support-Seiten je wiederverwendbar)

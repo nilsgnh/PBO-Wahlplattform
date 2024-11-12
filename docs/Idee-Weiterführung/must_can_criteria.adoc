@@ -1,0 +1,19 @@
+# MUST-CAN-Criteria
+
+* _Essential Checklist: Must-Have Requirements:_
+** Klickdummy-Seite(n) für Anmeldung/Verifizierung "mit BundID" inkl. 2-Faktor-Authentifizierung
+** Dashboard mit Verlinkungen zu aktuellen Wahlen, Informationen zu Parteien und Wahlprogrammen, Auswertung der letzten Wahl (*Problem unserer Idee: kein paralleler Auswertungszugang und Wahl - für Projekt ignorieren?*) 
+** Schritt-für-Schritt-Wahlprozess für Beispielwahl "Bundestagswahl 2025" mit Hilfestellungen inkl. Bestätigungseite
+*** Wahlname, Parteien variabel speichern, sodass diese angepasst werden können
+** Dummy-Auswertungsseite einer vergangenen Wahl mit Diagrammen
+** Gewährleisten von 1-3 barrierefreien Aspekten (dementsprechend Erstellen einer Einstellungsseite inkl. Verlinkung zu dieser auf jeder Seite)
+*** z.B. Schriftgröße, Farbkontraste, Sprachausgabe
+
+* _Flexible Options: Your Nice-to-Have Criteria:_
+** Support-Seiten erstellen, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen, (Account-Übersicht)
+** weitere/mehrere barrierefreie Aspekte umsetzen
+** Dark-Mode, individuelle Designanpassungen
+** automatische Wahlkreiserkennung bei Eingabe der PLZ
+** Mehrsprachigkeit
+** E-Mail- bzw. Push-Benachrichtigung bei neuen Wahlen
+** Real-Time-Stimmenzähler (intern), wie viele Leute schon gewählt haben
