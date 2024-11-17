@@ -10,13 +10,23 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/bundestagswahl-2025',
+      name: 'bundestagswahl-2025',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/WahlView.vue'),
     },
+    {
+      path: '/ergebnisse',
+      name: 'ergebnisse',
+      component: () => import('../views/ErgebnisseView.vue'),
+    },
+    {
+      path: '/verifizierung',
+      name: 'verifizierung',
+      component: () => import('../views/VerifizierungView.vue'),
+    }
   ],
 })
 
