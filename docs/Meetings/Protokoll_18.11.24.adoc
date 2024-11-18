@@ -1,0 +1,18 @@
+* Aufgabenaufteilung:
+** TailwindCSS einbinden (evt. für einheitliches Design)
+*** siehe: https://tailwindcss.com/docs/installation
+** Quests durchlesen: "/quest-list open-in-phase" 
+*** nur Composition API von vue nutzen (ensprechend auf Vue-Tutorial-Seite den Schalter auf "Composition API" stellen)
+*** Quests bei Umsetzung einer Seite beachten
+** einheitliches Design beachten, indem Tailwind genutzt wird und main.css
+*** zu nutzende Farben:
+**** Grundfarben: #091540, #7692FF, #ABD2FA
+**** Kontrast: #FDFCDC, #FED9B7
+*** abgerundete Ecken bei Buttons, Eingabefeldern, ...
+** Reusable Components anpassen (je nachdem was ihr bei eurer Seite für Reusable Components habt)
+** *jeder nutzt eigenen Branch!*
+** wenn etwas gemacht wurde, in die WhatsApp-Gruppe schreiben! (dass jeder aktuellen Zustand hat)
+** jeder programmiert seine eigene Seite aus (vom Wireframe)
+** Fragen (Nils stellt sie an Gamemaster):
+*** Wie genau Paper-Prototype? -> ohne Programmierung, nur grafisch?
+*** Wann Deadline?
