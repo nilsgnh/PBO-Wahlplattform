@@ -1,0 +1,11 @@
+Um Barrierefreiheit auf Webseiten zu realisieren, sollten folgende Schritte beachtet werden:
+Semantische HTML-Elemente verwenden: Nutze HTML5-Elemente wie <header>, <nav>, <main>, <article>, und <footer>, um die Struktur der Seite klar zu definieren.
+Alt-Texte für Bilder: Füge alt-Attribute zu allen <img>-Tags hinzu, um den Inhalt von Bildern für Screenreader zugänglich zu machen.
+Tastaturnavigation ermöglichen: Stelle sicher, dass alle interaktiven Elemente (Links, Buttons, Formulare) mit der Tastatur erreichbar sind.
+Kontrastverhältnis beachten: Verwende ausreichend kontrastreiche Farben zwischen Text und Hintergrund, um die Lesbarkeit zu verbessern.
+ARIA-Rollen und -Attribute: Nutze ARIA (Accessible Rich Internet Applications), um zusätzliche Informationen für Screenreader bereitzustellen, z.B. role, aria-label, aria-labelledby.
+Formulare zugänglich machen: Verwende <label>-Elemente für Eingabefelder und stelle sicher, dass sie korrekt mit den entsprechenden Feldern verbunden sind.
+Medieninhalte zugänglich machen: Biete Untertitel für Videos und Transkripte für Audioinhalte an.
+Responsive Design: Stelle sicher, dass die Webseite auf verschiedenen Geräten und Bildschirmgrößen gut funktioniert.
+Fehlerbehandlung: Gib klare und verständliche Fehlermeldungen aus, wenn Benutzer Formulare falsch ausfüllen.
+Barrierefreiheitstests durchführen: Nutze Tools wie WAVE oder Lighthouse, um die Barrierefreiheit der Webseite zu testen und zu verbessern.
