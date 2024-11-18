@@ -3,7 +3,7 @@
 * _Essential Checklist: Must-Have Requirements:_
 ** Klickdummy-Seite(n) für Verifizierung "mit BundID" inkl. 2-Faktor-Authentifizierung
 ** Dashboard mit Verlinkungen zu aktuellen Wahlen, Informationen zu Parteien und Wahlprogrammen, Auswertung der letzten Wahl
-** Verlinkungen für Support-Seiten, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen erstellen (diese müssen nicht gefüllt sein)
+** Verlinkungen für Support-Seiten, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen als Navigationselement erstellen (diese müssen nicht gefüllt sein)
 ** Schritt-für-Schritt-Wahlprozess für Beispielwahl "Bundestagswahl 2025" mit Hilfestellungen inkl. Bestätigungseite
 *** d.h. Wahlseiten für rechtliche Informationen, Erst- und Zweistimme, Bestätigung der Stimme
 *** Wahlname, Parteien variabel speichern, sodass diese im Zweifel angepasst werden können
