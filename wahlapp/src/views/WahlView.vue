@@ -1,6 +1,6 @@
 <template>
   <div id="wahl">
-    <h1 class="title">Bundestagswahl 2025</h1>
+    <h1 class="text-3xl font-bold underline">Bundestagswahl 2025</h1>
   </div>
 </template>
 
