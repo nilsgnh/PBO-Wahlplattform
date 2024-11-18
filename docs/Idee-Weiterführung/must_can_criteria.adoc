@@ -1,19 +1,21 @@
 # MUST-CAN-Criteria
 
 * _Essential Checklist: Must-Have Requirements:_
-** Klickdummy-Seite(n) für Anmeldung/Verifizierung "mit BundID" inkl. 2-Faktor-Authentifizierung
-** Dashboard mit Verlinkungen zu aktuellen Wahlen, Informationen zu Parteien und Wahlprogrammen, Auswertung der letzten Wahl (*Problem unserer Idee: kein paralleler Auswertungszugang und Wahl - für Projekt ignorieren?*) 
+** Klickdummy-Seite(n) für Verifizierung "mit BundID" inkl. 2-Faktor-Authentifizierung
+** Dashboard mit Verlinkungen zu aktuellen Wahlen, Informationen zu Parteien und Wahlprogrammen, Auswertung der letzten Wahl
+** Verlinkungen für Support-Seiten, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen erstellen (diese müssen nicht gefüllt sein)
 ** Schritt-für-Schritt-Wahlprozess für Beispielwahl "Bundestagswahl 2025" mit Hilfestellungen inkl. Bestätigungseite
-*** Wahlname, Parteien variabel speichern, sodass diese angepasst werden können
+*** d.h. Wahlseiten für rechtliche Informationen, Erst- und Zweistimme, Bestätigung der Stimme
+*** Wahlname, Parteien variabel speichern, sodass diese im Zweifel angepasst werden können
 ** Dummy-Auswertungsseite einer vergangenen Wahl mit Diagrammen
-** Gewährleisten von 1-3 barrierefreien Aspekten (dementsprechend Erstellen einer Einstellungsseite inkl. Verlinkung zu dieser auf jeder Seite) // Anna: Ich würde das in die CAN-Kriterien verschieben (im Sinne von wenn Zeit bleibt)
-*** z.B. Schriftgröße, Farbkontraste, Sprachausgabe
+** Gewährleisten von 1-3 barrierefreien Aspekten
+*** z.B. Farbkontraste beachten, Images per Alt-Text beschreiben, Formulare mit Labels versehen um sie zugägnlicher zu machen, Responsive Design für mobile Geräte
 
 * _Flexible Options: Your Nice-to-Have Criteria:_
-** Support-Seiten erstellen, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen, (Account-Übersicht) // Anna: die Links als Dummy Seiten können auf der Start-Seite bereits angezeigt werden (Must-Criteria. Aber als Can-Criteria können sie schon gefüllt werden)
-** weitere/mehrere barrierefreie Aspekte umsetzen
-** Dark-Mode, individuelle Designanpassungen // Anna: ich würde es mit der niedrigsten Priorität bewerten und eher nicht machen.
+** Support-Seiten erstellen, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen, (Account-Übersicht)
+** weitere/mehr barrierefreie Aspekte umsetzen
 ** automatische Wahlkreiserkennung bei Eingabe der PLZ
-** Mehrsprachigkeit // Anna: auch eher nicht machen. Nur wenn sehr viel Zeit bleibt
 ** E-Mail- bzw. Push-Benachrichtigung bei neuen Wahlen
-** Real-Time-Stimmenzähler (intern), wie viele Leute schon gewählt haben // Anna: das kann auch als Must-Criteria sein
+** Real-Time-Stimmenzähler (intern), wie viele Leute schon gewählt haben
+** Dark-Mode, individuelle Designanpassungen
+** Mehrsprachigkeit
