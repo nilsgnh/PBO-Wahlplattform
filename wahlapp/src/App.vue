@@ -3,8 +3,8 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div class="container">
-    <nav>
+  <div>
+    <nav class="flex flex-col">
         <RouterLink to="/">Dashboard</RouterLink>
         <RouterLink to="/bundestagswahl-2025">Aktuelle Wahl</RouterLink>
         <RouterLink to="/Ergebnisse">Ergebnisse</RouterLink>
@@ -19,12 +19,6 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 header {
   display: flex;
   justify-content: center;
@@ -40,7 +34,7 @@ aside {
 }
 
 nav {
-  flex: 0 0 10%;
+  flex: 1;
   order: 1;
   display: flex;
   flex-direction: column;
@@ -77,25 +71,19 @@ main {
   padding: 1rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+aside {
+  flex: 0;
+  width: 100%;
+  border-right: none;
+  border-bottom: 1px solid grey;
+}
 
-  aside {
-    flex: 0;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid grey;
-  }
+nav {
+  flex-direction: row;
+  justify-content: center;
+}
 
-  nav {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  nav a {
-    padding: 0.5rem 1rem;
-  }
+nav a {
+  padding: 0.5rem 1rem;
 }
 </style>
