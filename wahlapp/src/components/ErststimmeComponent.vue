@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import StimmeComponent from "@/components/Stimmecomponent.vue";
+import StimmeComponent from "@/components/StimmeComponent.vue";
 </script>

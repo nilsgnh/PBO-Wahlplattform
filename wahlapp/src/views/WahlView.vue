@@ -34,40 +34,42 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
 
-const start = ref(true);
+const start = ref(false);
 const erststimme = ref(false);
 const zweitstimme = ref(false);
 const fortschritt = ref(0);
 
-function getStarted(){
-  this.erststimme = true;
-  this.start = false;
-  this.fortschritt = 1;
+function getStarted() {
+  erststimme.value = true;
+  start.value = false;
+  fortschritt.value = 1;
 }
 
-function gettoStart(){
-  this.erststimme = false;
-  this.start = true;
-  this.fortschritt = 0;
+function gettoStart() {
+  erststimme.value = false;
+  start.value = true;
+  fortschritt.value = 0;
 }
 
-function getErststimme(){
-  this.erststimme = false;
-  this.zweitstimme = true;
-  this.fortschritt = 2;
+function getErststimme() {
+  erststimme.value = false;
+  zweitstimme.value = true;
+  fortschritt.value = 2;
 }
 
-function gettoErststimme(){
-  this.erststimme = true;
-  this.zweitstimme = false;
-  this.fortschritt = 1;
+function gettoErststimme() {
+  erststimme.value = true;
+  zweitstimme.value = false;
+  fortschritt.value = 1;
 }
 
-
+onMounted(() => {
+  start.value = true;
+});
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-  <div id="parteibox">
+  <div class="parteibox">
     <input type="radio" @click="handleClick" :name="radioname" :id="num">
     <div class="font-bold p-5">{{ partei }}</div>
     <p>{{ text }}</p>
@@ -28,7 +28,7 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-#parteibox {
+.parteibox {
   display: flex;
   flex-direction: row;
   justify-content: center;
