@@ -10,7 +10,7 @@
     <div v-if="erststimme" class="stimmdiv">
       <ErststimmeComponent />
       <button @click="gettoStart()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Zurück
+        Abbrechen
       </button>
       <button @click="getErststimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
         Weiter
@@ -20,6 +20,44 @@
       <ZweitstimmeComponent />
       <button @click="gettoErststimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
         Zurück
+      </button>
+      <button @click="gettoBestaetigung()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
+        Weiter
+      </button>
+    </div>
+    <div v-if="bestaetigung" class="stimmdiv">
+      <p class="pb-5">Bitte bestätigen Sie Ihre Wahl</p>
+      <hr>
+      <p class="pt-5"> Sie haben folgende Stimmen abgegeben:</p>
+      <p class="font-bold pt-10 pb-5">Erststimme: </p>
+      <p>{{store.getErststimmebyId(store.selectedErststimme)}}</p>
+      <p class="font-bold pt-10 pb-5">Zweitstimme: </p>
+      <p>{{store.getZweitstimmebyId(store.selectedZweitstimme)}}</p>
+      <p class="font-bold pt-10 pb-5"> Sicherheitsinformationen </p>
+      <p class="pb-5 pt-5"> Ihr Wahl wird sicher und anonym verarbeitet. Mit dem Klick auf "Bestätigen" ist die getroffene Auswahl nicht mehr änderbar. </p>
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="sicherheits-check"
+          v-model="checkboxAgreed"
+          class="checkbox"
+        />
+        <label for="sicherheits-check" class="checkbox-label">
+          Ich habe die Sicherheitsinformationen gelesen und stimme zu.
+        </label>
+      </div>
+
+      <button @click="gettoZweitstimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
+        Zurück
+      </button>
+      <button @click="gettoStart()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
+        Abbrechen
+      </button>
+      <button @click="submit()"
+              id="submit-button"
+              class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out"
+              :disabled="!checkboxAgreed">
+        Bestätigen
       </button>
     </div>
   </div>
@@ -35,25 +73,47 @@
 
 <script setup>
 import {onMounted, ref} from "vue";
+import { useWahlStore } from "@/stores/wahlStore"; // Importiere den Store
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
+
+// eslint-disable-next-line no-unused-vars
+const store = useWahlStore();
 
 const start = ref(false);
 const erststimme = ref(false);
 const zweitstimme = ref(false);
+const bestaetigung = ref(false);
 const fortschritt = ref(0);
+const checkboxAgreed = ref(false); // Checkbox-Status
 
 function getStarted() {
   erststimme.value = true;
   start.value = false;
   fortschritt.value = 1;
+
+  // Zurücksetzen der Stimmen
+  store.setErststimme(null);
+  store.setZweitstimme(null);
 }
 
 function gettoStart() {
-  erststimme.value = false;
-  start.value = true;
-  fortschritt.value = 0;
+  const confirmed = window.confirm(
+    "Sind Sie sicher, dass Sie die Wahl abbrechen möchten? Alle bisher getroffenen Auswahlen gehen verloren."
+  );
+  if (confirmed) {
+    erststimme.value = false;
+    zweitstimme.value = false;
+    start.value = true;
+    fortschritt.value = 0;
+    bestaetigung.value = false;
+
+    // Zurücksetzen der Stimmen
+    store.setErststimme(null);
+    store.setZweitstimme(null);
+  }
 }
+
 
 function getErststimme() {
   erststimme.value = false;
@@ -67,9 +127,34 @@ function gettoErststimme() {
   fortschritt.value = 1;
 }
 
+function gettoBestaetigung() {
+  zweitstimme.value = false;
+  bestaetigung.value = true;
+  fortschritt.value = 4;
+}
+
+function gettoZweitstimme() {
+  zweitstimme.value = true;
+  bestaetigung.value = false;
+  fortschritt.value = 3;
+}
+
+function submit(){
+  const confirmed = window.confirm(
+    "Sind Sie sicher, dass Sie die Wahl bestätigen möchten? Nach Bestätigung ist keine Änderung mehr möglich."
+  );
+  if (confirmed) {
+    // Hier könnte die Wahl an den Server gesendet werden
+    window.alert("Vielen Dank für Ihre Stimme!");
+  }
+  //Rückleitung zu Dashboard
+  window.location.href = "/";
+}
+
 onMounted(() => {
   start.value = true;
 });
+
 </script>
 
 <style scoped>
@@ -157,6 +242,17 @@ progress::-ms-fill {
 
 .stimmdiv button {
   margin-top: 20px;
+}
+
+#submit-button {
+  background-color: #d1fae5;
+  border: 2px solid #10b981;
+}
+
+#submit-button:disabled {
+  background-color: #e5e7eb; /* Grau */
+  border: 2px solid #9ca3af;
+  cursor: not-allowed;
 }
 
 </style>
