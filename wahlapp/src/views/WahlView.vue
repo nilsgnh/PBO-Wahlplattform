@@ -1,7 +1,7 @@
 <template>
   <div id="wahl">
-    <h1 class="text-3xl font-bold p-5">Bundestagswahl 2025</h1>
-    <div v-if="start" class="start-container">
+    <h1 class="text-3xl font-bold p-2">Bundestagswahl 2025</h1>
+    <div v-if="start" class="start-end-container">
       <p>Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
       <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
         Start
@@ -96,11 +96,23 @@
     </div>
   </div>
 
+  <div v-if="!bestaetigung && !start && !erststimme && !zweitstimme" class="start-end-container">
+      <p> Vielen Dank für Ihre Teilnahme an der Wahl. </p>
+      <NavigationButton
+        type="next"
+        @Click="gettoDashboard"
+      >
+        <template v-slot:buttonText>
+          Zurück zum Dashboard
+        </template>
+      </NavigationButton>
+  </div>
+
   <!-- Progressbar einfügen -->
   <section id="wahlfortschritt">
     <div class="progress-wrapper">
-      <progress :value="fortschritt" max="3"></progress>
-      <span class="progress-text">Schritt {{fortschritt}} von 3</span>
+      <progress :value="fortschritt" max="4"></progress>
+      <span class="progress-text">Schritt {{fortschritt}} von 4</span>
     </div>
   </section>
 </template>
@@ -129,6 +141,17 @@ function getStarted() {
   // Zurücksetzen der Stimmen
   store.setErststimme(null);
   store.setZweitstimme(null);
+  store.checkboxAgreed = false;
+}
+
+function gettoDashboard() {
+  erststimme.value = false;
+  zweitstimme.value = false;
+  start.value = false;
+  fortschritt.value = 0;
+  bestaetigung.value = false;
+  store.checkboxAgreed = false;
+  window.location.href = '/';
 }
 
 function gettoStart() {
@@ -145,6 +168,7 @@ function gettoStart() {
     // Zurücksetzen der Stimmen
     store.setErststimme(null);
     store.setZweitstimme(null);
+    store.checkboxAgreed = false;
   }
 }
 
@@ -158,6 +182,7 @@ function gettoErststimme() {
   erststimme.value = true;
   zweitstimme.value = false;
   fortschritt.value = 1;
+  //window.scrollTo(0, 0);
 }
 
 function gettoBestaetigung() {
@@ -172,16 +197,20 @@ function gettoZweitstimme() {
   fortschritt.value = 2;
 }
 
+function gettoEnd() {
+  bestaetigung.value = false;
+  fortschritt.value = 4;
+}
+
 function submit() {
   const confirmed = window.confirm(
     "Sind Sie sicher, dass Sie die Wahl bestätigen möchten? Nach Bestätigung ist keine Änderung mehr möglich."
   );
   if (confirmed) {
-    // Hier könnte die Wahl an den Server gesendet werden
-    window.alert("Vielen Dank für Ihre Stimme!");
+    // Wahl abschließen
+    store.submitWahl();
+    gettoEnd();
   }
-  // Rückleitung zu Dashboard
-  window.location.href = "/";
 }
 
 onMounted(() => {
@@ -204,16 +233,21 @@ h1 {
   text-align: center;
 }
 
-.start-container {
+.start-end-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   gap: 20px;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
   max-height: 300px;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .progress-wrapper {
@@ -265,7 +299,7 @@ progress::-ms-fill {
 }
 
 .stimmdiv {
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 10px;
   max-width: 1000px;
   justify-content: center;

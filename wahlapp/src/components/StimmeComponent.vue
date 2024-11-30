@@ -1,5 +1,7 @@
 <template>
-  <p>Sie haben eine Stimme ({{ stimme }}):</p>
+  <p class="font-bold"> {{ stimme }} </p>
+  <p class="text-base pb-3">Sie haben eine Stimme{{info}}.</p>
+  <hr>
   <div class="flex flex-row" id="wahl">
     <form>
       <ParteiboxComponent
@@ -29,6 +31,7 @@ const store = useWahlStore();
 // Props
 const props = defineProps({
   stimme: String,
+  info: String,
 });
 
 // Parteienstruktur für Zweitstimme
@@ -98,7 +101,7 @@ watch(
 #wahl {
   display: flex;
   flex-wrap: wrap; /* Zeilenumbruch erlauben */
-  gap: 20px; /* Abstand zwischen den Boxen */
+  gap: 10px; /* Abstand zwischen den Boxen */
   justify-content: space-evenly; /* Gleichmäßige Verteilung */
   padding: 20px;
 }
@@ -106,6 +109,11 @@ watch(
 form {
   width: 100%; /* Formular nimmt die volle Breite des Containers */
   max-width: 1000px; /* Optionale maximale Breite */
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 </style>

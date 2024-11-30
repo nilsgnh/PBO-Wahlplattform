@@ -1,5 +1,5 @@
 <template>
-  <StimmeComponent stimme="Erststimme" />
+  <StimmeComponent stimme="Erststimme" info=" für die Wahl eines oder einer Wahlkreisabgeordneten"  />
 </template>
 
 <script setup>
