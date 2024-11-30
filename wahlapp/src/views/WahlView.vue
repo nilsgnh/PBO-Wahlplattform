@@ -9,76 +9,90 @@
     </div>
     <div v-if="erststimme" class="stimmdiv">
       <ErststimmeComponent />
-      <!-- Abbrechen-Button -->
-      <NavigationButton
-        type="back"
-        @Click="gettoStart"
-      >
-        <template v-slot:buttonText>
-          Abbrechen
-        </template>
-      </NavigationButton>
-      <!-- Weiter-Button -->
-      <NavigationButton
-        type="next"
-        @Click="getErststimme"
-      >
-        <template v-slot:buttonText>
-          Weiter
-        </template>
-      </NavigationButton>
+      <!-- Buttons: Links = Zurück/Abbrechen, Rechts = Weiter -->
+      <div class="button-container">
+        <div class="left-buttons">
+          <NavigationButton
+            type="back"
+            @Click="gettoStart"
+          >
+            <template v-slot:buttonText>
+              Abbrechen
+            </template>
+          </NavigationButton>
+        </div>
+        <div class="right-buttons">
+          <NavigationButton
+            type="next"
+            @Click="getErststimme"
+          >
+            <template v-slot:buttonText>
+              Weiter
+            </template>
+          </NavigationButton>
+        </div>
+      </div>
     </div>
     <div v-if="zweitstimme" class="stimmdiv">
       <ZweitstimmeComponent />
-      <!-- Zurück-Button -->
-      <NavigationButton
-        type="back"
-        @Click="gettoErststimme"
-      >
-        <template v-slot:buttonText>
-          Zurück
-        </template>
-      </NavigationButton>
-      <!-- Weiter-Button -->
-      <NavigationButton
-        type="next"
-        @Click="gettoBestaetigung"
-      >
-        <template v-slot:buttonText>
-          Weiter
-        </template>
-      </NavigationButton>
+      <!-- Buttons: Links = Zurück, Rechts = Weiter -->
+      <div class="button-container">
+        <div class="left-buttons">
+          <NavigationButton
+            type="back"
+            @Click="gettoErststimme"
+          >
+            <template v-slot:buttonText>
+              Zurück
+            </template>
+          </NavigationButton>
+        </div>
+        <div class="right-buttons">
+          <NavigationButton
+            type="next"
+            @Click="gettoBestaetigung"
+          >
+            <template v-slot:buttonText>
+              Weiter
+            </template>
+          </NavigationButton>
+        </div>
+      </div>
     </div>
     <div v-if="bestaetigung" class="stimmdiv">
       <BestaetigungComponent />
-
-      <!-- Zurück-Button -->
-      <NavigationButton
-        type="back"
-        @Click="gettoZweitstimme"
-      >
-        <template v-slot:buttonText>
-          Zurück
-        </template>
-      </NavigationButton>
-      <NavigationButton
-        type="back"
-        @Click="gettoStart"
-      >
-        <template v-slot:buttonText>
-          Abbrechen
-        </template>
-      </NavigationButton>
-      <!-- Bestätigen-Button -->
-      <NavigationButton
-        type="submit"
-        @Click="submit"
-        :isDisabled="!store.checkboxAgreed"
-      >
-        <template v-slot:buttonText>
-          Bestätigen
-        </template>
-      </NavigationButton>
+      <!-- Buttons: Links = Zurück/Abbrechen, Rechts = Bestätigen -->
+      <div class="button-container">
+        <div class="left-buttons">
+          <NavigationButton
+            type="back"
+            @Click="gettoStart"
+          >
+            <template v-slot:buttonText>
+              Abbrechen
+            </template>
+          </NavigationButton>
+          <NavigationButton
+            type="back"
+            @Click="gettoZweitstimme"
+          >
+            <template v-slot:buttonText>
+              Zurück
+            </template>
+          </NavigationButton>
+        </div>
+        <div class="right-buttons">
+          <NavigationButton
+            type="submit"
+            @Click="submit"
+            :isDisabled="!store.checkboxAgreed"
+          >
+            <template v-slot:buttonText>
+              Bestätigen
+            </template>
+          </NavigationButton>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -92,7 +106,7 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
@@ -134,7 +148,6 @@ function gettoStart() {
   }
 }
 
-
 function getErststimme() {
   erststimme.value = false;
   zweitstimme.value = true;
@@ -159,7 +172,7 @@ function gettoZweitstimme() {
   fortschritt.value = 2;
 }
 
-function submit(){
+function submit() {
   const confirmed = window.confirm(
     "Sind Sie sicher, dass Sie die Wahl bestätigen möchten? Nach Bestätigung ist keine Änderung mehr möglich."
   );
@@ -167,14 +180,13 @@ function submit(){
     // Hier könnte die Wahl an den Server gesendet werden
     window.alert("Vielen Dank für Ihre Stimme!");
   }
-  //Rückleitung zu Dashboard
+  // Rückleitung zu Dashboard
   window.location.href = "/";
 }
 
 onMounted(() => {
   start.value = true;
 });
-
 </script>
 
 <style scoped>
@@ -275,4 +287,24 @@ progress::-ms-fill {
   cursor: not-allowed;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  gap: 20px;
+}
+
+.left-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.right-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
 </style>
