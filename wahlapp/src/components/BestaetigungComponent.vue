@@ -7,9 +7,8 @@ const store = useWahlStore();
 </script>
 
 <template>
-  <p class="pb-5">Bitte bestätigen Sie Ihre Wahl</p>
-  <hr>
-  <p class="pt-5"> Sie haben folgende Stimmen abgegeben:</p>
+  <p class="font-bold">Zusammenfassung</p>
+  <p class="pb-5 text-base"> Sie haben folgende Stimmen abgegeben:</p>
   <!-- Erststimme -->
   <WahlInfoBox
     title="Erststimme"
@@ -23,21 +22,40 @@ const store = useWahlStore();
     :description="store.getZweitstimmebyId(store.selectedZweitstimme)?.text || 'Keine Stimme ausgewählt'"
     :detail="store.getZweitstimmebyId(store.selectedZweitstimme)?.name || '-'"
   />
-  <p class="font-bold pt-10 pb-5"> Sicherheitsinformationen </p>
-  <p class="pb-5 pt-5"> Ihr Wahl wird sicher und anonym verarbeitet. Mit dem Klick auf "Bestätigen" ist die getroffene Auswahl nicht mehr änderbar. </p>
+  <br>
+  <hr>
+  <p class="font-bold pt-10"> Sicherheitsinformationen </p>
+  <p class="pb-3 text-xs">
+    <b> 1. </b> {{store.sicherheitsinformationen[2]}} {{store.sicherheitsinformationen[3]}} {{store.sicherheitsinformationen[4]}}
+    ({{store.sicherheitsinformationen[0]}} {{store.sicherheitsinformationen[1]}}). <br>
+    <b> 2. </b> {{store.sicherheitsinformationen[5]}}
+  </p>
   <div class="checkbox-container">
     <input
       type="checkbox"
       id="sicherheits-check"
       v-model="store.checkboxAgreed"
-      class="checkbox"
+      class="checkbox text-xl"
     />
-    <label for="sicherheits-check" class="checkbox-label">
+    <label for="sicherheits-check" class="checkbox-label text-base">
       Ich habe die Sicherheitsinformationen gelesen und stimme zu.
     </label>
   </div>
+  <br>
 </template>
 
 <style scoped>
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000;
+  border-radius: 2px;
+  cursor: pointer;
+  vertical-align: middle;
+}
 
+label.checkbox-label {
+  cursor: pointer;
+  vertical-align: middle;
+}
 </style>
