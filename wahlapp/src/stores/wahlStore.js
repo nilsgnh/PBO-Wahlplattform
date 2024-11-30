@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
+import {ref} from "vue";
 
 export const useWahlStore = defineStore('wahl', {
   state: () => ({
     selectedErststimme: null, // Speichert die Erststimme
     selectedZweitstimme: null, // Speichert die Zweitstimme
+    checkboxAgreed: ref(false), // Speichert, ob die Nutzer:in die Bedingungen akzeptiert hat
     parteien: [
       { id: 1, name: "CDU", text: "Christlich Demokratische Union", num: 1 },
       { id: 2, name: "SPD", text: "Sozialdemokratische Partei Deutschlands", num: 2 },
@@ -38,5 +40,6 @@ export const useWahlStore = defineStore('wahl', {
     getZweitstimmebyId(id) {
         return this.parteien.find((stimme) => stimme.id === id);
     },
+
   }
 });
