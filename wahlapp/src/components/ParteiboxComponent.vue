@@ -20,6 +20,7 @@
 import { defineProps, computed } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
 
+// eslint-disable-next-line no-unused-vars
 const store = useWahlStore();
 
 const props = defineProps({
@@ -58,6 +59,15 @@ function handleBoxClick() {
   cursor: pointer;
 }
 
+.parteibox:hover {
+  background-color: #f0fff4; /* Grünlich für Hover */
+  transform: scale(1.02);
+}
+
+.parteibox.disabled:hover {
+  background-color: #e5e7eb; /* Grau für deaktiviert */
+  transform: scale(1);
+}
 
 .parteibox.selected {
   background-color: #d1fae5; /* Grünlich für ausgewählt */

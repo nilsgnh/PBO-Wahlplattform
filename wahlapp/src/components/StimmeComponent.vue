@@ -32,24 +32,10 @@ const props = defineProps({
 });
 
 // Parteienstruktur für Zweitstimme
-const parteien = reactive([
-  { id: 1, name: "CDU", text: "Christlich Demokratische Union", num: 1 },
-  { id: 2, name: "SPD", text: "Sozialdemokratische Partei Deutschlands", num: 2 },
-  { id: 3, name: "Grüne", text: "Bündnis 90/Die Grünen", num: 3 },
-  { id: 4, name: "FDP", text: "Freie Demokratische Partei", num: 4 },
-  { id: 5, name: "Linke", text: "Die Linke", num: 5 },
-  { id: 6, name: "AfD", text: "Alternative für Deutschland", num: 6 },
-]);
+const parteien = reactive(store.parteien);
 
 // Listenplätze für Erststimme
-const listenplaetze = reactive([
-  { id: 1, name: "Mustermann, Max", text: "Lehrer, CDU", num: 1 },
-  { id: 2, name: "Müller, Anna", text: "Ärztin, SPD", num: 2 },
-  { id: 3, name: "Schmidt, Peter", text: "Umweltaktivist, Grüne", num: 3 },
-  { id: 4, name: "Fischer, Lena", text: "Juristin, FDP", num: 4 },
-  { id: 5, name: "Bauer, Karl", text: "Sozialpädagoge, Die Linke", num: 5 },
-  { id: 6, name: "Schulze, Maria", text: "Unternehmerin, AfD", num: 6 },
-]);
+const listenplaetze = reactive(store.listenplaetze);
 
 // Dynamische Auswahl der anzuzeigenden Elemente
 const itemsToDisplay = computed(() => {

@@ -3,81 +3,102 @@
     <h1 class="text-3xl font-bold p-5">Bundestagswahl 2025</h1>
     <div v-if="start" class="start-container">
       <p>Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
-      <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
+      <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
         Start
       </button>
     </div>
     <div v-if="erststimme" class="stimmdiv">
       <ErststimmeComponent />
-      <button @click="gettoStart()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Abbrechen
-      </button>
-      <button @click="getErststimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Weiter
-      </button>
+      <!-- Abbrechen-Button -->
+      <NavigationButton
+        type="back"
+        @Click="gettoStart"
+      >
+        <template v-slot:buttonText>
+          Abbrechen
+        </template>
+      </NavigationButton>
+      <!-- Weiter-Button -->
+      <NavigationButton
+        type="next"
+        @Click="getErststimme"
+      >
+        <template v-slot:buttonText>
+          Weiter
+        </template>
+      </NavigationButton>
     </div>
     <div v-if="zweitstimme" class="stimmdiv">
       <ZweitstimmeComponent />
-      <button @click="gettoErststimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Zurück
-      </button>
-      <button @click="gettoBestaetigung()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Weiter
-      </button>
+      <!-- Zurück-Button -->
+      <NavigationButton
+        type="back"
+        @Click="gettoErststimme"
+      >
+        <template v-slot:buttonText>
+          Zurück
+        </template>
+      </NavigationButton>
+      <!-- Weiter-Button -->
+      <NavigationButton
+        type="next"
+        @Click="gettoBestaetigung"
+      >
+        <template v-slot:buttonText>
+          Weiter
+        </template>
+      </NavigationButton>
     </div>
     <div v-if="bestaetigung" class="stimmdiv">
-      <p class="pb-5">Bitte bestätigen Sie Ihre Wahl</p>
-      <hr>
-      <p class="pt-5"> Sie haben folgende Stimmen abgegeben:</p>
-      <p class="font-bold pt-10 pb-5">Erststimme: </p>
-      <p>{{store.getErststimmebyId(store.selectedErststimme)}}</p>
-      <p class="font-bold pt-10 pb-5">Zweitstimme: </p>
-      <p>{{store.getZweitstimmebyId(store.selectedZweitstimme)}}</p>
-      <p class="font-bold pt-10 pb-5"> Sicherheitsinformationen </p>
-      <p class="pb-5 pt-5"> Ihr Wahl wird sicher und anonym verarbeitet. Mit dem Klick auf "Bestätigen" ist die getroffene Auswahl nicht mehr änderbar. </p>
-      <div class="checkbox-container">
-        <input
-          type="checkbox"
-          id="sicherheits-check"
-          v-model="checkboxAgreed"
-          class="checkbox"
-        />
-        <label for="sicherheits-check" class="checkbox-label">
-          Ich habe die Sicherheitsinformationen gelesen und stimme zu.
-        </label>
-      </div>
+      <BestaetigungComponent />
 
-      <button @click="gettoZweitstimme()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Zurück
-      </button>
-      <button @click="gettoStart()" class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Abbrechen
-      </button>
-      <button @click="submit()"
-              id="submit-button"
-              class="rounded p-2 pl-3 pr-3 bg-darkgreen-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out"
-              :disabled="!checkboxAgreed">
-        Bestätigen
-      </button>
+      <!-- Zurück-Button -->
+      <NavigationButton
+        type="back"
+        @Click="gettoZweitstimme"
+      >
+        <template v-slot:buttonText>
+          Zurück
+        </template>
+      </NavigationButton>
+      <NavigationButton
+        type="back"
+        @Click="gettoStart"
+      >
+        <template v-slot:buttonText>
+          Abbrechen
+        </template>
+      </NavigationButton>
+      <!-- Bestätigen-Button -->
+      <NavigationButton
+        type="submit"
+        @Click="submit"
+        :isDisabled="!store.checkboxAgreed"
+      >
+        <template v-slot:buttonText>
+          Bestätigen
+        </template>
+      </NavigationButton>
     </div>
   </div>
 
   <!-- Progressbar einfügen -->
   <section id="wahlfortschritt">
     <div class="progress-wrapper">
-      <progress :value="fortschritt" max="4"></progress>
-      <span class="progress-text">Schritt {{fortschritt}} von 4</span>
+      <progress :value="fortschritt" max="3"></progress>
+      <span class="progress-text">Schritt {{fortschritt}} von 3</span>
     </div>
   </section>
 </template>
 
 <script setup>
 import {onMounted, ref} from "vue";
-import { useWahlStore } from "@/stores/wahlStore"; // Importiere den Store
+import { useWahlStore } from "@/stores/wahlStore";
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
+import BestaetigungComponent from "@/components/BestaetigungComponent.vue";
+import NavigationButton from "@/components/NavigationButton.vue";
 
-// eslint-disable-next-line no-unused-vars
 const store = useWahlStore();
 
 const start = ref(false);
@@ -85,7 +106,6 @@ const erststimme = ref(false);
 const zweitstimme = ref(false);
 const bestaetigung = ref(false);
 const fortschritt = ref(0);
-const checkboxAgreed = ref(false); // Checkbox-Status
 
 function getStarted() {
   erststimme.value = true;
@@ -130,13 +150,13 @@ function gettoErststimme() {
 function gettoBestaetigung() {
   zweitstimme.value = false;
   bestaetigung.value = true;
-  fortschritt.value = 4;
+  fortschritt.value = 3;
 }
 
 function gettoZweitstimme() {
   zweitstimme.value = true;
   bestaetigung.value = false;
-  fortschritt.value = 3;
+  fortschritt.value = 2;
 }
 
 function submit(){
