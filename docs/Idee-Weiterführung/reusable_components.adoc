@@ -2,6 +2,7 @@
 
 * _Modular Mastery: Identify Reusable Components:_ (Create a list of components that can be reused (e.g. buttons, lists, navigation elements, ...))
 ** Abstimmungsfeld einer Partei
+** Wahlinfo-Feld für jede Stimme (Erststimme, Zweitstimme, ...)
 ** Stimmenabgabe-Seite für mehrere Stimmen (Erststimme, Zweitstimme, ...)
 ** Home-Button (zurück zur Startseite)
 ** Icon-Buttons (z.B. für Einstellungen, Support,...)
