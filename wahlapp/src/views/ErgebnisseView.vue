@@ -18,12 +18,11 @@
       <BarChart :chartType="'gewinneUndVerluste'" />
     </section>
 
-        <!-- Wochentagsfortschritt Liniendiagramm -->
-        <section class="chart-section">
+    <!-- Wochentagsfortschritt Liniendiagramm -->
+    <section class="chart-section">
       <h2>Wochentagsfortschritt (Liniendiagramm)</h2>
       <LineChart />
     </section>
-
   </div>
 </template>
 
@@ -31,8 +30,6 @@
 import BarChart from '../components/BarChart.vue';
 import PieChart from '../components/PieChart.vue';
 import LineChart from '@/components/LineChart.vue';
-
-
 </script>
 
 <style scoped>
@@ -50,8 +47,14 @@ import LineChart from '@/components/LineChart.vue';
   width: 100%;
   max-width: 900px; /* Maximalbreite für Diagramme */
   text-align: center; /* Zentriert die Überschrift */
+  transition: transform 0.3s ease; /* Sanfter Übergang für den Hover-Effekt */
 }
 
+.chart-section:hover {
+  transform: scale(1.12); /* Leichtes Vergrößern bei Hover */
+}
+
+/* Canvas Styling */
 .chart-container canvas {
   width: 100%;
   max-width: 800px; /* Maximalbreite für das Canvas */
@@ -65,5 +68,15 @@ import LineChart from '@/components/LineChart.vue';
   font-weight: bold;
   margin-bottom: 10px; /* Abstand zwischen Überschrift und Diagramm */
   color: #333; /* Dunklere Farbe für bessere Lesbarkeit */
+}
+
+/* Media Query für mobile Ansicht */
+@media (max-width: 600px) {
+  .chart-container {
+    padding: 10px; /* Weniger Innenabstand auf kleinen Geräten */
+  }
+  .chart-section h2 {
+    font-size: 1.2em; /* Kleinere Schrift auf mobilen Geräten */
+  }
 }
 </style>
