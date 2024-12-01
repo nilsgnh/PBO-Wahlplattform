@@ -25,7 +25,7 @@
       <div class="welcome-container">
         <h1>{{ $t('welcome') }}</h1>
         <h2>{{ $t('username') }}</h2>
-        <div class="info-card" @click="toggleInfo">
+        <div class="info-card" @click="navigateToElection">
           <p>{{ $t('electionInfo') }}</p>
         </div>
       </div>
@@ -46,10 +46,12 @@
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';  // Importiere den Vue Router
 
 export default {
   setup() {
     const { t, locale } = useI18n();
+    const router = useRouter();  // Router-Instanz verwenden
 
     const switchLanguage = (language) => {
       locale.value = language;  // Wechselt die Sprache
@@ -59,8 +61,9 @@ export default {
       alert("Einstellungen öffnen");
     };
 
-    const toggleInfo = () => {
-      alert("Zeige Informationen zur Wahl an");
+    const navigateToElection = () => {
+      // Navigiere zur Wahl-Seite
+      router.push({ name: 'bundestagswahl-2025' });  // Navigiert zur Route
     };
 
     return {
@@ -68,7 +71,7 @@ export default {
       locale,
       switchLanguage,
       toggleSettings,
-      toggleInfo
+      navigateToElection  // Methode zur Navigation hinzufügen
     };
   }
 };
@@ -82,7 +85,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top:20px;
 }
 
 header {
@@ -187,5 +190,16 @@ footer nav ul li a {
 
 footer nav ul li a:hover {
   text-decoration: underline;
+}
+
+@media (min-width:1024px) {
+    #home{
+      width:960px;
+      margin:0 auto;
+    }
+
+    .test{
+      margin:0;
+    }
 }
 </style>
