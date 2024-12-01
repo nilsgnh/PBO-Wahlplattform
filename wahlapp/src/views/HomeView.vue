@@ -197,9 +197,5 @@ footer nav ul li a:hover {
       width:960px;
       margin:0 auto;
     }
-
-    .test{
-      margin:0;
-    }
 }
 </style>
