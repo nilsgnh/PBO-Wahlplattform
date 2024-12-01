@@ -3,6 +3,15 @@
     <h2>Stimmenverteilung (Horizontal Balkendiagramm)</h2>
     <canvas id="barChart"></canvas>
 
+    <div>
+    <h2>Stimmenverteilung (Horizontal Balkendiagramm)</h2>
+    <BarChart
+      :labels="chartLabels"
+      :data="chartData"
+      :backgroundColors="chartColors"
+    />
+  </div>
+
     <h2>Wochentagsfortschritt (Liniendiagramm)</h2>
     <canvas id="lineChart"></canvas>
 
@@ -15,6 +24,15 @@
 </template>
 
 <script setup lang="ts">
+import { useErgebnisStore } from '../stores/ErgebnisStore';
+import BarChart from '../components/BarChart.vue';
+// Store verwenden
+const ergebnisStore = useErgebnisStore();
+
+// Zugriff auf die Daten aus dem Store
+const chartLabels = ergebnisStore.chartLabels;
+const chartData = ergebnisStore.chartData;
+const chartColors = ergebnisStore.chartColors;
 import { onMounted } from 'vue';
 import {
   Chart,
