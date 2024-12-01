@@ -142,7 +142,10 @@
 6. Use the user's configured `sans` font-variation-settings by default.
 7. Disable tap highlights on iOS
 */
-
+html, body{
+  width:100%;
+  height:100%;
+}
 html,
 :host {
   line-height: 1.5;
@@ -174,6 +177,13 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  background-image: url('bundesadler.png');
+  background-position: center;
+  background-size:auto 100%;
+  background-repeat:no-repeat;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-blend-mode: overlay;
+  box-sizing: border-box;
 }
 
 /*
