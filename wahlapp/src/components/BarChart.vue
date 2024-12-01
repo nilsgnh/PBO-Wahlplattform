@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, defineProps } from 'vue';
 import { useErgebnisStore } from '../stores/ErgebnisStore'; // Store importieren
 import {
   Chart,
@@ -24,19 +24,30 @@ Chart.register(CategoryScale, LinearScale, BarController, BarElement, Title, Too
 // Zugriff auf den ErgebnisStore
 const ergebnisStore = useErgebnisStore();
 
+// Definiere eine Property, um zu entscheiden, welche Daten verwendet werden
+const props = defineProps({
+  chartType: { type: String, required: true, default: 'ergebnisse' }, // 'ergebnisse' oder 'gewinneUndVerluste'
+});
+
 // Referenz für das Canvas-Element
 const barChart = ref<HTMLCanvasElement | null>(null);
 
 onMounted(() => {
+  // Dynamische Auswahl der Daten basierend auf der `chartType` Property
+  const chartData = props.chartType === 'gewinneUndVerluste'
+    ? ergebnisStore.gewinneUndVerluste
+    : ergebnisStore.ergebnisse;
+
   if (barChart.value) {
     new Chart(barChart.value, {
       type: 'bar',
       data: {
-        labels: ergebnisStore.chartLabels, // Labels aus dem Store
+        labels: chartData.chartLabels, // Labels aus dem Store
         datasets: [
           {
-            data: ergebnisStore.chartData, // Daten aus dem Store
-            backgroundColor: ergebnisStore.chartColors, // Farben aus dem Store
+            label: props.chartType === 'gewinneUndVerluste' ? 'Gewinne und Verluste (%)' : 'Ergebnisse (%)',
+            data: chartData.chartData, // Daten aus dem Store
+            backgroundColor: chartData.chartColors, // Farben aus dem Store
           },
         ],
       },

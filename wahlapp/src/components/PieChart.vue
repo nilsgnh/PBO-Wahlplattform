@@ -5,7 +5,7 @@
   </template>
   
   <script setup lang="ts">
-  import { onMounted, ref } from 'vue';
+  import { onMounted, ref, defineProps } from 'vue';
   import { useErgebnisStore } from '../stores/ErgebnisStore'; // Store importieren
   import {
     Chart,
@@ -22,19 +22,29 @@
   // Zugriff auf den ErgebnisStore
   const ergebnisStore = useErgebnisStore();
   
+  // Definiere eine Property, um zu entscheiden, welche Daten verwendet werden
+  const props = defineProps({
+    chartType: { type: String, required: true, default: 'ergebnisse' }, // 'ergebnisse' oder 'gewinneUndVerluste'
+  });
+  
   // Referenz für das Canvas-Element
   const pieChart = ref<HTMLCanvasElement | null>(null);
   
   onMounted(() => {
+    // Dynamische Auswahl der Daten basierend auf der `chartType` Property
+    const chartData = props.chartType === 'gewinneUndVerluste'
+      ? ergebnisStore.gewinneUndVerluste
+      : ergebnisStore.ergebnisse;
+  
     if (pieChart.value) {
       new Chart(pieChart.value, {
         type: 'pie',
         data: {
-          labels: ergebnisStore.chartLabels, // Labels aus dem Store
+          labels: chartData.chartLabels, // Labels aus dem Store
           datasets: [
             {
-              data: ergebnisStore.chartData, // Daten aus dem Store
-              backgroundColor: ergebnisStore.chartColors, // Farben aus dem Store
+              data: chartData.chartData, // Daten aus dem Store
+              backgroundColor: chartData.chartColors, // Farben aus dem Store
             },
           ],
         },
