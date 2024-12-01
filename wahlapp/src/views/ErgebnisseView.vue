@@ -1,52 +1,101 @@
 <template>
   <div class="chart-container">
-    <!-- Wahlstimmen Balkendiagramm -->
-    <section class="chart-section">
-      <h2>Wahlstimmen (Balkendiagramm)</h2>
-      <BarChart :chartType="'ergebnisse'" />
-    </section>
+    <!-- Linker Bereich mit dem Button, nur Linkspfeil wird angezeigt -->
+    <div class="button-area left">
+      <ButtonSlide :buttonType="'left'" @navigate="handleNavigation" />
+    </div>
 
-    <!-- Landtagwahl Brandenburg 2024 Kreisdiagramm -->
-    <section class="chart-section">
-      <h2>Landtagwahl Brandenburg 2024 (Kreisdiagramm)</h2>
-      <PieChart :chartType="'ergebnisse'" />
-    </section>
+    <!-- Mittlerer Bereich für das Diagramm -->
+    <div class="chart-area">
+      <section class="chart-section" v-if="currentChart === 0">
+        <h2>Wahlstimmen (Balkendiagramm)</h2>
+        <BarChart :chartType="'ergebnisse'" />
+      </section>
 
-    <!-- Gewinne und Verluste Balkendiagramm -->
-    <section class="chart-section">
-      <h2>Gewinne und Verluste (Balkendiagramm)</h2>
-      <BarChart :chartType="'gewinneUndVerluste'" />
-    </section>
+      <section class="chart-section" v-if="currentChart === 1">
+        <h2>Landtagwahl Brandenburg 2024 (Kreisdiagramm)</h2>
+        <PieChart :chartType="'ergebnisse'" />
+      </section>
 
-    <!-- Wochentagsfortschritt Liniendiagramm -->
-    <section class="chart-section">
-      <h2>Wochentagsfortschritt (Liniendiagramm)</h2>
-      <LineChart />
-    </section>
+      <section class="chart-section" v-if="currentChart === 2">
+        <h2>Gewinne und Verluste (Balkendiagramm)</h2>
+        <BarChart :chartType="'gewinneUndVerluste'" />
+      </section>
+
+      <section class="chart-section" v-if="currentChart === 3">
+        <h2>Wochentagsfortschritt (Liniendiagramm)</h2>
+        <LineChart />
+      </section>
+    </div>
+
+    <!-- Rechter Bereich mit dem Button, nur Rechtspfeil wird angezeigt -->
+    <div class="button-area right">
+      <ButtonSlide :buttonType="'right'" @navigate="handleNavigation" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import BarChart from '../components/BarChart.vue';
 import PieChart from '../components/PieChart.vue';
 import LineChart from '@/components/LineChart.vue';
+import ButtonSlide from '@/components/ButtonSlide.vue';
+
+const currentChart = ref(0); // Aktuelles Diagramm
+
+// Handle Navigation zwischen den Charts
+const handleNavigation = (direction: 'next' | 'previous') => {
+  if (direction === 'next') {
+    if (currentChart.value < 3) {
+      currentChart.value++;
+    }
+  } else if (direction === 'previous') {
+    if (currentChart.value > 0) {
+      currentChart.value--;
+    }
+  }
+};
 </script>
 
 <style scoped>
 /* Container für alle Diagramme */
 .chart-container {
   display: flex;
-  flex-direction: column;
-  gap: 40px; /* Größere Abstände zwischen den Diagrammen */
   align-items: center;
+  justify-content: space-between;
   padding: 20px; /* Etwas Innenabstand für das Layout */
+}
+
+/* Bereich für die Buttons */
+.button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%; /* Feste Breite für den Button-Bereich */
+}
+
+.left {
+  justify-content: flex-start; /* Linksbündig */
+}
+
+.right {
+  justify-content: flex-end; /* Rechtsbündig */
+}
+
+/* Bereich für das Diagramm */
+.chart-area {
+  flex-grow: 1;
+  text-align: center; /* Zentriert die Diagramme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Abschnitt für jedes Diagramm */
 .chart-section {
   width: 100%;
   max-width: 900px; /* Maximalbreite für Diagramme */
-  text-align: center; /* Zentriert die Überschrift */
   transition: transform 0.3s ease; /* Sanfter Übergang für den Hover-Effekt */
 }
 
@@ -73,10 +122,19 @@ import LineChart from '@/components/LineChart.vue';
 /* Media Query für mobile Ansicht */
 @media (max-width: 600px) {
   .chart-container {
+    flex-direction: column;
+    align-items: stretch;
     padding: 10px; /* Weniger Innenabstand auf kleinen Geräten */
   }
-  .chart-section h2 {
-    font-size: 1.2em; /* Kleinere Schrift auf mobilen Geräten */
+
+  .button-area {
+    width: 100%; /* Volle Breite auf mobilen Geräten */
+    margin-bottom: 10px; /* Abstand zwischen Buttons und Diagramm */
+  }
+
+  .chart-area {
+    width: 100%;
+    max-width: none; /* Maximale Breite auf kleinen Geräten anpassen */
   }
 }
 </style>

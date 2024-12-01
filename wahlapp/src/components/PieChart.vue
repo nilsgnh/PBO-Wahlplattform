@@ -62,8 +62,17 @@
   
   <style scoped>
   .pie-chart-container {
-    width: 100%;
-    height: 400px;
+    width: 80%; /* 80% der Containerbreite */
+    height: 500px; /* Größere Höhe für das Diagramm */
+    display: flex;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+    margin: 0 auto; /* Zentrieren des Containers auf der Seite */
+  }
+  
+  canvas {
+    max-width: 100%; /* Sicherstellen, dass das Diagramm nicht überläuft */
+    max-height: 100%; /* Sicherstellen, dass das Diagramm nicht überläuft */
   }
   </style>
   
