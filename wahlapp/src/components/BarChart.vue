@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, defineProps } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useErgebnisStore } from '../stores/ErgebnisStore'; // Store importieren
 import {
   Chart,
   CategoryScale,
@@ -20,13 +21,10 @@ import {
 // Chart.js Komponenten registrieren
 Chart.register(CategoryScale, LinearScale, BarController, BarElement, Title, Tooltip, Legend);
 
-// Props definieren
-const props = defineProps({
-  labels: { type: Array, required: true },
-  data: { type: Array, required: true },
-  backgroundColors: { type: Array, required: true },
-});
+// Zugriff auf den ErgebnisStore
+const ergebnisStore = useErgebnisStore();
 
+// Referenz für das Canvas-Element
 const barChart = ref<HTMLCanvasElement | null>(null);
 
 onMounted(() => {
@@ -34,11 +32,11 @@ onMounted(() => {
     new Chart(barChart.value, {
       type: 'bar',
       data: {
-        labels: props.labels, // Dynamische Labels
+        labels: ergebnisStore.chartLabels, // Labels aus dem Store
         datasets: [
           {
-            data: props.data, // Dynamische Daten
-            backgroundColor: props.backgroundColors, // Dynamische Farben
+            data: ergebnisStore.chartData, // Daten aus dem Store
+            backgroundColor: ergebnisStore.chartColors, // Farben aus dem Store
           },
         ],
       },
