@@ -1,5 +1,4 @@
 <template>
-  <h1 class="main-header text-center">Wahlplattform</h1>
   <div class="background">
     <div class="container">
       <h2 class="sub-header font-bold">Mit BundID anmelden oder registrieren</h2>
@@ -37,13 +36,8 @@
   border-radius: 10px;
 }
 
-.main-header {
-  margin-bottom: 20px;
-  font-size: xxx-large;
-}
-
 .sub-header {
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
   font-size: x-large;
   margin-left: 5%;
