@@ -1,7 +1,6 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="main-header">Wahlplattform</h1>
       <h2 class="sub-header font-bold">Mit BundID anmelden oder registrieren</h2>
       <p class="description">
         Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu nutzen.
@@ -21,31 +20,23 @@
 
 <style>
 .background {
-  background-color: #ABD2FA;
-  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: baseline;
 }
 
+ /*delete
+ Buttons in main.css definieren wie in aktueller Wahl für Kasten
+ */
 .container {
   width: 900px;
   height: 600px;
-  margin: 1cm 0;
-  background-color: #FDFCDC;
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 10px;
 }
 
-.main-header {
-  margin-bottom: 20px;
-  font-size: xxx-large;
-}
-
 .sub-header {
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
   font-size: x-large;
   margin-left: 5%;
@@ -57,6 +48,7 @@
   margin-left: 5%;
 }
 
+/*Design klauen vo BundID*/
 .login-box {
   border: 1px solid #ccc;
   padding: 20px;
@@ -66,6 +58,7 @@
   margin-top: 10%;
   width: 50%;
   justify-self: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -74,6 +67,7 @@
   margin-bottom: 10px;
   justify-self: center;
 }
+
 
 .login-button {
   background-color: #091540;
@@ -99,6 +93,7 @@
 
 }
 </style>
+// TODO: in stores anlegen und Logik daraus nutzen
 <script>
 import { useAuth } from '../scripts/useAuth';
 
