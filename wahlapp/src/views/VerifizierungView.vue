@@ -7,7 +7,7 @@
         Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu nutzen.
       </p>
       <div class="login-box">
-        <img src="../ressources/bundIdlogo.png" alt="BundId Logo" class="logo" />
+        <img src="../assets/bundIdlogo.png" alt="BundId Logo" class="logo" />
         <button @click="login" class="login-button">Login with BundId</button>
       </div>
       <div v-if="showModal" class="modal">
