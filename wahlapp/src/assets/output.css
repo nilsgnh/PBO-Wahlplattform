@@ -612,6 +612,10 @@ video {
   flex-shrink: 1;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -645,6 +649,11 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -665,12 +674,13 @@ video {
   padding-right: 0.75rem;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
+.pt-8 {
+  padding-top: 2rem;
 }
 
-.text-center {
-  text-align: center;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -732,10 +742,12 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #091540;
-}
+/* 
+h1 -> text-3xl
+'text-klein' -> text-base
+'text-gross' -> text-xl
+h2 -> text-2xl
+*/
 
 .title {
   border: 2px solid grey;
@@ -744,6 +756,23 @@ body {
   font-size: 1.5rem;
   display: inline-block;
   margin: 0 auto;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #091540;
+  background-image: url('bundesadler.png');
+  background-position: center;
+  background-size:auto 100%;
+  background-repeat:no-repeat;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-blend-mode: overlay;
+  box-sizing: border-box;
 }
 
 .hover\:bg-gray-300:hover {

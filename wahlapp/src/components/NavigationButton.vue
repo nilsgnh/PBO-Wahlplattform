@@ -37,7 +37,7 @@ export default {
       } else if (props.type === "back") {
         return "bg-gray-200 text-gray-800";  // Gray für back
       }
-      return ""; // Kein Hintergrund für next
+      return "bg-white"; // weißer Hintergrund für alle anderen
     });
     const hoverClass = computed(() =>
       props.type === "back" ? "hover:bg-gray-300" : "hover:bg-gray-300"

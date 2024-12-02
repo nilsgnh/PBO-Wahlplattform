@@ -1,9 +1,21 @@
 <template>
   <div id="wahl">
     <h1 class="text-3xl font-bold p-2">Bundestagswahl 2025</h1>
-    <div v-if="start" class="start-end-container">
-      <p>Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
-      <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-200 border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
+    <div v-if="start && statesStore.gewaehlt" class="start-end-container">
+      <div class="text-xl">Sie haben bereits gewählt. <br> Vielen Dank für Ihre Teilnahme an der Wahl.</div>
+      <br>
+      <NavigationButton
+        type="next"
+        @Click="gettoDashboard"
+      >
+        <template v-slot:buttonText>
+          Zurück zum Dashboard
+        </template>
+      </NavigationButton>
+    </div>
+    <div v-if="start && !statesStore.gewaehlt" class="start-end-container">
+      <p class="text-xl">Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
+      <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-white border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
         Start
       </button>
     </div>
@@ -97,7 +109,7 @@
   </div>
 
   <div v-if="!bestaetigung && !start && !erststimme && !zweitstimme" class="start-end-container">
-      <p> Vielen Dank für Ihre Teilnahme an der Wahl. </p>
+      <p class="text-xl"> Vielen Dank für Ihre Teilnahme an der Wahl. </p>
       <NavigationButton
         type="next"
         @Click="gettoDashboard"
@@ -120,12 +132,17 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
+import { useStatesStore } from "@/stores/statesStore.js";
+import { useRouter } from 'vue-router';
+
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
 import BestaetigungComponent from "@/components/BestaetigungComponent.vue";
 import NavigationButton from "@/components/NavigationButton.vue";
+import router from "@/router/index.js";
 
 const store = useWahlStore();
+const statesStore = useStatesStore();
 
 const start = ref(false);
 const erststimme = ref(false);
@@ -151,7 +168,8 @@ function gettoDashboard() {
   fortschritt.value = 0;
   bestaetigung.value = false;
   store.checkboxAgreed = false;
-  window.location.href = '/';
+  //auf Router umleiten
+  router.push('/');
 }
 
 function gettoStart() {
@@ -208,7 +226,7 @@ function submit() {
   );
   if (confirmed) {
     // Wahl abschließen
-    store.submitWahl();
+    statesStore.submitWahl();
     gettoEnd();
   }
 }

@@ -6,8 +6,8 @@
   >
     <!-- Linke Spalte: Parteiname und Beschreibung -->
     <div class="parteibox-left">
-      <div class="partei-name">{{ partei }}</div>
-      <div class="partei-text">{{ text }}</div>
+      <div class="partei-name text-2xl">{{ partei }}</div>
+      <div class="partei-text text-xl">{{ text }}</div>
     </div>
     <!-- Rechte Spalte: Nummer -->
     <div class="parteibox-right">
