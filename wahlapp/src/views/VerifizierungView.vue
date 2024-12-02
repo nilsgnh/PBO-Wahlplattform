@@ -24,13 +24,13 @@
   justify-content: center;
 }
 
+ /*delete
+ Buttons in main.css definieren wie in aktueller Wahl für Kasten
+ */
 .container {
-  background-color: rgba(80, 80, 80, 0.3); /* Semi-transparent */
   width: 900px;
   height: 600px;
-  margin: 1cm 0;
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 10px;
 }
@@ -48,6 +48,7 @@
   margin-left: 5%;
 }
 
+/*Design klauen vo BundID*/
 .login-box {
   border: 1px solid #ccc;
   padding: 20px;
@@ -57,6 +58,7 @@
   margin-top: 10%;
   width: 50%;
   justify-self: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -65,6 +67,7 @@
   margin-bottom: 10px;
   justify-self: center;
 }
+
 
 .login-button {
   background-color: #091540;
@@ -90,6 +93,7 @@
 
 }
 </style>
+// TODO: in stores anlegen und Logik daraus nutzen
 <script>
 import { useAuth } from '../scripts/useAuth';
 
