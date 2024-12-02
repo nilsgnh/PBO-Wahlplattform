@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #091540;
-}
-
 .title {
   border: 2px solid grey;
   padding: 0.5rem 1rem;
