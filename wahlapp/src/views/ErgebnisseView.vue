@@ -8,22 +8,22 @@
     <!-- Mittlerer Bereich für das Diagramm -->
     <div class="chart-area">
       <section class="chart-section" v-if="currentChart === 0">
-        <h2>Wahlstimmen (Balkendiagramm)</h2>
+        <h2>Wahlergebnisse 2021</h2>
         <BarChart :chartType="'ergebnisse'" />
       </section>
 
       <section class="chart-section" v-if="currentChart === 1">
-        <h2>Landtagwahl Brandenburg 2024 (Kreisdiagramm)</h2>
+        <h2>Wahlergebnisse 2021</h2>
         <PieChart :chartType="'ergebnisse'" />
       </section>
 
       <section class="chart-section" v-if="currentChart === 2">
-        <h2>Gewinne und Verluste (Balkendiagramm)</h2>
+        <h2>Gewinne und Verluste </h2>
         <BarChart :chartType="'gewinneUndVerluste'" />
       </section>
 
       <section class="chart-section" v-if="currentChart === 3">
-        <h2>Wochentagsfortschritt (Liniendiagramm)</h2>
+        <h2>Liniendiagramm Beispiel</h2>
         <LineChart />
       </section>
     </div>
