@@ -1,7 +1,7 @@
 # MUST-CAN-Criteria
 
 * _Essential Checklist: Must-Have Requirements:_
-** Klickdummy-Seite(n) für Verifizierung "mit BundID" inkl. 2-Faktor-Authentifizierung
+** Klickdummy-Seite(n) für Verifizierung "mit BundID" 
 ** Dashboard mit Verlinkungen zu aktuellen Wahlen, Informationen zu Parteien und Wahlprogrammen, Auswertung der letzten Wahl
 ** Verlinkungen für Support-Seiten, wie z.B. FAQ, Kontakt, Impressum, Sicherheitsinformationen als Navigationselement erstellen (diese müssen nicht gefüllt sein)
 ** Schritt-für-Schritt-Wahlprozess für Beispielwahl "Bundestagswahl 2025" mit Hilfestellungen inkl. Bestätigungseite
