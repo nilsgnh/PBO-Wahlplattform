@@ -15,3 +15,20 @@ body {
   display: inline-block;
   margin: 0 auto;
 }
+
+html, body{
+  width:100%;
+  height:100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #091540;
+  background-image: url('bundesadler.png');
+  background-position: center;
+  background-size:auto 100%;
+  background-repeat:no-repeat;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-blend-mode: overlay;
+  box-sizing: border-box;
+}
