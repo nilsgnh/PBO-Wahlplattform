@@ -4,7 +4,8 @@
 ** Abstimmungsfeld einer Partei
 ** Wahlinfo-Feld für jede Stimme (Erststimme, Zweitstimme, ...)
 ** Stimmenabgabe-Seite für mehrere Stimmen (Erststimme, Zweitstimme, ...)
+** Bestätigungs-Pop-Up-Fenster
 ** Home-Button (zurück zur Startseite)
 ** Icon-Buttons (z.B. für Einstellungen, Support,...)
 ** Balken- oder Kreisdiagramm nur mit veränderbaren Werten
-** Menüleiste mit Support, Einstellungen, FAQ, Sicherheit, Impressum
+** seitliches Einstellungsmenü auf allen Seiten

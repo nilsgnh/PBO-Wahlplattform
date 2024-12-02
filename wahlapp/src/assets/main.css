@@ -33,3 +33,33 @@ body {
   background-blend-mode: overlay;
   box-sizing: border-box;
 }
+
+.auswahlbox {
+  background-color: #f3f4f6; /* Standard Hintergrundfarbe */
+  border-radius: 20px;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.auswahlbox:hover {
+  background-color: #f0fff4; /* Grünlich für Hover */
+  transform: scale(1.02);
+}
+
+/*nur für Wahlprozess notwendig*/
+.auswahlbox.disabled:hover {
+  background-color: #e5e7eb; /* Grau für deaktiviert */
+  transform: scale(1);
+}
+
+.auswahlbox.selected {
+  background-color: #d1fae5; /* Grünlich für ausgewählt */
+  border: 2px solid #10b981;
+}
+
+.auswahlbox.disabled {
+  background-color: #e5e7eb; /* Grau für deaktiviert */
+  opacity: 0.6;
+  cursor: not-allowed;
+}
