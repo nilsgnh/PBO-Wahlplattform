@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* 
+h1 -> text-3xl
+'text-klein' -> text-base
+'text-gross' -> text-xl
+h2 -> text-2xl
+*/
 
 .title {
   border: 2px solid grey;
