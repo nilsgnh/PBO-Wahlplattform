@@ -29,8 +29,8 @@
 }
 
 .container {
-  width: 30%;
-  height: 50vh;
+  width: 900px;
+  height: 600px;
   margin: 1cm 0;
   background-color: #FDFCDC;
   padding: 20px;
