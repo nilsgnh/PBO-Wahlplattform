@@ -22,8 +22,6 @@ export const useWahlStore = defineStore('wahl', {
       { id: 5, name: "Bauer, Karl", text: "Sozialpädagoge, Die Linke", num: 5 },
       { id: 6, name: "Schulze, Maria", text: "Unternehmerin, AfD", num: 6 },
     ],
-    // Anzahl der Stimmen
-    counter: ref(0),
     sicherheitsinformationen: ["GG BRD",
         "Art 38",
         "(1) Die Abgeordneten des Deutschen Bundestages werden in allgemeiner, unmittelbarer, freier, gleicher und geheimer Wahl gewählt. Sie sind Vertreter des ganzen Volkes, an Aufträge und Weisungen nicht gebunden und nur ihrem Gewissen unterworfen.",
@@ -48,12 +46,6 @@ export const useWahlStore = defineStore('wahl', {
     },
     getZweitstimmebyId(id) {
         return this.parteien.find((stimme) => stimme.id === id);
-    },
-    submitWahl() { /* Hier könnten Stimmen an Server gesendet werden */
-      this.counter++;
-      console.log("Stimmen abgegeben: ", this.counter);
-      /* todo: Eintragen der Stimmen in eine Datenbank */
-
     }
   }
 });
