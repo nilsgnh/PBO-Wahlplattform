@@ -1,7 +1,7 @@
 <template>
+  <h1 class="main-header text-center">Wahlplattform</h1>
   <div class="background">
     <div class="container">
-      <h1 class="main-header">Wahlplattform</h1>
       <h2 class="sub-header font-bold">Mit BundID anmelden oder registrieren</h2>
       <p class="description">
         Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu nutzen.
@@ -21,18 +21,16 @@
 
 <style>
 .background {
-  background-color: #ABD2FA;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: baseline;
 }
 
 .container {
+  background-color: rgba(80, 80, 80, 0.3); /* Semi-transparent */
   width: 900px;
   height: 600px;
   margin: 1cm 0;
-  background-color: #FDFCDC;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
