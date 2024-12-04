@@ -608,6 +608,18 @@ video {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
+.h-11 {
+  height: 2.75rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -775,7 +787,53 @@ body {
   box-sizing: border-box;
 }
 
+.auswahlbox {
+  background-color: #f3f4f6;
+  /* Standard Hintergrundfarbe */
+  border-radius: 20px;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.auswahlbox:hover {
+  background-color: #f0fff4;
+  /* Grünlich für Hover */
+  transform: scale(1.02);
+}
+
+/*nur für Wahlprozess notwendig*/
+
+.auswahlbox.disabled:hover {
+  background-color: #e5e7eb;
+  /* Grau für deaktiviert */
+  transform: scale(1);
+}
+
+.auswahlbox.selected {
+  background-color: #d1fae5;
+  /* Grünlich für ausgewählt */
+  border: 2px solid #10b981;
+}
+
+.auswahlbox.disabled {
+  background-color: #e5e7eb;
+  /* Grau für deaktiviert */
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-gray-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }

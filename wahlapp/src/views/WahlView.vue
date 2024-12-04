@@ -5,7 +5,7 @@
       <div class="text-xl">Sie haben bereits gewählt. <br> Vielen Dank für Ihre Teilnahme an der Wahl.</div>
       <br>
       <NavigationButton
-        type="next"
+        type="dashboard"
         @Click="gettoDashboard"
       >
         <template v-slot:buttonText>
@@ -15,9 +15,14 @@
     </div>
     <div v-if="start && !statesStore.gewaehlt" class="start-end-container">
       <p class="text-xl">Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
-      <button @click="getStarted()" class="rounded p-2 pl-3 pr-3 bg-white border-2 hover:bg-gray-300 transition duration-200 ease-in-out">
-        Start
-      </button>
+      <NavigationButton
+        type="next"
+        @Click="getStarted"
+      >
+        <template v-slot:buttonText>
+          Start
+        </template>
+      </NavigationButton>
     </div>
     <div v-if="erststimme" class="stimmdiv">
       <ErststimmeComponent />
@@ -111,7 +116,7 @@
   <div v-if="!bestaetigung && !start && !erststimme && !zweitstimme" class="start-end-container">
       <p class="text-xl"> Vielen Dank für Ihre Teilnahme an der Wahl. </p>
       <NavigationButton
-        type="next"
+        type="dashboard"
         @Click="gettoDashboard"
       >
         <template v-slot:buttonText>
@@ -120,20 +125,26 @@
       </NavigationButton>
   </div>
 
-  <!-- Progressbar einfügen -->
-  <section id="wahlfortschritt">
+  <!-- Progressbar -->
+  <section v-if="bestaetigung || erststimme || zweitstimme" id="wahlfortschritt">
     <div class="progress-wrapper">
-      <progress :value="fortschritt" max="4"></progress>
-      <span class="progress-text">Schritt {{fortschritt}} von 4</span>
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          :style="{ width: (fortschritt / 4) * 100 + '%' }"
+        ></div>
+      </div>
+      <span class="progress-text">Schritt {{ fortschritt }} von 4</span>
     </div>
   </section>
+
+  <br>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
 import { useStatesStore } from "@/stores/statesStore.js";
-import { useRouter } from 'vue-router';
 
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
@@ -194,6 +205,7 @@ function getErststimme() {
   erststimme.value = false;
   zweitstimme.value = true;
   fortschritt.value = 2;
+  window.scrollTo(0, 0);
 }
 
 function gettoErststimme() {
@@ -201,23 +213,27 @@ function gettoErststimme() {
   zweitstimme.value = false;
   fortschritt.value = 1;
   //window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 }
 
 function gettoBestaetigung() {
   zweitstimme.value = false;
   bestaetigung.value = true;
   fortschritt.value = 3;
+  window.scrollTo(0, 0);
 }
 
 function gettoZweitstimme() {
   zweitstimme.value = true;
   bestaetigung.value = false;
   fortschritt.value = 2;
+  window.scrollTo(0, 0);
 }
 
 function gettoEnd() {
   bestaetigung.value = false;
   fortschritt.value = 4;
+  window.scrollTo(0, 0);
 }
 
 function submit() {
@@ -275,36 +291,59 @@ p {
   position: relative;
   width: 100%;
   max-width: 1000px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 progress {
   width: 100%;
   height: 30px;
   margin-top: 20px;
-  border: 1px solid #9ca3aff3;
+  border: 1px solid #333333 ; /* dunkler als #f0fff4 */
   border-radius: 5px;
 }
 
+progress:hover {
+  transform: scale(1.02);
+}
+
 progress::-webkit-progress-bar {
-  background-color: #f3f4f6;
+  background-color: #fafbfd;
 }
 
 progress::-webkit-progress-value {
-  background-color: #9ca3aff3;
+  background-color: #d1fae5;
 }
 
 progress::-moz-progress-bar {
-  background-color: #9ca3aff3;
+  background-color: #d1fae5;
 }
 
 progress::-ms-fill {
-  background-color: #9ca3aff3;
+  background-color: #d1fae5;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #fafbfd;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #d1fae5;
+  width: 0;
+  transition: width 0.5s ease; /* Weicher Übergang */
 }
 
 .progress-text {
   position: absolute;
-  bottom: -25px; /* Abstand unterhalb der Progress-Bar */
-  left: 0; /* Text unten links platzieren */
+  bottom: -25px;
+  left: 0;
   font-size: 14px;
   color: #333;
 }
@@ -320,6 +359,7 @@ progress::-ms-fill {
   padding-top: 10px;
   padding-bottom: 10px;
   max-width: 1000px;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -344,7 +384,7 @@ progress::-ms-fill {
   justify-content: space-between;
   width: 100%;
   max-width: 1000px;
-  gap: 20px;
+  gap: 5px;
 }
 
 .left-buttons {
