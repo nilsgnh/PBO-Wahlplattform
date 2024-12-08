@@ -1,0 +1,145 @@
+# Quests - Aufarbeitung
+
+## Open:
+### [P10+] Vue'ly cool!
+* *Main- Quest -> Wie bekommt man diese?*
+
+### [P10+] Comment or Confusion: A Battle for Understanding
+Sufficiently comment the source code in at least 4 files.
+
+* *Vorschlag: jeder kommentiert eine eigene Datei aus*
+
+### [P10+] Ref-ining the Template: Vue Expertise Unlocked
+Use “Template Refs” in a self-defined form.
+* *wer macht das?*
+
+### [P10+] The Composer's Toolbox: Functions on Repeat
+Uses at least one function across components with “composables”.
+* *wer macht das?*
+
+### [P10+] No Error Left Behind: Console Clean-Up Crew
+The project must work without (console) errors.
+* *Wir probieren es mal hinzubekommen...*
+
+### [P10+] Red, Green, Refactor: The TDD Master Plan
+Develop with the principle of “test-driven development”.
+* *Vorschlag: Jeder schreibt 1-2 Tests zu seinen/anderen Komponenten*
+
+## In Progress:
+
+### [P10+] In Composition We Trust: Vue's Greatest Hits
+Only use the syntax of the “Composition” API.
+
+* *Jeder muss das bei der Implementierung beachten!*
+
+### [P7+] Functional Dummy: Demonstrating Key Must-Have Features
+Create a click dummy that covers at least 90% of the defined MUST criteria.
+
+* *in Arbeit, durch Seitenerstellung von jeder Person*
+
+### [P7+] Rock, Paper, Scissors!
+Create a paper prototype of at least 80% of the defined MUST criteria.
+
+* *in Arbeit durch @mikol9444*
+
+### [P10+] Pinia Colada: Managing State with Style
+Actively use “pinia” as state management.
+
+* *in Arbeit und Beendigung, wenn die Logik der Variablen in statesStore.js eingebaut ist*
+
+
+## Pending (Waiting for Review):
+### [P7+] Essential Checklist: Must-Have Requirements
+Create a list of MUST criteria that your team wants to complete within the module. 
+
+* *am 18.11.24 abgeschickt*
+
+### [P7+] Flexible Options: Your Nice-to-Have Criteria
+Create a list of CAN criteria, that you will work on once the MUST criteria are finished. 
+
+* *am 18.11.24 abgeschickt*
+
+### [P7+] Modular Mastery: Identify Reusable Components
+Create a list of components that can be reused (e.g. buttons, lists, navigation elements, ...) 
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] UI Royale: Choose Your Champion
+Use (at least) one of the following UI libraries: Vuetify, Quasar, PrimeVue, VueMaterial, ElementPlus, TailwindCSS
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Vue's Vital Signs: Hook 'Em Up!
+Uses a vue life-cycle hook at least once.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] The Input Whisperer: Bound to Succeed
+Uses at least one input field that is bound to a variable with “v-model”.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Computation Station: Variables in Overdrive
+Uses at least one “Computed” variable.
+
+* *am 02.12.24 abgeschickt*
+
+
+### [P10+] CSS Gone Wild: Variables in Control
+Uses at least 2x dynamic CSS styling or CSS classes that are bound to variables.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Vue Watchers: Keeping an Eye on Events
+Use at least one vue watch function to react to certain events inside of a component. 
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Ref, Set, Go: Variables on the Move
+Use at least 5x a variable with “ref()” that is actively used and updated.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] V-If or V-Else: The Choice is Yours
+Uses at least 2x “v-if” in combination with a variable (ref).
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Looping Legends: One v-for All
+Use at least one “v-for” loop.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] The Prophecy: Passing the Props
+Develop at least one component that uses vue “props”.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] The Parent Trap: Event Edition
+Develop at least one component that sends events back to the parent component (via emits).
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Slotted for Success: Vue Component Mastery
+Develops at least one component that work with named slots.
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Copy-Paste Pros: The Component Edition
+Develop at least 2 of your own components that are integrated multiple times (min 2 times).
+
+* *am 02.12.24 abgeschickt*
+
+### [P10+] Reactivity Overload: Twice the Fun!
+Use at least 2x “reactive()”.
+
+* *am 02.12.24 abgeschickt*
+
+## Done:
+
+-
+
+
+## Noch einzuordnen:
+
+-

@@ -79,7 +79,6 @@ export default {
 
 <style scoped>
 #home {
-  font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
   height: 100vh;
