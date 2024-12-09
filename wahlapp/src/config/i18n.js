@@ -5,6 +5,7 @@ const messages = {
   de: {
     welcome: "Willkommen",
     username: "Max Mustermann",
+    currentElection: "Jetzt wählen",
     electionInfo: "Alle Informationen zur Bundestagswahl 2025",
     vote: "Abstimmen",
     support: "Support",
@@ -63,7 +64,8 @@ kontakt@musterfirma.de
   en: {
     welcome: "Welcome",
     username: "Max Mustermann",
-    electionInfo: "All information about the Bundestag Election 2025",
+    currentElection: "Vote now",
+    electionInfo: "All information about the Bundestag Election 2021",
     vote: "Vote",
     support: "Support",
     impressum: "Legal Notice",
