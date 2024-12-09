@@ -6,6 +6,9 @@
         <h1 class="text-3xl font-bold p-2">{{ $t('welcome') }}</h1>
         <h2 class="text-3xl">{{ $t('username') }}</h2>
         <div class="primaryBtn" @click="navigateToElection">
+          <p class="text-xl">{{ $t('currentElection') }}</p>
+        </div>
+        <div class="primaryBtn" @click="navigateToElection">
           <p class="text-xl">{{ $t('electionInfo') }}</p>
         </div>
       </div>
