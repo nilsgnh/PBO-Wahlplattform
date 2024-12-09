@@ -11,11 +11,11 @@ Sufficiently comment the source code in at least 4 files.
 
 ### [P10+] Ref-ining the Template: Vue Expertise Unlocked
 Use “Template Refs” in a self-defined form.
-* *wer macht das?*
+* *wer macht das? -> @annferny Logik des Namen-Anzeigens nach Anmeldung*
 
 ### [P10+] The Composer's Toolbox: Functions on Repeat
 Uses at least one function across components with “composables”.
-* *wer macht das?*
+* *wer macht das? -> @mikol9444*
 
 ### [P10+] No Error Left Behind: Console Clean-Up Crew
 The project must work without (console) errors.
