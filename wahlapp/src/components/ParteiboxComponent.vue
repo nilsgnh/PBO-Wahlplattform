@@ -53,7 +53,7 @@ function handleBoxClick() {
   padding: 20px;
   margin: 10px auto;
   background-color: #f3f4f6;
-  border-radius: 20px;
+  /*border-radius: 20px;*/
   border: 1px solid #d1d5db;
   transition: background-color 0.3s ease, opacity 0.3s ease;
   cursor: pointer;

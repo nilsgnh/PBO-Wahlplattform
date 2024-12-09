@@ -2,7 +2,7 @@
   <button
     @click="handleClick"
     :class="[
-      'rounded p-2 pl-3 pr-3 border-2 transition duration-200 ease-in-out',
+      'p-2 pl-3 pr-3 border-2 transition duration-200 ease-in-out',
       baseClass,
       hoverClass,
       { disabled: isDisabled }
@@ -37,9 +37,9 @@ export default {
       } else if (props.type === "back") {
         return "bg-gray-200 text-gray-800 h-11 buttonnext";  // Gray für back
       } else if (props.type === "dashboard") {
-        return "bg-white h-16 h-16 buttonnext";
+        return "bg-white h-16 h-16 primaryBtn";
       }
-      return "bg-white h-11 buttonnext"; // weißer Hintergrund für alle anderen
+      return "bg-white h-11 primaryBtn"; // weißer Hintergrund für alle anderen
     });
     const hoverClass = computed(() =>
       props.type === "back" ? "hover:bg-gray-300" : "hover:bg-gray-200"

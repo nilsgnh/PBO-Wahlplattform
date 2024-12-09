@@ -300,7 +300,7 @@ progress {
   height: 30px;
   margin-top: 20px;
   border: 1px solid #333333 ; /* dunkler als #f0fff4 */
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 
 progress:hover {
@@ -328,7 +328,7 @@ progress::-ms-fill {
   height: 30px;
   background-color: #fafbfd;
   border: 1px solid #333;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   overflow: hidden;
   position: relative;
 }
@@ -399,4 +399,20 @@ progress::-ms-fill {
   display: flex;
   justify-content: flex-end;
 }
+
+/* Media Query für kleine Bildschirme/mobile Version*/
+@media (max-width: 540px) {
+  .button-container {
+    flex-direction: column; /* Buttons untereinander anordnen */
+    align-items: center; /* Zentrierte Ausrichtung */
+    gap: 10px; /* Mehr Abstand zwischen den Buttons */
+  }
+
+  .left-buttons,
+  .right-buttons {
+    justify-content: center; /* Zentrierte Buttons */
+    width: 100%; /* Breite anpassen */
+  }
+}
+
 </style>
