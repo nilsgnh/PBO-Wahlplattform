@@ -7,7 +7,7 @@ const store = useWahlStore();
 </script>
 
 <template>
-  <p class="font-bold">Zusammenfassung</p>
+  <p class="font-bold text-2xl">Zusammenfassung</p>
   <p class="pb-5 text-base"> Sie haben folgende Stimmen abgegeben:</p>
   <!-- Erststimme -->
   <WahlInfoBox
@@ -24,7 +24,7 @@ const store = useWahlStore();
   />
   <br>
   <hr>
-  <p class="font-bold pt-10"> Sicherheitsinformationen </p>
+  <p class="font-bold pt-8 text-2xl"> Sicherheitsinformationen </p>
   <p class="pb-3 text-xs">
     <b> 1. </b> {{store.sicherheitsinformationen[2]}} {{store.sicherheitsinformationen[3]}} {{store.sicherheitsinformationen[4]}}
     ({{store.sicherheitsinformationen[0]}} {{store.sicherheitsinformationen[1]}}). <br>
