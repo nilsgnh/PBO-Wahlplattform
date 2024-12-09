@@ -26,7 +26,7 @@ Falls Sie Fragen zum Datenschutz haben, wenden Sie sich bitte an unseren Support
 Datum: 08.12.2024
     `,
     impressumContent: `
-## Impressum {.font-bold .text-xl}
+## Impressum \{.font-bold .text-xl}
 
 Verantwortlich für den Inhalt:
 
@@ -36,9 +36,9 @@ Musterstraße 1
 Deutschland
 
 Telefon: +49 123 456789
-E-Mail: kontakt@musterfirma.de
+E-Mail: kontakt(at)musterfirma.de
 
-### Haftungsausschluss {.font-bold .text-xl}
+### Haftungsausschluss \{.font-bold .text-xl}
 Alle Inhalte auf dieser Website wurden mit größter Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte.
 
 Datum: 08.12.2024
