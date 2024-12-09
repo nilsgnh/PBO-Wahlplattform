@@ -13,52 +13,59 @@ const messages = {
     datenschutz: "Datenschutz",
     contact: "Kontakt",
     datenschutzContent: `
-## Datenschutz {.font-bold .text-xl}
+## Datenschutz
 Wir nehmen den Schutz Ihrer persönlichen Daten ernst. Auf dieser Seite informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer Daten im Rahmen unserer App.
-### Erhebung von Daten {.font-bold .text-xl}
+### Erhebung von Daten
 Wir erfassen personenbezogene Daten nur, wenn Sie diese freiwillig im Rahmen der Nutzung unserer Dienste angeben. Dazu gehören beispielsweise Name, E-Mail-Adresse oder andere Kontaktdaten.
-### Nutzung von Daten {.font-bold .text-xl}
+### Nutzung von Daten
 Ihre Daten werden ausschließlich für die Bereitstellung unserer Dienste genutzt und niemals an Dritte weitergegeben.
-### Ihre Rechte {.font-bold .text-xl}
+### Ihre Rechte
 Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten Daten zu erhalten sowie deren Löschung oder Berichtigung zu verlangen.
 Falls Sie Fragen zum Datenschutz haben, wenden Sie sich bitte an unseren Support.
 
 Datum: 08.12.2024
     `,
     impressumContent: `
-## Impressum \{.font-bold .text-xl}
+## Impressum
 
 Verantwortlich für den Inhalt:
 
 Max Mustermann
+
 Musterstraße 1
+
 12345 Musterstadt
+
 Deutschland
 
 Telefon: +49 123 456789
+
 E-Mail: kontakt(at)musterfirma.de
 
-### Haftungsausschluss \{.font-bold .text-xl}
+### Haftungsausschluss
 Alle Inhalte auf dieser Website wurden mit größter Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte.
 
 Datum: 08.12.2024
     `,
     contactContent: `
-## Kontakt {.font-bold .text-xl}
+## Kontakt
 
 Wir freuen uns über Ihre Nachricht! Nutzen Sie die unten stehenden Kontaktdaten, um uns zu erreichen:
 
-### Adresse {.font-bold .text-xl}
+### Adresse
 Max Mustermann
+
 Musterstraße 1
+
 12345 Musterstadt
+
 Deutschland
 
-### Telefon {.font-bold .text-xl}
+### Telefon
 +49 123 456789
 
-### E-Mail {.font-bold .text-xl}
-kontakt@musterfirma.de
+### E-Mail
+kontakt(at)musterfirma.de
     `,
   },
   en: {
@@ -72,17 +79,17 @@ kontakt@musterfirma.de
     datenschutz: "Privacy Policy",
     contact: "Contact",
     datenschutzContent: `
-## Privacy Policy {.font-bold .text-xl}
+## Privacy Policy
 
 We take the protection of your personal data seriously. On this page, we inform you about the collection, processing, and use of your data within our app.
 
-### Data Collection {.font-bold .text-xl}
+### Data Collection
 We only collect personal data if you voluntarily provide it during the use of our services. This includes, for example, your name, email address, or other contact information.
 
-### Data Usage {.font-bold .text-xl}
+### Data Usage
 Your data is used solely to provide our services and is never shared with third parties.
 
-### Your Rights {.font-bold .text-xl}
+### Your Rights
 You have the right to request information about the data we have stored at any time, as well as to request its deletion or correction.
 
 If you have any questions about data protection, please contact our support team.
@@ -90,39 +97,46 @@ If you have any questions about data protection, please contact our support team
 Date: 08.12.2024
     `,
     impressumContent: `
-## Legal Notice {.font-bold .text-xl}
+## Legal Notice
 
 Responsible for the content:
 
 Max Mustermann
+
 Example Street 1
+
 12345 Example City
+
 Germany
 
 Phone: +49 123 456789
-Email: contact@examplecompany.com
 
-### Disclaimer {.font-bold .text-xl}
+Email: contact(at)examplecompany.com
+
+### Disclaimer
 All content on this website has been created with the utmost care. However, we do not guarantee the accuracy, completeness, or timeliness of the content.
 
 Date: 08.12.2024
     `,
     contactContent: `
-## Contact {.font-bold .text-xl}
+## Contact
 
 We look forward to hearing from you! Use the contact information below to reach us:
 
-### Address {.font-bold .text-xl}
+### Address
 Max Mustermann
+
 Example Street 1
+
 12345 Example City
+
 Germany
 
-### Phone {.font-bold .text-xl}
+### Phone
 +49 123 456789
 
-### Email {.font-bold .text-xl}
-contact@examplecompany.com
+### Email
+contact(at)examplecompany.com
     `,
   },
 };
