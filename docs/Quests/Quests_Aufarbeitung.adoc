@@ -49,6 +49,9 @@ Actively use “pinia” as state management.
 
 
 ## Pending (Waiting for Review):
+
+## Done:
+
 ### [P7+] Essential Checklist: Must-Have Requirements
 Create a list of MUST criteria that your team wants to complete within the module. 
 
@@ -84,7 +87,6 @@ Uses at least one “Computed” variable.
 
 * *am 02.12.24 abgeschickt*
 
-
 ### [P10+] CSS Gone Wild: Variables in Control
 Uses at least 2x dynamic CSS styling or CSS classes that are bound to variables.
 
@@ -99,6 +101,7 @@ Use at least one vue watch function to react to certain events inside of a compo
 Use at least 5x a variable with “ref()” that is actively used and updated.
 
 * *am 02.12.24 abgeschickt*
+
 
 ### [P10+] V-If or V-Else: The Choice is Yours
 Uses at least 2x “v-if” in combination with a variable (ref).
@@ -134,10 +137,6 @@ Develop at least 2 of your own components that are integrated multiple times (mi
 Use at least 2x “reactive()”.
 
 * *am 02.12.24 abgeschickt*
-
-## Done:
-
--
 
 
 ## Noch einzuordnen:
