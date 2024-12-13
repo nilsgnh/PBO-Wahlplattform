@@ -26,8 +26,23 @@ const router = createRouter({
       path: '/verifizierung',
       name: 'verifizierung',
       component: () => import('../views/VerifizierungView.vue'),
-    }
+    },
+    {
+      path: '/impressum',
+      name: 'impressum',
+      component: () => import('../views/ImpressumView.vue'),
+    },
+    {
+      path: '/datenschutz',
+      name: 'datenschutz',
+      component: () => import('../views/DatenschutzView.vue'),
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue'),
+    },
   ],
-})
+});
 
 export default router

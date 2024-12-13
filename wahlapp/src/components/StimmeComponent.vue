@@ -1,5 +1,5 @@
 <template>
-  <p class="font-bold"> {{ stimme }} </p>
+  <p class="font-bold text-2xl"> {{ stimme }} </p>
   <p class="text-base pb-3">Sie haben eine Stimme{{info}}.</p>
   <hr>
   <div class="flex flex-row" id="wahl">

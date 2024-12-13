@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <div class="infobox">
     <div class="infobox-left">
-      <div class="info-title">{{ props.title }}</div>
+      <div class="info-title text-2xl">{{ props.title }}</div>
       <div class="info-description">{{ props.description }}</div>
     </div>
     <div class="infobox-right">
