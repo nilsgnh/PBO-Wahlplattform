@@ -198,6 +198,7 @@ function gettoStart() {
     store.setErststimme(null);
     store.setZweitstimme(null);
     store.checkboxAgreed = false;
+    window.scrollTo(0, 0);
   }
 }
 
