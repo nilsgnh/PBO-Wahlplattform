@@ -19,7 +19,7 @@ export const useAuthStore = defineStore({
       this.isAuthenticated = true;
       localStorage.setItem('isAuthenticated', 'true');
 
-      this.user = { name: 'Mock User' };
+      this.user = { name: 'Max Mustermann' };
       this.showModal = false;
     },
     cancelLogin() {
