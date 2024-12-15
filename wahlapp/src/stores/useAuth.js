@@ -1,29 +1,34 @@
 import { defineStore } from 'pinia';
 
+// Define a new store using Pinia for managing verification state
 export const useAuthStore = defineStore({
-  id: 'auth',
+  id: 'auth', // Unique identifier for the store
   state: () => ({
-    user: null,
-    isAuthenticated: false,
-    showModal: false,
+    user: null, // Holds user information, initially null
+    isAuthenticated: false, // Tracks if the user is authenticated
+    showModal: false, // Controls the visibility of the login modal
   }),
   actions: {
+    // Action to initiate the login process
     async login() {
-      this.showModal = true;
+      this.showModal = true; // Show the login modal
     },
+    // Action to confirm login and authenticate the user
     async confirmLogin() {
-      // Öffne die BundID-Seite in einem neuen Fenster
+      // Open the BundID page in a new window
       window.open('https://id.bund.de/de/welcome');
 
-      // Setze isAuthenticated auf true, nachdem der Benutzer die Seite besucht hat
+      // Set isAuthenticated to true after visiting the page
       this.isAuthenticated = true;
-      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('isAuthenticated', 'true'); // Persist authentication status
 
-      this.user = { name: 'Max Mustermann' };
-      this.showModal = false;
+      // Set user information
+      this.user = { name: 'Max Mustermann' }; // set mocked name
+      this.showModal = false; // Hide the login modal
     },
+    // Action to cancel the login process
     cancelLogin() {
-      this.showModal = false;
+      this.showModal = false; // Hide the login modal
     }
   },
 });
