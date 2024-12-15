@@ -60,12 +60,22 @@ const handleNavigation = (direction: 'next' | 'previous') => {
 
 <style scoped>
 /* Container für alle Diagramme */
+/* Container für alle Diagramme */
 .chart-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%; /* Volle Breite des übergeordneten Elements */
+  max-width: 1980px; /* Maximale Breite */
+  height: 800px; /* Feste Höhe für Stabilität */
   padding: 20px; /* Etwas Innenabstand für das Layout */
+  box-sizing: border-box; /* Sicherstellen, dass Padding berücksichtigt wird */
+  position: relative; /* Wichtig, um absolute Positionierung der Buttons zu ermöglichen */
+  background-color: #f9f9f9; /* Optional: Hintergrundfarbe für bessere Sichtbarkeit */
+  overflow: hidden; /* Verhindert, dass Inhalte außerhalb des Containers angezeigt werden */
+  margin: 0 auto; /* Zentriert den Container horizontal */
 }
+
 
 /* Bereich für die Buttons */
 .button-area {

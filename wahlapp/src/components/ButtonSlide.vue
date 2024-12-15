@@ -2,21 +2,20 @@
     <div class="button-slide-container">
       <!-- Linker Pfeil, nur anzeigen, wenn buttonType 'left' ist -->
       <button
-        v-if="buttonType === 'left'"
-        @click="goToPrevious"
-        class="button-slide left"
-      >
-        <img src="@/assets/arrow-left.png" alt="Previous" />
-      </button>
-    
-      <!-- Rechter Pfeil, nur anzeigen, wenn buttonType 'right' ist -->
-      <button
-        v-if="buttonType === 'right'"
-        @click="goToNext"
-        class="button-slide right"
-      >
-        <img src="@/assets/arrow-right.png" alt="Next" />
-      </button>
+  v-show="buttonType === 'left'"
+  @click="goToPrevious"
+  class="button-slide left"
+>
+  <img src="@/assets/arrow-left.png" alt="Previous" />
+</button>
+<button
+  v-show="buttonType === 'right'"
+  @click="goToNext"
+  class="button-slide right"
+>
+  <img src="@/assets/arrow-right.png" alt="Next" />
+</button>
+
     </div>
   </template>
   
@@ -58,15 +57,17 @@
   }
   
   .button-slide {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 15px; /* Größere Buttons */
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  width: 60px; /* Feste Breite */
+  height: 60px; /* Feste Höhe */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* Kein Padding, um Layout-Sprünge zu vermeiden */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
   
   .button-slide img {
     width: 40px; /* Größere Pfeile */
