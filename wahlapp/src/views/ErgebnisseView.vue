@@ -18,7 +18,7 @@
       </section>
 
       <section class="chart-section" v-if="currentChart === 2">
-        <h2>Gewinne und Verluste </h2>
+        <h2>Gewinne und Verluste</h2>
         <BarChart :chartType="'gewinneUndVerluste'" />
       </section>
 
@@ -42,21 +42,20 @@ import PieChart from '../components/PieChart.vue';
 import LineChart from '@/components/LineChart.vue';
 import ButtonSlide from '@/components/ButtonSlide.vue';
 
-const currentChart = ref(0); // Aktuelles Diagramm
+const currentChart = ref(0); // Index des aktuellen Diagramms
+const totalCharts = 4; // Gesamtzahl der Diagramme
 
-// Handle Navigation zwischen den Charts
+// Navigation zwischen den Diagrammen
 const handleNavigation = (direction: 'next' | 'previous') => {
   if (direction === 'next') {
-    if (currentChart.value < 3) {
-      currentChart.value++;
-    }
+    currentChart.value = (currentChart.value + 1) % totalCharts;
   } else if (direction === 'previous') {
-    if (currentChart.value > 0) {
-      currentChart.value--;
-    }
+    currentChart.value =
+      (currentChart.value - 1 + totalCharts) % totalCharts; // Sicherstellen, dass der Index positiv bleibt
   }
 };
 </script>
+
 
 <style scoped>
 /* Container für alle Diagramme */
