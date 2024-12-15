@@ -7,12 +7,12 @@
       </p>
       <div class="login-box">
         <img src="../assets/bundIdlogo.png" alt="BundId Logo" class="logo" />
-        <button @click="login" class="login-button">Login with BundId</button>
+        <button @click="authStore.login" class="login-button">Login with BundId</button>
       </div>
-      <div v-if="showModal" class="modal">
+      <div v-if="authStore.showModal" class="modal">
         <p>You will be redirected to BundId.de to continue the authentication process.</p>
-        <button @click="confirmLogin">Continue</button>
-        <button @click="cancelLogin">Cancel</button>
+        <button @click="authStore.confirmLogin">Continue</button>
+        <button @click="authStore.cancelLogin">Cancel</button>
       </div>
     </div>
   </div>
@@ -95,19 +95,14 @@
 </style>
 // TODO: in stores anlegen und Logik daraus nutzen
 <script>
-import { useAuth } from '../scripts/useAuth';
+import { useAuthStore } from '../stores/useAuth.js';
 
 export default {
   setup() {
-    const { user, isAuthenticated, showModal, login, confirmLogin, cancelLogin } = useAuth();
+    const authStore = useAuthStore(); // Verwende den Store
 
     return {
-      user,
-      isAuthenticated,
-      showModal,
-      login,
-      confirmLogin,
-      cancelLogin,
+      authStore // Gib den Store an das Template weiter
     };
   },
 };

@@ -4,7 +4,7 @@
     <main>
       <div class="welcome-container">
         <h1 class="text-3xl font-bold p-2">{{ $t('welcome') }}</h1>
-        <h2 class="text-3xl">{{ $t('username') }}</h2>
+        <h2 v-if="isAuthenticated" ref="usernameRef" class="text-3xl">{{ isAuthenticated ? $t('username') : '' }} </h2>
         <div class="primaryBtn" @click="navigateToElection">
           <p class="text-xl">{{ $t('currentElection') }}</p>
         </div>
@@ -19,12 +19,21 @@
 <script>
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';  // Importiere den Vue Router
+import { useAuthStore } from '../stores/useAuth.js';
+import { useTemplateRef, onMounted } from 'vue'
 
 export default {
   setup() {
     const { t, locale } = useI18n();
     const router = useRouter();  // Router-Instanz verwenden
+    const authStore = useAuthStore();
+    const usernameRef = useTemplateRef('usernameRef');
 
+    onMounted(() => {
+      if (authStore.isAuthenticated) {
+        console.log(usernameRef.value);
+      }
+    });
 
     const toggleSettings = () => {
       alert("Einstellungen öffnen");
@@ -39,7 +48,9 @@ export default {
       t,
       locale,
       toggleSettings,
-      navigateToElection  // Methode zur Navigation hinzufügen
+      navigateToElection,  // Methode zur Navigation hinzufügen
+      isAuthenticated: authStore.isAuthenticated,
+      user: authStore.user,
     };
   }
 };
