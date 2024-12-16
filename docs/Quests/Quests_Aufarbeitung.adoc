@@ -9,10 +9,6 @@ Sufficiently comment the source code in at least 4 files.
 
 * *Vorschlag: jeder kommentiert eine eigene Datei aus*
 
-### [P10+] Ref-ining the Template: Vue Expertise Unlocked
-Use “Template Refs” in a self-defined form.
-* *wer macht das? -> @annferny Logik des Namen-Anzeigens nach Anmeldung*
-
 ### [P10+] The Composer's Toolbox: Functions on Repeat
 Uses at least one function across components with “composables”.
 * *wer macht das? -> @mikol9444*
@@ -49,6 +45,10 @@ Actively use “pinia” as state management.
 
 
 ## Pending (Waiting for Review):
+
+### [P10+] Ref-ining the Template: Vue Expertise Unlocked
+Use “Template Refs” in a self-defined form.
+* *am 16.12.24 abgeschickt*
 
 ## Done:
 
