@@ -9,17 +9,31 @@ export const useErgebnisStore = defineStore('ergebnis', {
       chartLabels: ['SPD', 'Union', 'Grüne', 'FDP', 'AfD', 'Linke', 'FW', 'Tierschutz', 'Basis', 'Sonst.'],
       chartData: [25.7, 24.1, 14.8, 11.5, 10.3, 4.9, 2.4, 1.5, 1.4, 3.4],
       chartColors: [
-        '#e4002b', '#000000', '#5fbc34', '#ffcd00', '#e60012',
-        '#ff5d97', '#00b0d1', '#f7b500', '#b53f5f', '#808080',
+        '#E3000F', // SPD - Rot
+        '#000000', // Union (CDU/CSU) - Schwarz
+        '#1DBD00', // Grüne - Grün
+        '#FFCC00', // FDP - Gelb
+        '#009EE0', // AfD - Blau
+        '#BE3075', // Linke - Magenta
+        '#64A12D', // FW (Freie Wähler) - Grünlich
+        '#FF7700', // Tierschutzpartei - Orange
+        '#6A5ACD', // Basis - Lila (Individuell, da keine Standardfarbe)
+        '#808080', // Sonstige - Grau
       ],
     },
-    
+
     // Daten für Gewinne und Verluste
     gewinneUndVerluste: {
-      chartLabels: ['SPD', 'AfD', 'CDU', 'Grüne', 'Linke', 'BVB/FW', 'BSW', 'Andere'],
-      chartData: [4.7, 5.7, -3.5, -6.6, -7.7, -2.5, 13.5, -3.6],
+      chartLabels: ['SPD', 'AfD', 'CDU', 'Grüne', 'Linke', 'FW', 'Andere'],
+      chartData: [4.7, 5.7, -3.5, -6.6, -7.7, -2.5, -3.6],
       chartColors: [
-        '#ff9999', '#5dd9c1', '#000000', '#5fbc34', '#ff4444', '#ffa500', '#9a59b5', '#808080',
+        '#E3000F', // SPD - Rot
+        '#009EE0', // AfD - Blau
+        '#000000', // CDU - Schwarz
+        '#1DBD00', // Grüne - Grün
+        '#BE3075', // Linke - Magenta
+        '#64A12D', // FW (Freie Wähler) - Grünlich
+        '#808080', // Andere - Grau
       ],
     },
   }),
