@@ -24,54 +24,50 @@
     </main>
   </div>
 </template>
-
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router'; // Importiere den Vue Router
 import { useStatesStore } from '@/stores/statesStore'; // Importiere den Pinia-Store
 import { useAuthStore } from '@/stores/useAuth.js'; // Importiere den Auth-Store
-import { ref, onMounted } from 'vue';
 
-export default {
-  setup() {
-    const { t, locale } = useI18n();
-    const router = useRouter();
-    const statesStore = useStatesStore(); // Zugriff auf den Pinia-Store
-    const authStore = useAuthStore(); // Zugriff auf den Auth-Store
-    const usernameRef = ref(null); // Referenz für den Benutzernamen
+// I18n Setup
+const { t, locale } = useI18n();
 
-    // Aktion beim Mounten der Komponente
-    onMounted(() => {
-      if (authStore.isAuthenticated) {
-        console.log('Benutzername:', usernameRef.value?.textContent);
-      }
-    });
+// Router Setup
+const router = useRouter();
 
-    // Navigations-Methoden
-    const navigateToElection = () => {
-      router.push({ name: 'bundestagswahl-2025' });
-    };
+// Pinia Stores
+const statesStore = useStatesStore(); // Zugriff auf den Pinia-Store
+const authStore = useAuthStore(); // Zugriff auf den Auth-Store
 
-    const navigateToErgebnis = () => {
-      router.push({ name: 'ergebnisse' });
-    };
-    const navigateToVerification = () => {
-      router.push({ name: 'verifizierung' });
-    };
+// Reaktive Referenz
+const usernameRef = ref(null); // Referenz für den Benutzernamen
 
-    return {
-      t,
-      locale,
-      statesStore,
-      isAuthenticated: authStore.isAuthenticated,
-      user: authStore.user,
-      usernameRef,
-      navigateToElection,
-      navigateToErgebnis,
-      navigateToVerification,
-    };
-  },
+// Aktion beim Mounten der Komponente
+onMounted(() => {
+  if (authStore.isAuthenticated) {
+    console.log('Benutzername:', usernameRef.value?.textContent);
+  }
+});
+
+// Navigations-Methoden
+const navigateToElection = () => {
+  router.push({ name: 'bundestagswahl-2025' });
 };
+
+const navigateToErgebnis = () => {
+  router.push({ name: 'ergebnisse' });
+};
+
+const navigateToVerification = () => {
+  router.push({ name: 'verifizierung' });
+};
+
+// Rückgabe von Werten und Funktionen an die Vorlage
+const isAuthenticated = authStore.isAuthenticated;
+const user = authStore.user;
+
 </script>
 
 <style scoped>

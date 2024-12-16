@@ -107,16 +107,9 @@
 }
 
 </style>
-<script>
-import {useAuthStore} from '../stores/useAuth.js';
+<script setup>
+import { useAuthStore } from '../stores/useAuth.js'; // Importiere den Auth-Store
 
-export default {
-  setup() {
-    const authStore = useAuthStore(); // Verwende den Store
-
-    return {
-      authStore // Gib den Store an das Template weiter
-    };
-  },
-};
+// Hole den Auth-Store aus Pinia
+const authStore = useAuthStore();
 </script>
