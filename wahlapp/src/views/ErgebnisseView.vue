@@ -2,7 +2,6 @@
   <div class="chart-container">
     <!-- Linker Bereich mit dem Button, zeigt den Linkspfeil für Navigation -->
     <div class="button-area left">
-      <!-- Der Button 'left' navigiert zurück -->
       <ButtonSlide :buttonType="'left'" @navigate="handleNavigation" />
     </div>
 
@@ -25,52 +24,40 @@
         <h2>Gewinne und Verluste</h2>
         <BarChart :chartType="'gewinneUndVerluste'" />
       </section>
-
-      <!-- Abschnitt für das vierte Diagramm (Beispiel Liniendiagramm) -->
-      <section class="chart-section" v-else-if="currentChart === 3">
-        <h2>Liniendiagramm Beispiel</h2>
-        <LineChart />
-      </section>
     </div>
 
     <!-- Rechter Bereich mit dem Button, zeigt den Rechtspfeil für Navigation -->
     <div class="button-area right">
-      <!-- Der Button 'right' navigiert vorwärts -->
       <ButtonSlide :buttonType="'right'" @navigate="handleNavigation" />
     </div>
   </div>
 </template>
 
 
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import BarChart from '../components/BarChart.vue';
 import PieChart from '../components/PieChart.vue';
-import LineChart from '@/components/LineChart.vue';
 import ButtonSlide from '@/components/ButtonSlide.vue';
 
 // Ref für den Index des aktuellen Diagramms
-// 0 = erstes Diagramm, 1 = zweites Diagramm, usw.
 const currentChart = ref(0);
 
 // Anzahl der verfügbaren Diagramme (wird für die Navigation genutzt)
-const totalCharts = 4;
+const totalCharts = 3;
 
 // Funktion zur Navigation zwischen Diagrammen
 const handleNavigation = (direction: 'next' | 'previous') => {
-  // Navigation nach rechts (zum nächsten Diagramm)
   if (direction === 'next') {
-    // Geht zum nächsten Diagramm und springt von der letzten Position wieder zur ersten
     currentChart.value = (currentChart.value + 1) % totalCharts;
-  } 
-  // Navigation nach links (zum vorherigen Diagramm)
-  else if (direction === 'previous') {
-    // Geht zum vorherigen Diagramm und springt von der ersten Position wieder zur letzten
+  } else if (direction === 'previous') {
     currentChart.value =
-      (currentChart.value - 1 + totalCharts) % totalCharts; // % stellt sicher, dass der Index positiv bleibt
+      (currentChart.value - 1 + totalCharts) % totalCharts;
   }
 };
 </script>
+
 
 
 
