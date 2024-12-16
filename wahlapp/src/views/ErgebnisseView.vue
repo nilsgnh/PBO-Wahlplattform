@@ -15,19 +15,19 @@
       </section>
 
       <!-- Abschnitt für das zweite Diagramm (Wahlergebnisse 2021 im Kreisdiagramm) -->
-      <section class="chart-section" v-if="currentChart === 1">
+      <section class="chart-section" v-else-if="currentChart === 1">
         <h2>Wahlergebnisse 2021</h2>
         <PieChart :chartType="'ergebnisse'" />
       </section>
 
       <!-- Abschnitt für das dritte Diagramm (Gewinne und Verluste im Balkendiagramm) -->
-      <section class="chart-section" v-if="currentChart === 2">
+      <section class="chart-section" v-else-if="currentChart === 2">
         <h2>Gewinne und Verluste</h2>
         <BarChart :chartType="'gewinneUndVerluste'" />
       </section>
 
       <!-- Abschnitt für das vierte Diagramm (Beispiel Liniendiagramm) -->
-      <section class="chart-section" v-if="currentChart === 3">
+      <section class="chart-section" v-else-if="currentChart === 3">
         <h2>Liniendiagramm Beispiel</h2>
         <LineChart />
       </section>

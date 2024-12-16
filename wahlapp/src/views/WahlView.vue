@@ -3,7 +3,6 @@
     <h1 class="text-3xl font-bold p-2">Bundestagswahl 2025</h1>
     <div v-if="start && !authStore.isAuthenticated" class="start-end-container">
       <div class="text-xl">Sie müssen sich erst verifizieren, um wählen zu können. <br> Bitte loggen sie sich ein. </div>
-      <br>
       <NavigationButton
         type="next"
         @Click="gettoLogin()"
