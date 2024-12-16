@@ -15,7 +15,7 @@ export const useErgebnisStore = defineStore('ergebnis', {
         '#FFCC00', // FDP - Gelb
         '#009EE0', // AfD - Blau
         '#BE3075', // Linke - Magenta
-        '#64A12D', // FW (Freie Wähler) - Grünlich
+        '#2D6AA1', // FW (Freie Wähler) - Grünlich
         '#FF7700', // Tierschutzpartei - Orange
         '#6A5ACD', // Basis - Lila (Individuell, da keine Standardfarbe)
         '#808080', // Sonstige - Grau
