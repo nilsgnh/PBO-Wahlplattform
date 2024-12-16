@@ -670,7 +670,10 @@ video {
 .p-2 {
   padding: 0.5rem;
 }
-
+.py-3 {
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+}
 .pb-3 {
   padding-bottom: 0.75rem;
 }
