@@ -82,11 +82,10 @@ const handleNavigation = (direction: 'next' | 'previous') => {
   justify-content: space-between; /* Buttons und Diagramme gleichmäßig verteilen */
   width: 100%; /* Nimmt volle Breite des Elternelements ein */
   max-width: 1980px; /* Begrenzung der maximalen Breite */
-  height: 800px; /* Feste Höhe für Layout-Stabilität */
+  height: 600px; /* Feste Höhe für Layout-Stabilität */
   padding: 20px; /* Innenabstand */
   box-sizing: border-box; /* Inklusive Padding in die Breite/Höhe */
   position: relative; /* Ermöglicht absolute Positionierung von Buttons */
-  background-color: #f9f9f9; /* Hintergrundfarbe (hellgrau) */
   overflow: hidden; /* Verhindert, dass Inhalte aus dem Container hinausragen */
   margin: 0 auto; /* Zentriert den Container horizontal */
 }
