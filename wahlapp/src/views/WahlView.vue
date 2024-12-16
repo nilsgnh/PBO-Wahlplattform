@@ -1,6 +1,18 @@
 <template>
   <div id="wahl">
     <h1 class="text-3xl font-bold p-2">Bundestagswahl 2025</h1>
+    <div v-if="start && !authStore.isAuthenticated" class="start-end-container">
+      <div class="text-xl">Sie müssen sich erst verifizieren, um wählen zu können. <br> Bitte loggen sie sich ein. </div>
+      <br>
+      <NavigationButton
+        type="next"
+        @Click="gettoLogin()"
+      >
+        <template v-slot:buttonText>
+          Zur Anmeldung
+        </template>
+      </NavigationButton>
+    </div>
     <div v-if="start && statesStore.gewaehlt" class="start-end-container">
       <div class="text-xl">Sie haben bereits gewählt. <br> Vielen Dank für Ihre Teilnahme an der Wahl.</div>
       <br>
@@ -13,7 +25,7 @@
         </template>
       </NavigationButton>
     </div>
-    <div v-if="start && !statesStore.gewaehlt" class="start-end-container">
+    <div v-if="start && !statesStore.gewaehlt && authStore.isAuthenticated" class="start-end-container">
       <p class="text-xl">Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
       <NavigationButton
         type="next"
@@ -145,6 +157,7 @@
 import { onMounted, ref } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
 import { useStatesStore } from "@/stores/statesStore.js";
+import { useAuthStore } from "@/stores/useAuth.js";
 
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
 import ZweitstimmeComponent from "@/components/ZweitstimmeComponent.vue";
@@ -154,6 +167,7 @@ import router from "@/router/index.js";
 
 const store = useWahlStore();
 const statesStore = useStatesStore();
+const authStore = useAuthStore();
 
 const start = ref(false);
 const erststimme = ref(false);
@@ -170,6 +184,10 @@ function getStarted() {
   store.setErststimme(null);
   store.setZweitstimme(null);
   store.checkboxAgreed = false;
+}
+
+function gettoLogin() {
+  router.push('/verifizierung');
 }
 
 function gettoDashboard() {

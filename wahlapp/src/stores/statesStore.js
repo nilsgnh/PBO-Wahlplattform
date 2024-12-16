@@ -3,7 +3,6 @@ import { ref } from "vue";
 
 export const useStatesStore = defineStore('states', {
   state: () => ({
-    verifiziert: ref(false),
     gewaehlt: ref(false),
   }),
   actions: {
