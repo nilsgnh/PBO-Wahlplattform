@@ -6,12 +6,13 @@ const messages = {
     welcome: "Willkommen",
     username: "Max Mustermann",
     currentElection: "Jetzt wählen",
-    electionInfo: "Alle Informationen zur Bundestagswahl 2025",
+    electionInfo: "Alle Informationen zur letzten Wahl",
     vote: "Abstimmen",
     support: "Support",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
     contact: "Kontakt",
+    verify: "Bitte verifzieren Sie sich",
     datenschutzContent: `
 ## Datenschutz
 Wir nehmen den Schutz Ihrer persönlichen Daten ernst. Auf dieser Seite informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer Daten im Rahmen unserer App.
@@ -72,12 +73,13 @@ kontakt(at)musterfirma.de
     welcome: "Welcome",
     username: "Max Mustermann",
     currentElection: "Vote now",
-    electionInfo: "All information about the Bundestag Election 2021",
+    electionInfo: "All information about the last Election",
     vote: "Vote",
     support: "Support",
     impressum: "Legal Notice",
     datenschutz: "Privacy Policy",
     contact: "Contact",
+    verify: "Please verify yourself",
     datenschutzContent: `
 ## Privacy Policy
 

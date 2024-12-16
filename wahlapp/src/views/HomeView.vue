@@ -4,11 +4,20 @@
     <main>
       <div class="welcome-container">
         <h1 class="text-3xl font-bold p-2">{{ $t('welcome') }}</h1>
-        <h2 v-if="isAuthenticated" ref="usernameRef" class="text-3xl">{{ isAuthenticated ? $t('username') : '' }} </h2>
-        <div class="primaryBtn" @click="navigateToElection">
+
+        <!-- Nachricht basierend auf dem Verifizierungsstatus -->
+        <h2 v-if="isAuthenticated" ref="usernameRef" class="text-3xl">
+          {{ isAuthenticated ? $t('username') : '' }}
+        </h2>
+        <div v-else class="primaryBtn" @click="navigateToVerification">
+          <p class="text-xl">{{ $t('verify') }}</p>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div v-if="!statesStore.gewaehlt && isAuthenticated" class="primaryBtn" @click="navigateToElection">
           <p class="text-xl">{{ $t('currentElection') }}</p>
         </div>
-        <div class="primaryBtn" @click="navigateToElection">
+        <div class="primaryBtn" @click="navigateToErgebnis">
           <p class="text-xl">{{ $t('electionInfo') }}</p>
         </div>
       </div>
@@ -18,41 +27,50 @@
 
 <script>
 import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';  // Importiere den Vue Router
-import { useAuthStore } from '../stores/useAuth.js';
-import { useTemplateRef, onMounted } from 'vue'
+import { useRouter } from 'vue-router'; // Importiere den Vue Router
+import { useStatesStore } from '@/stores/statesStore'; // Importiere den Pinia-Store
+import { useAuthStore } from '@/stores/useAuth.js'; // Importiere den Auth-Store
+import { ref, onMounted } from 'vue';
 
 export default {
   setup() {
     const { t, locale } = useI18n();
-    const router = useRouter();  // Router-Instanz verwenden
-    const authStore = useAuthStore();
-    const usernameRef = useTemplateRef('usernameRef');
+    const router = useRouter();
+    const statesStore = useStatesStore(); // Zugriff auf den Pinia-Store
+    const authStore = useAuthStore(); // Zugriff auf den Auth-Store
+    const usernameRef = ref(null); // Referenz für den Benutzernamen
 
+    // Aktion beim Mounten der Komponente
     onMounted(() => {
       if (authStore.isAuthenticated) {
-        console.log(usernameRef.value);
+        console.log('Benutzername:', usernameRef.value?.textContent);
       }
     });
 
-    const toggleSettings = () => {
-      alert("Einstellungen öffnen");
+    // Navigations-Methoden
+    const navigateToElection = () => {
+      router.push({ name: 'bundestagswahl-2025' });
     };
 
-    const navigateToElection = () => {
-      // Navigiere zur Wahl-Seite
-      router.push({ name: 'bundestagswahl-2025' });  // Navigiert zur Route
+    const navigateToErgebnis = () => {
+      router.push({ name: 'ergebnisse' });
+    };
+    const navigateToVerification = () => {
+      router.push({ name: 'verifizierung' });
     };
 
     return {
       t,
       locale,
-      toggleSettings,
-      navigateToElection,  // Methode zur Navigation hinzufügen
+      statesStore,
       isAuthenticated: authStore.isAuthenticated,
       user: authStore.user,
+      usernameRef,
+      navigateToElection,
+      navigateToErgebnis,
+      navigateToVerification,
     };
-  }
+  },
 };
 </script>
 

@@ -1,56 +1,65 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
-import { useI18n } from 'vue-i18n';
+  import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+  import { RouterLink, RouterView } from 'vue-router';
+  import { useI18n } from 'vue-i18n';
+  import { useAuthStore } from '@/stores/useAuth.js'; // Importiere den Auth-Store
 
-// Zustand für das Menü
-const isMenuOpen = ref(false);
+  // Zustand für das Menü
+  const isMenuOpen = ref(false);
 
-// Menü ein- oder ausklappen
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
+  // Menü ein- oder ausklappen
+  const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value;
+  };
 
-// Funktion zum Schließen des Menüs, wenn außerhalb geklickt wird
-const closeMenu = (event) => {
-  const menu = document.querySelector('.side-menu');
-  const settingsButton = document.querySelector('.settings-btn');
+  // Funktion zum Schließen des Menüs, wenn außerhalb geklickt wird
+  const closeMenu = (event) => {
+    const menu = document.querySelector('.side-menu');
+    const settingsButton = document.querySelector('.settings-btn');
 
-  // Verhindern, dass ein Klick auf das Menü oder den Button das Menü schließt
-  if (
-    isMenuOpen.value &&
-    menu &&
-    !menu.contains(event.target) &&
-    !settingsButton.contains(event.target)
-  ) {
-    isMenuOpen.value = false;
-  }
-};
+    // Verhindern, dass ein Klick auf das Menü oder den Button das Menü schließt
+    if (
+      isMenuOpen.value &&
+      menu &&
+      !menu.contains(event.target) &&
+      !settingsButton.contains(event.target)
+    ) {
+      isMenuOpen.value = false;
+    }
+  };
 
-// Event-Listener beim Mounten und Entfernen beim Unmounten
-onMounted(() => {
-  document.addEventListener('click', closeMenu);
-});
+  // Event-Listener beim Mounten und Entfernen beim Unmounten
+  onMounted(() => {
+    document.addEventListener('click', closeMenu);
+  });
 
-onBeforeUnmount(() => {
-  document.removeEventListener('click', closeMenu);
-});
+  onBeforeUnmount(() => {
+    document.removeEventListener('click', closeMenu);
+  });
 
-// Schließt Menü bei Klick auf einen Link
-const closeNav = () => {
-  const hamburgCheckbox = document.getElementById("hamburg");
-  if (hamburgCheckbox) {
-    hamburgCheckbox.checked = false;
-  }
-};
+  // Schließt Menü bei Klick auf einen Link
+  const closeNav = () => {
+    const hamburgCheckbox = document.getElementById("hamburg");
+    if (hamburgCheckbox) {
+      hamburgCheckbox.checked = false;
+    }
+  };
 
-// Sprachwechsel
-const { t, locale } = useI18n();
+  // Sprachwechsel
+  const { t, locale } = useI18n();
 
-const switchLanguage = (language) => {
-  locale.value = language; // Sprache wechseln
-};
+  const switchLanguage = (language) => {
+    locale.value = language; // Sprache wechseln
+  };
+
+  // Zugriff auf den Auth-Store
+  const authStore = useAuthStore();
+
+  // Reaktive Eigenschaft für Verifizierungsstatus
+  const isAuthenticated = computed(() => authStore.isAuthenticated);
 </script>
+
+
 
 <template>
   <div>
@@ -106,10 +115,16 @@ const switchLanguage = (language) => {
       <div id="move">
         <ul>
           <li><RouterLink to="/" @click="closeNav">Dashboard</RouterLink></li>
-          <li><RouterLink to="/bundestagswahl-2025" @click="closeNav">Aktuelle Wahl</RouterLink></li>
+
+          <!-- Zeige "Aktuelle Wahl" nur, wenn der Benutzer verifiziert ist -->
+          <li v-if="isAuthenticated">
+            <RouterLink to="/bundestagswahl-2025" @click="closeNav">Aktuelle Wahl</RouterLink>
+          </li>
+
           <li><RouterLink to="/ergebnisse" @click="closeNav">Ergebnisse</RouterLink></li>
           <li><RouterLink to="/verifizierung" @click="closeNav">Verifizierung</RouterLink></li>
         </ul>
+
       </div>
     </nav>
 

@@ -107,7 +107,6 @@
 }
 
 </style>
-// TODO: in stores anlegen und Logik daraus nutzen
 <script>
 import {useAuthStore} from '../stores/useAuth.js';
 
