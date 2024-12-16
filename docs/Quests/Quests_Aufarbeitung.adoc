@@ -4,18 +4,9 @@
 ### [P10+] Vue'ly cool!
 * *Main- Quest -> Wie bekommt man diese?*
 
-### [P10+] Comment or Confusion: A Battle for Understanding
-Sufficiently comment the source code in at least 4 files.
-
-* *Vorschlag: jeder kommentiert eine eigene Datei aus*
-
 ### [P10+] The Composer's Toolbox: Functions on Repeat
 Uses at least one function across components with “composables”.
 * *wer macht das? -> @mikol9444*
-
-### [P10+] No Error Left Behind: Console Clean-Up Crew
-The project must work without (console) errors.
-* *Wir probieren es mal hinzubekommen...*
 
 ### [P10+] Red, Green, Refactor: The TDD Master Plan
 Develop with the principle of “test-driven development”.
@@ -23,25 +14,9 @@ Develop with the principle of “test-driven development”.
 
 ## In Progress:
 
-### [P10+] In Composition We Trust: Vue's Greatest Hits
-Only use the syntax of the “Composition” API.
-
-* *Jeder muss das bei der Implementierung beachten!*
-
-### [P7+] Functional Dummy: Demonstrating Key Must-Have Features
-Create a click dummy that covers at least 90% of the defined MUST criteria.
-
-* *in Arbeit, durch Seitenerstellung von jeder Person*
-
 ### [P7+] Rock, Paper, Scissors!
 Create a paper prototype of at least 80% of the defined MUST criteria.
-
 * *in Arbeit durch @mikol9444*
-
-### [P10+] Pinia Colada: Managing State with Style
-Actively use “pinia” as state management.
-
-* *in Arbeit und Beendigung, wenn die Logik der Variablen in statesStore.js eingebaut ist*
 
 
 ## Pending (Waiting for Review):
@@ -49,6 +24,27 @@ Actively use “pinia” as state management.
 ### [P10+] Ref-ining the Template: Vue Expertise Unlocked
 Use “Template Refs” in a self-defined form.
 * *am 16.12.24 abgeschickt*
+
+### [P10+] Pinia Colada: Managing State with Style
+Actively use “pinia” as state management.
+* *am 16.12.24 abgeschickt*
+
+### [P10+] Comment or Confusion: A Battle for Understanding
+Sufficiently comment the source code in at least 4 files.
+* *am 16.12.24 abgeschickt*
+
+### [P10+] In Composition We Trust: Vue's Greatest Hits
+Only use the syntax of the “Composition” API.
+* *am 16.12.24 abgeschickt*
+
+### [P10+] No Error Left Behind: Console Clean-Up Crew
+The project must work without (console) errors.
+* *am 16.12.24 abgeschickt*
+
+### [P7+] Functional Dummy: Demonstrating Key Must-Have Features
+Create a click dummy that covers at least 90% of the defined MUST criteria.
+* *am 16.12.24 abgeschickt*
+
 
 ## Done:
 
