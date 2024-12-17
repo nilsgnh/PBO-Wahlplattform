@@ -32,14 +32,6 @@ const props = defineProps({
   onClick: Function,
 });
 
-const isSelected = computed(() => props.selected);
-const isDisabled = computed(() => props.disabled);
-
-function handleBoxClick() {
-  if (!isDisabled.value && props.onClick) {
-    props.onClick(props.num);
-  }
-}
 </script>
 
 <style scoped>

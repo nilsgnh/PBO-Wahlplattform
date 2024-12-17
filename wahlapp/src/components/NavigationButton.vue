@@ -15,7 +15,7 @@
 
 <script setup>
 import { computed } from "vue";
-import { defineProps, defineEmits } from "vue";
+import { defineProps } from "vue";
 
 // Props definieren
 const props = defineProps({
@@ -28,10 +28,6 @@ const props = defineProps({
     default: false,
   },
 });
-
-
-// Events definieren
-const emit = defineEmits(["click"]);
 
 // Dynamische Klassen für verschiedene Button-Typen
 const baseClass = computed(() => {
@@ -50,13 +46,6 @@ const baseClass = computed(() => {
 const hoverClass = computed(() =>
   props.type === "back" ? "hover:bg-gray-300" : "hover:bg-gray-200"
 );
-
-// Click-Handler
-const handleClick = () => {
-  if (!props.isDisabled) {
-    emit("click"); // Nur Event auslösen
-  }
-};
 </script>
 
 <style scoped>

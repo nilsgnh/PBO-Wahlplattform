@@ -117,7 +117,7 @@
           <li><RouterLink to="/" @click="closeNav">Dashboard</RouterLink></li>
 
           <!-- Zeige "Aktuelle Wahl" nur, wenn der Benutzer verifiziert ist -->
-          <li v-if="isAuthenticated">
+          <li>
             <RouterLink to="/bundestagswahl-2025" @click="closeNav">Aktuelle Wahl</RouterLink>
           </li>
 

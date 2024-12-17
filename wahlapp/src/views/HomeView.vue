@@ -6,15 +6,15 @@
         <h1 class="text-3xl font-bold p-2">{{ $t('welcome') }}</h1>
 
         <!-- Nachricht basierend auf dem Verifizierungsstatus -->
-        <h2 v-if="isAuthenticated" ref="usernameRef" class="text-3xl">
-          {{ isAuthenticated ? $t('username') : '' }}
+        <h2 class="text-3xl">
+          Max Mustermann
         </h2>
-        <div v-else class="primaryBtn" @click="navigateToVerification">
+        <div class="primaryBtn" @click="navigateToVerification">
           <p class="text-xl">{{ $t('verify') }}</p>
         </div>
 
         <!-- Navigation Buttons -->
-        <div v-if="!statesStore.gewaehlt && isAuthenticated" class="primaryBtn" @click="navigateToElection">
+        <div class="primaryBtn" @click="navigateToElection">
           <p class="text-xl">{{ $t('currentElection') }}</p>
         </div>
         <div class="primaryBtn" @click="navigateToErgebnis">
@@ -26,19 +26,13 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router'; // Importiere den Vue Router
-import { useStatesStore } from '@/stores/statesStore'; // Importiere den Pinia-Store
 import { useAuthStore } from '@/stores/useAuth.js'; // Importiere den Auth-Store
-
-// I18n Setup
-const { t, locale } = useI18n();
 
 // Router Setup
 const router = useRouter();
 
 // Pinia Stores
-const statesStore = useStatesStore(); // Zugriff auf den Pinia-Store
 const authStore = useAuthStore(); // Zugriff auf den Auth-Store
 
 // Reaktive Referenz

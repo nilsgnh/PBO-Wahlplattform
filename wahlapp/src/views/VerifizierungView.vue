@@ -1,22 +1,21 @@
 <template>
-  <div v-if="authStore.isAuthenticated" class="centered-header">
-    <h1 class="text-3xl font-bold p-2">Sie sind erfolgreich verifiziert, {{ authStore.user.name }}</h1>
+  <div v-if="isAuthenticated" class="centered-header">
+    <h1 class="text-3xl font-bold p-2">Sie sind erfolgreich verifiziert, [Benutzername]</h1>
   </div>
   <div v-else class="background">
     <h1 class="text-3xl font-bold p-2">Mit BundID anmelden oder registrieren</h1>
     <p class="text-xl">
-      Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu
-      nutzen.
+      Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu nutzen.
     </p>
     <div class="login-box">
-      <button @click="authStore.login" class="login-button">Weiter mit BundId →</button>
+      <button @click="showModal = true" class="login-button">Weiter mit BundId →</button>
     </div>
-    <div v-if="authStore.showModal" class="modal-overlay">
+    <div v-if="showModal" class="modal-overlay">
       <div class="modal">
         <p>Sie werden zu BundId.de weitergeleitet, um den Authentifizierungsprozess fortzusetzen.</p>
         <div class="button-container">
-          <div class="secondaryBtn" @click="authStore.cancelLogin">Abbrechen</div>
-          <div class="primaryBtn" @click="authStore.confirmLogin">Weiter</div>
+          <div class="secondaryBtn" @click="showModal = false">Abbrechen</div>
+          <div class="primaryBtn">Weiter</div>
         </div>
       </div>
     </div>
@@ -75,7 +74,7 @@
 .login-button:hover {
   background-color: transparent; /* Change background to transparent on hover */
   color: white;
-  border: 2px solid #ccc;;
+  border: 2px solid #ccc;
 }
 
 .modal-overlay {
@@ -105,11 +104,12 @@
   justify-content: space-evenly;
   margin-top: 20px;
 }
-
 </style>
-<script setup>
-import { useAuthStore } from '../stores/useAuth.js'; // Importiere den Auth-Store
 
-// Hole den Auth-Store aus Pinia
-const authStore = useAuthStore();
+<script setup>
+import { ref } from 'vue';
+
+// Dummy state to mimic functionality
+const isAuthenticated = false; // Hardcoded authentication state
+const showModal = ref(false); // State for showing/hiding the modal
 </script>

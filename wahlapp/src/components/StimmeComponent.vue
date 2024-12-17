@@ -53,52 +53,6 @@ const itemsToDisplay = computed(() => {
 // Aktuell ausgewählte Partei (initial null)
 const selectedPartei = ref(null);
 
-// Methode zum Verarbeiten von Klicks auf die Boxen
-function handleBoxClick(num) {
-  if (selectedPartei.value === num) {
-    // Wenn bereits ausgewählt, die Auswahl zurücksetzen
-    selectedPartei.value = null;
-    if (props.stimme === "Erststimme") {
-      store.setErststimme(null); // Rücksetzen der Erststimme im Store
-    } else {
-      store.setZweitstimme(null); // Rücksetzen der Zweitstimme im Store
-    }
-  } else {
-    // Wenn nicht ausgewählt, die neue Auswahl setzen
-    selectedPartei.value = num;
-    if (props.stimme === "Erststimme") {
-      store.setErststimme(num); // Speichern der Erststimme im Store
-    } else {
-      store.setZweitstimme(num); // Speichern der Zweitstimme im Store
-    }
-  }
-}
-
-// Initialisieren der Auswahl beim Laden der Komponente
-onMounted(() => {
-  if (props.stimme === "Erststimme") {
-    // Laden der Erststimme aus dem Store oder Setzen auf null
-    selectedPartei.value = store.selectedErststimme || null;
-  } else {
-    // Laden der Zweitstimme aus dem Store oder Setzen auf null
-    selectedPartei.value = store.selectedZweitstimme || null;
-  }
-});
-
-// Beobachten von Änderungen der Auswahl im Store
-watch(
-  () => (props.stimme === "Erststimme" ? store.selectedErststimme : store.selectedZweitstimme),
-  (newValue) => {
-    console.log("Aktuell ausgewählte Partei:", newValue); // Ausgabe der aktuellen Auswahl
-    console.log(
-      "Disabled-Status:",
-      parteien.map((partei) => ({
-        name: partei.name,
-        disabled: selectedPartei.value !== null && selectedPartei.value !== partei.num, // Berechnung, ob deaktiviert
-      }))
-    );
-  }
-);
 </script>
 
 <style>
