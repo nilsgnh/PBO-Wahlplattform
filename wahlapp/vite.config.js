@@ -20,8 +20,9 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'happy-dom', // Verwenden einer DOM-ähnlichen Umgebung für Tests
+    environment: 'jsdom',
     setupFiles: './tests/unit/vitest.setup.js', // Setup-Datei für Mocking
   },
+
 })
 

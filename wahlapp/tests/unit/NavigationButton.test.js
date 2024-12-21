@@ -1,7 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
-
 import { mount } from '@vue/test-utils';
 import NavigationButton from '@/components/NavigationButton.vue'; // Deine Wahl-Komponente
 import { describe, it, expect, vi } from 'vitest'; // Für Mocks und Spies
@@ -78,17 +74,23 @@ describe('NavigationButton', value => {
   });
 
   it('should emit click event when clicked and is not disabled', async () => {
+    const spy = vi.fn();
     const wrapper = mount(NavigationButton, {
       props: {
         isDisabled: false,
       },
+      attrs: {
+        onClick: spy,
+      },
     });
-    // Mock-Funktion, um zu überprüfen, ob das click-Event ausgelöst wird
-    /*const spy = vi.fn();
-    wrapper.vm.$emit('click', spy);
-    await wrapper.find('button').trigger('click');
-    expect(spy).toHaveBeenCalled();*/
+
+    const button = wrapper.find('button');
+    const clickEvent = new Event('click');
+    button.element.dispatchEvent(clickEvent);
+    await wrapper.vm.$nextTick();
+    expect(spy).toHaveBeenCalled();
   });
+
 
 
   // Test, ob der Button keine Aktion auslöst, wenn er deaktiviert ist
