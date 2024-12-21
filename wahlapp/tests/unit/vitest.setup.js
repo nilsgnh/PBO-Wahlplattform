@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 
 // Mock für window und history
-vi.stubGlobal('window', {
+vi.stubGlobal('windows', {
   ...globalThis,
   location: {
     ...globalThis.location,
