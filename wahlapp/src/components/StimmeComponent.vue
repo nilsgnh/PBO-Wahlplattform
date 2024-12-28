@@ -26,7 +26,7 @@
 
 <script setup>
 // Import von Vue-Funktionen und Komponenten
-import { reactive, ref, defineProps, computed, onMounted, watch } from "vue";
+import { reactive, ref, defineProps, computed, onMounted, watch, defineExpose } from "vue";
 import ParteiboxComponent from "@/components/ParteiboxComponent.vue"; // Box-Komponente für die Parteien
 import { useWahlStore } from "@/stores/wahlStore"; // Zugriff auf den Wahl-Store
 
@@ -52,6 +52,8 @@ const itemsToDisplay = computed(() => {
 
 // Aktuell ausgewählte Partei (initial null)
 const selectedPartei = ref(null);
+
+defineExpose({ selectedPartei });
 
 // Methode zum Verarbeiten von Klicks auf die Boxen
 function handleBoxClick(num) {
