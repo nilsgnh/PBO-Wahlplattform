@@ -1,95 +1,42 @@
 <template>
   <div class="bar-chart-container">
-    <!-- Canvas-Element für das Balkendiagramm -->
-    <canvas ref="barChart"></canvas> <!-- Referenziert im Script für die Diagrammerstellung -->
+    <!-- Canvas für das Balkendiagramm, das mit Chart.js gerendert wird -->
+    <canvas ref="barChart"></canvas>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, defineProps } from 'vue';
-import { useErgebnisStore } from '../stores/ErgebnisStore'; // Store für die Diagrammdaten importieren
-import {
-  Chart, // Hauptklasse für Diagrammerstellung
-  CategoryScale, // Skalierung für die X-Achse (Kategorien)
-  LinearScale, // Skalierung für die Y-Achse (lineare Werte)
-  BarController, // Steuerung für Balkendiagramme
-  BarElement, // Balkenelemente
-  Title, // Titel des Diagramms
-  Tooltip, // Tooltip für Interaktivität
-  Legend, // Legende für das Diagramm
-} from 'chart.js';
+import { onMounted, ref, defineProps } from 'vue'; // Vue hooks für das Lebenszyklusmanagement und die Definition von Reaktivität
+import { useChartComposable } from '../composables/useChartComposable'; // Importiert eine benutzerdefinierte Funktion zum Erstellen des Diagramms
 
-// Registrierung der Chart.js-Komponenten
-Chart.register(CategoryScale, LinearScale, BarController, BarElement, Title, Tooltip, Legend);
-
-// Zugriff auf den ErgebnisStore, der die Labels, Daten und Farben bereitstellt
-const ergebnisStore = useErgebnisStore();
-
-// Eingabe-Property (Props) für die Komponente
-// 'chartType' entscheidet, ob die 'ergebnisse' oder 'gewinneUndVerluste' verwendet werden
+// Definiert die Props für diese Komponente, damit der Diagrammtyp ('ergebnisse' oder 'gewinneUndVerluste') übergeben werden kann
 const props = defineProps({
   chartType: { 
-    type: String, // Typ der Eingabe: String
-    required: true, // Die Property ist erforderlich
-    default: 'ergebnisse', // Standardwert: 'ergebnisse'
+    type: String as () => 'ergebnisse' | 'gewinneUndVerluste', // Nur diese beiden Werte sind zulässig
+    required: true, // Diese Eigenschaft ist erforderlich
+    default: 'ergebnisse', // Standardwert ist 'ergebnisse'
   },
 });
 
-// Referenz für das Canvas-Element, in dem das Diagramm gerendert wird
+// Referenz auf das HTML-Canvas-Element, in dem das Diagramm gezeichnet wird
 const barChart = ref<HTMLCanvasElement | null>(null);
 
-// Lifecycle-Hook: Wird ausgeführt, nachdem die Komponente ins DOM gemountet wurde
-onMounted(() => {
-  // Auswahl der Daten basierend auf der 'chartType'-Property
-  const chartData = props.chartType === 'gewinneUndVerluste'
-    ? ergebnisStore.gewinneUndVerluste // Daten für Gewinne und Verluste
-    : ergebnisStore.ergebnisse; // Daten für die Wahlergebnisse
+// Importierte Funktion, die den Chart erstellt
+const { createChart } = useChartComposable();
 
-  if (barChart.value) { // Prüfen, ob das Canvas-Element existiert
-    // Erstellung eines neuen Balkendiagramms mit Chart.js
-    new Chart(barChart.value, {
-      type: 'bar', // Typ des Diagramms: Balkendiagramm
-      data: {
-        labels: chartData.chartLabels, // Beschriftungen der Y-Achse aus dem Store
-        datasets: [
-          {
-            label: props.chartType === 'gewinneUndVerluste' 
-              ? 'Gewinne und Verluste (%)' // Label für Gewinne und Verluste
-              : 'Ergebnisse (%)', // Label für Wahlergebnisse
-            data: chartData.chartData, // Datenwerte aus dem Store
-            backgroundColor: chartData.chartColors, // Farben für die Balken aus dem Store
-          },
-        ],
-      },
-      options: {
-        responsive: true, // Diagramm passt sich der Größe des Containers an
-        indexAxis: 'y', // Horizontale Balkendiagramme
-        plugins: {
-          legend: { display: false }, // Legende wird ausgeblendet
-          tooltip: { enabled: true }, // Tooltip wird aktiviert
-        },
-        scales: {
-          x: {
-            beginAtZero: true, // X-Achse beginnt bei 0
-            ticks: {
-              // Fügt '%' zu den Werten auf der X-Achse hinzu
-              callback: (value) => value + '%',
-            },
-          },
-          y: {
-            beginAtZero: true, // Y-Achse beginnt bei 0
-          },
-        },
-      },
-    });
+// Der onMounted Hook wird verwendet, um den Chart zu erstellen, sobald die Komponente gemountet wurde
+onMounted(() => {
+  if (barChart.value) { // Sicherstellen, dass das Canvas-Element vorhanden ist
+    // Ruft die Funktion zum Erstellen des Charts auf, je nach übergebenem 'chartType'
+    createChart(props.chartType, barChart.value, 'bar'); // Erstellt ein Balkendiagramm
   }
 });
 </script>
 
 <style scoped>
-/* Container für das Balkendiagramm */
+/* Styling für den Container des Diagramms */
 .bar-chart-container {
-  width: 100%; /* Nimmt die volle Breite des übergeordneten Elements ein */
-  height: 400px; /* Feste Höhe für das Diagramm */
+  width: 100%; /* Breite des Containers auf 100% setzen */
+  height: 400px; /* Höhe des Containers auf 400px setzen */
 }
 </style>
