@@ -2,103 +2,89 @@
   <div class="button-slide-container">
     <!-- Linker Pfeil-Button: Wird nur angezeigt, wenn der Typ 'left' ist -->
     <button
-      v-show="buttonType === 'left'"
+      v-if="buttonType === 'left'"  
       @click="goToPrevious"
       class="button-slide left"
     >
-      <!-- Bild für den linken Pfeil -->
       <img src="@/assets/arrow-left.png" alt="Previous" />
     </button>
 
     <!-- Rechter Pfeil-Button: Wird nur angezeigt, wenn der Typ 'right' ist -->
     <button
-      v-show="buttonType === 'right'"
+      v-if="buttonType === 'right'"  
       @click="goToNext"
       class="button-slide right"
     >
-      <!-- Bild für den rechten Pfeil -->
       <img src="@/assets/arrow-right.png" alt="Next" />
     </button>
   </div>
 </template>
 
-
-  
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 
 // Eigenschaften (Props) des Buttons
-// buttonType: Gibt an, ob der Button 'left' oder 'right' ist
 const props = defineProps({
   buttonType: {
-    type: String, // Typ der Eigenschaft: String
-    required: true, // Diese Eigenschaft ist erforderlich
-    validator: (value: string) => ['left', 'right'].includes(value), // Nur 'left' oder 'right' sind erlaubt
-  }
+    type: String,
+    required: true,
+    validator: (value: string) => ['left', 'right'].includes(value),
+  },
 });
 
-// Events für die Navigation
-// 'navigate': Wird ausgelöst, wenn ein Button geklickt wird
+// Ereignisse für die Navigation
 const emit = defineEmits<{
   (e: 'navigate', direction: 'next' | 'previous'): void;
 }>();
 
-// Methode zum Navigieren zum vorherigen Element
+// Methoden zum Navigieren
 const goToPrevious = () => {
-  emit('navigate', 'previous'); // Event auslösen mit Richtung 'previous'
+  emit('navigate', 'previous');
 };
 
-// Methode zum Navigieren zum nächsten Element
 const goToNext = () => {
-  emit('navigate', 'next'); // Event auslösen mit Richtung 'next'
+  emit('navigate', 'next');
 };
 </script>
 
-  
 <style scoped>
-/* Container für die Buttons */
 .button-slide-container {
-  display: flex; /* Flexibles Layout für gleichmäßige Verteilung */
-  justify-content: space-between; /* Buttons links und rechts positionieren */
-  align-items: center; /* Buttons vertikal zentrieren */
-  width: 100%; /* Volle Breite des Containers */
-  max-width: 900px; /* Maximale Breite des Containers */
-  position: relative; /* Relativer Kontext für absolute Positionierung der Buttons */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
 }
 
-/* Allgemeines Styling für beide Buttons */
 .button-slide {
-  width: 60px; /* Feste Breite des Buttons */
-  height: 60px; /* Feste Höhe des Buttons */
-  background: transparent; /* Kein Hintergrund, um das Bild sichtbar zu machen */
-  border: none; /* Entfernt den Standardrahmen des Buttons */
-  cursor: pointer; /* Ändert den Mauszeiger beim Hover */
-  padding: 0; /* Kein Padding, um Layout-Sprünge zu vermeiden */
-  display: flex; /* Flexibles Layout für zentriertes Bild */
-  align-items: center; /* Zentriert das Bild vertikal */
-  justify-content: center; /* Zentriert das Bild horizontal */
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Styling für das Bild im Button */
 .button-slide img {
-  width: 40px; /* Breite des Pfeils */
-  height: 40px; /* Höhe des Pfeils */
+  width: 40px;
+  height: 40px;
 }
 
-/* Hover-Effekt für die Buttons */
 .button-slide:hover {
-  transform: scale(1.2); /* Vergrößert den Button beim Hover */
+  transform: scale(1.2);
 }
 
-/* Styling für den linken Button */
 .left {
-  position: absolute; /* Absolute Positionierung relativ zum Container */
-  left: 0; /* Linksbündig */
+  position: absolute;
+  left: 0;
 }
 
-/* Styling für den rechten Button */
 .right {
-  position: absolute; /* Absolute Positionierung relativ zum Container */
-  right: 0; /* Rechtsbündig */
+  position: absolute;
+  right: 0;
 }
 </style>
