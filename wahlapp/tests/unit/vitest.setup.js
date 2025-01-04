@@ -15,4 +15,3 @@ vi.stubGlobal('windows', {
 });
 
 vi.stubGlobal('scrollTo', vi.fn());
-
