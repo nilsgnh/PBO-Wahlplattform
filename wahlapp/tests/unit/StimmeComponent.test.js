@@ -1,143 +1,143 @@
-/**
- * @vitest-environment happy-dom
- */
-
 import { mount } from '@vue/test-utils';
-import StimmeComponent from '@/components/StimmeComponent.vue'; // Deine Wahl-Komponente
-import { describe, it, expect } from 'vitest'; // Für Mocks und Spies
-import { createPinia } from 'pinia'; // Pinia für Store-Integration
-import { useWahlStore } from '@/stores/wahlStore'; // Importiere deinen Store
+import { describe, it, expect, beforeEach } from 'vitest';
+import { setActivePinia, createPinia } from 'pinia';
+import { useWahlStore } from '@/stores/wahlStore';
+import StimmeComponent from '@/components/StimmeComponent.vue';
+import ParteiboxComponent from '@/components/ParteiboxComponent.vue';
 
-// npx vitest
 describe('StimmeComponent', () => {
-  // Test, ob die Wahlüberschrift korrekt gerendert wird
-  it('should render the title correctly', () => {
-    const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
-    });
-    expect(wrapper.find('p.font-bold.text-2xl').text()).toBe('Erststimme'); // Teste den Text der Stimme
-    expect(wrapper.find('p.text-base.pb-3').text()).toContain('Sie haben eine Stimme'); // Teste den erläuternden Text
+  beforeEach(() => {
+    // Pinia initialisieren
+    setActivePinia(createPinia());
   });
 
-  // Test, ob die Liste der Parteien korrekt angezeigt wird
-  it('should render a list of parties based on the selected voice type', async () => {
-    const store = useWahlStore();
+  it('renders the correct title and info for Erststimme', () => {
     const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
-      props: {
-        stimme: 'Zweitstimme',
-      },
-    });
-
-    await store.$nextTick(); // Sicherstellen, dass der Store geladen wurde
-    expect(wrapper.findAllComponents({ name: 'ParteiboxComponent' }).length).toBe(store.parteien.length);
-  });
-
-  // Test, ob die Auswahl für Erststimme korrekt funktioniert
-  it('should toggle party selection for Erststimme correctly', async () => {
-    const store = useWahlStore();
-    const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
       props: {
         stimme: 'Erststimme',
+        info: ' für die Direktwahl',
+      },
+    });
+    expect(wrapper.text()).toContain('Erststimme');
+    expect(wrapper.text()).toContain('Sie haben eine Stimme für die Direktwahl.');
+  });
+
+  it('renders the correct title and info for Zweitstimme', () => {
+    const wrapper = mount(StimmeComponent, {
+      props: {
+        stimme: 'Zweitstimme',
+        info: ' für die Listenwahl',
+      },
+    });
+    expect(wrapper.text()).toContain('Zweitstimme');
+    expect(wrapper.text()).toContain('Sie haben eine Stimme für die Listenwahl.');
+  });
+
+  it('displays the correct items for Erststimme from the store', () => {
+    const store = useWahlStore();
+    store.listenplaetze = [
+      { id: 1, name: 'Kandidat A', text: 'Direktwahl', num: 1 },
+      { id: 2, name: 'Kandidat B', text: 'Direktwahl', num: 2 },
+    ];
+
+    const wrapper = mount(StimmeComponent, {
+      props: {
+        stimme: 'Erststimme',
+        info: '',
       },
     });
 
-    const parteibox = wrapper.findAllComponents({ name: 'ParteiboxComponent' })[0];
-    await parteibox.vm.$emit('click', 1); // Simuliere das Klick-Ereignis mit einer Partei-ID
+    const boxes = wrapper.findAllComponents(ParteiboxComponent);
+    expect(boxes).toHaveLength(2);
+    expect(boxes[0].props('partei')).toBe('Kandidat A');
+    expect(boxes[1].props('partei')).toBe('Kandidat B');
+  });
 
-    // Überprüfe, ob der Store korrekt aktualisiert wurde
+  it('displays the correct items for Zweitstimme from the store', () => {
+    const store = useWahlStore();
+    store.parteien = [
+      { id: 1, name: 'Partei A', text: 'Listenwahl', num: 1 },
+      { id: 2, name: 'Partei B', text: 'Listenwahl', num: 2 },
+    ];
+
+    const wrapper = mount(StimmeComponent, {
+      props: {
+        stimme: 'Zweitstimme',
+        info: '',
+      },
+    });
+
+    const boxes = wrapper.findAllComponents(ParteiboxComponent);
+    expect(boxes).toHaveLength(2);
+    expect(boxes[0].props('partei')).toBe('Partei A');
+    expect(boxes[1].props('partei')).toBe('Partei B');
+  });
+
+  it('handles box clicks and updates the store for Erststimme', async () => {
+    const store = useWahlStore();
+
+    const wrapper = mount(StimmeComponent, {
+      props: {
+        stimme: 'Erststimme',
+        info: ' für die Wahl eines oder einer Wahlkreisabgeordneten',
+      },
+    });
+
+    const box = wrapper.findAllComponents(ParteiboxComponent).find(component => {
+      return component.props('num') === 1;
+    });
+    const clickEvent = new Event('click');
+    box.element.dispatchEvent(clickEvent);
+    await wrapper.vm.$nextTick();
+
     expect(store.selectedErststimme).toBe(1);
-
-    // Überprüfe, ob die Anzeige aktualisiert wurde
-    expect(parteibox.classes()).toContain('selected'); // Stelle sicher, dass die Box für die ausgewählte Partei eine "selected"-Klasse hat
+    expect(wrapper.vm.selectedPartei).toBe(1);
   });
 
-  // Test, ob die Auswahl für Zweitstimme korrekt funktioniert
-  it('should toggle party selection for Zweitstimme correctly', async () => {
+  it('handles box clicks and updates the store for Zweitstimme', async () => {
     const store = useWahlStore();
+
     const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
       props: {
         stimme: 'Zweitstimme',
+        info: '',
       },
     });
 
-    const parteibox = wrapper.findAllComponents({ name: 'ParteiboxComponent' })[1];
-    await parteibox.vm.$emit('click', 2); // Simuliere das Klick-Ereignis mit einer Partei-ID
+    const box = wrapper.findAllComponents(ParteiboxComponent).find(component => {
+      return component.props('num') === 2;
+    });
+    const clickEvent = new Event('click');
+    box.element.dispatchEvent(clickEvent);
+    await wrapper.vm.$nextTick();
 
-    // Überprüfe, ob der Store korrekt aktualisiert wurde
     expect(store.selectedZweitstimme).toBe(2);
+    expect(wrapper.vm.selectedPartei).toBe(2);
   });
 
-  // Test, ob die Boxen korrekt deaktiviert werden, wenn eine Auswahl getroffen wurde
-  it('should disable unselected parties when one is selected', async () => {
+  it('resets the selection when the same box is clicked twice', async () => {
     const store = useWahlStore();
+
     const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
       props: {
         stimme: 'Zweitstimme',
+        info: '',
       },
     });
 
-    const parteibox = wrapper.findAllComponents({ name: 'ParteiboxComponent' })[0];
-    await parteibox.vm.$emit('click', 1); // Simuliere die Auswahl einer Partei
-
-    // Überprüfe, ob alle anderen Parteien deaktiviert sind
-    const unselectedBoxes = wrapper.findAllComponents({ name: 'ParteiboxComponent' }).filter(
-      (box) => box.props().selected !== true
-    );
-
-    unselectedBoxes.forEach((box) => {
-      expect(box.props().disabled).toBe(true);
-    });
-  });
-
-  // Test, ob die richtige Klasse auf der Box angezeigt wird, wenn sie ausgewählt ist
-  it('should apply the correct "selected" class to the selected party', async () => {
-    const store = useWahlStore();
-    const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
-      props: {
-        stimme: 'Erststimme',
-      },
+    const box = wrapper.findAllComponents(ParteiboxComponent).find(component => {
+      return component.props('num') === 3;
     });
 
-    const parteibox = wrapper.findAllComponents({ name: 'ParteiboxComponent' })[0];
-    await parteibox.vm.$emit('click', 1); // Simuliere die Auswahl einer Partei
+    const clickEvent = new Event('click');
+    box.element.dispatchEvent(clickEvent);
+    await wrapper.vm.$nextTick();
+    expect(store.selectedZweitstimme).toBe(3);
 
-    // Überprüfe, ob die "selected"-Klasse korrekt angewendet wurde
-    expect(parteibox.classes()).toContain('selected');
-  });
-
-  // Test, ob der Store den Wert korrekt setzt, wenn eine Partei ausgewählt wird
-  it('should correctly set the store value when a party is selected', async () => {
-    const store = useWahlStore();
-    const wrapper = mount(StimmeComponent, {
-      global: {
-        plugins: [createPinia()],
-      },
-      props: {
-        stimme: 'Zweitstimme',
-      },
-    });
-
-    const parteibox = wrapper.findAllComponents({ name: 'ParteiboxComponent' })[1];
-    await parteibox.vm.$emit('click', 2); // Simuliere die Auswahl einer Partei
-
-    // Überprüfe, ob der Store korrekt aktualisiert wurde
-    expect(store.selectedZweitstimme).toBe(2);
+    const newclickEvent = new Event('click');
+    box.element.dispatchEvent(newclickEvent);
+    await wrapper.vm.$nextTick();
+    expect(store.selectedZweitstimme).toBe(null);
+    expect(wrapper.vm.selectedPartei).toBe(null);
   });
 });

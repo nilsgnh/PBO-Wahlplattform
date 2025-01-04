@@ -23,5 +23,4 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './tests/unit/vitest.setup.js', // Setup-Datei für Mocking
   },
-
 })

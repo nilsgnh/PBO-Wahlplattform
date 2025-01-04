@@ -1,86 +1,52 @@
 <template>
   <div class="pie-chart-container">
-    <!-- Canvas-Element für das Tortendiagramm -->
-    <canvas ref="pieChart"></canvas> <!-- Ref für Zugriff auf das Canvas im Script -->
+    <!-- Canvas für das Tortendiagramm, das mit Chart.js gerendert wird -->
+    <canvas ref="pieChart"></canvas>
   </div>
 </template>
 
-  
 <script setup lang="ts">
-import { onMounted, ref, defineProps } from 'vue';
-import { useErgebnisStore } from '../stores/ErgebnisStore'; // Import des ErgebnisStores zur Verwaltung der Diagrammdaten
-import {
-  Chart, // Hauptklasse für Diagramme
-  PieController, // Steuerung für Tortendiagramme
-  ArcElement, // Elemente für die Tortendiagrammsegmente
-  Title, // Titel des Diagramms
-  Tooltip, // Tooltip für Interaktivität
-  Legend, // Legende des Diagramms
-} from 'chart.js';
+import { onMounted, ref, defineProps } from 'vue'; // Vue hooks für das Lebenszyklusmanagement und die Definition von Reaktivität
+import { useChartComposable } from '../composables/useChartComposable'; // Importiert eine benutzerdefinierte Funktion zum Erstellen des Diagramms
 
-// Registrierung der benötigten Chart.js-Komponenten
-Chart.register(PieController, ArcElement, Title, Tooltip, Legend);
-
-// Zugriff auf den ErgebnisStore, der die Daten und Farben für die Diagramme enthält
-const ergebnisStore = useErgebnisStore();
-
-// Definiert die Eingabe-Property für die Komponente
-// chartType entscheidet, ob die 'ergebnisse' oder 'gewinneUndVerluste' verwendet werden
+// Definiert die Props für diese Komponente, damit der Diagrammtyp ('ergebnisse' oder 'gewinneUndVerluste') übergeben werden kann
 const props = defineProps({
-  chartType: { type: String, required: true, default: 'ergebnisse' }, // Standard: 'ergebnisse'
+  chartType: { 
+    type: String as () => 'ergebnisse' | 'gewinneUndVerluste', // Nur diese beiden Werte sind zulässig
+    required: true, // Diese Eigenschaft ist erforderlich
+    default: 'ergebnisse' // Standardwert ist 'ergebnisse'
+  },
 });
 
-// Referenz für das Canvas-Element, in dem das Tortendiagramm dargestellt wird
+// Referenz auf das HTML-Canvas-Element, in dem das Diagramm gezeichnet wird
 const pieChart = ref<HTMLCanvasElement | null>(null);
 
-// Lifecycle-Hook: Wird ausgeführt, nachdem die Komponente ins DOM gemountet wurde
-onMounted(() => {
-  // Dynamisches Laden der Daten basierend auf der übergebenen `chartType`-Property
-  const chartData =
-    props.chartType === 'gewinneUndVerluste'
-      ? ergebnisStore.gewinneUndVerluste // Daten für Gewinne und Verluste
-      : ergebnisStore.ergebnisse; // Daten für die Wahlergebnisse
+// Importierte Funktion, die den Chart erstellt
+const { createChart } = useChartComposable();
 
-  if (pieChart.value) { // Prüfen, ob das Canvas-Element verfügbar ist
-    // Erstellen eines neuen Tortendiagramms mit Chart.js
-    new Chart(pieChart.value, {
-      type: 'pie', // Typ: Tortendiagramm
-      data: {
-        labels: chartData.chartLabels, // Beschriftungen aus dem Store
-        datasets: [
-          {
-            data: chartData.chartData, // Werte aus dem Store
-            backgroundColor: chartData.chartColors, // Farben aus dem Store
-          },
-        ],
-      },
-      options: {
-        responsive: true, // Diagramm passt sich der Containergröße an
-        plugins: {
-          legend: { position: 'bottom' }, // Legende wird am unteren Rand angezeigt
-          tooltip: { enabled: true }, // Tooltip wird aktiviert
-        },
-      },
-    });
+// Der onMounted Hook wird verwendet, um den Chart zu erstellen, sobald die Komponente gemountet wurde
+onMounted(() => {
+  if (pieChart.value) { // Sicherstellen, dass das Canvas-Element vorhanden ist
+    // Ruft die Funktion zum Erstellen des Charts auf, je nach übergebenem 'chartType'
+    createChart(props.chartType, pieChart.value, 'pie'); // Erstellt ein Tortendiagramm
   }
 });
 </script>
 
-  
 <style scoped>
-/* Hauptcontainer für das Tortendiagramm */
+/* Styling für den Container des Diagramms */
 .pie-chart-container {
-  width: 80%; /* Nimmt 80% der übergeordneten Breite ein */
-  height: 500px; /* Feste Höhe für das Diagramm */
-  display: flex; /* Flexbox zur Zentrierung */
+  width: 80%; /* Container nimmt 80% der Breite ein */
+  height: 500px; /* Höhe des Containers auf 500px setzen */
+  display: flex; /* Flexbox-Layout für zentrierte Ausrichtung */
   justify-content: center; /* Horizontale Zentrierung */
   align-items: center; /* Vertikale Zentrierung */
-  margin: 0 auto; /* Container wird auf der Seite zentriert */
+  margin: 0 auto; /* Automatische horizontale Ränder für Zentrierung */
 }
 
-/* Canvas-Element für das Diagramm */
+/* Canvas innerhalb des Containers soll die maximal verfügbare Breite und Höhe einnehmen */
 canvas {
-  max-width: 100%; /* Verhindert, dass das Diagramm breiter als der Container wird */
-  max-height: 100%; /* Verhindert, dass das Diagramm höher als der Container wird */
+  max-width: 100%; /* Maximale Breite auf 100% setzen */
+  max-height: 100%; /* Maximale Höhe auf 100% setzen */
 }
 </style>
