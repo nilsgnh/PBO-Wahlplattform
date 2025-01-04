@@ -18,4 +18,11 @@ export default defineConfig({
   server: {
     hmr: true, // Aktiviert HMR
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './tests/unit/vitest.setup.js', // Setup-Datei für Mocking
+  },
+
 })
+

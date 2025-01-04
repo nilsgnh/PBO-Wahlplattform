@@ -18,6 +18,10 @@ Develop with the principle of “test-driven development”.
 Create a paper prototype of at least 80% of the defined MUST criteria.
 * *in Arbeit durch @mikol9444*
 
+### [P7+] Functional Dummy: Demonstrating Key Must-Have Features
+Create a click dummy that covers at least 90% of the defined MUST criteria.
+* *evt. neuen branch dafür erstellen*
+
 
 ## Pending (Waiting for Review):
 
@@ -39,10 +43,6 @@ Only use the syntax of the “Composition” API.
 
 ### [P10+] No Error Left Behind: Console Clean-Up Crew
 The project must work without (console) errors.
-* *am 16.12.24 abgeschickt*
-
-### [P7+] Functional Dummy: Demonstrating Key Must-Have Features
-Create a click dummy that covers at least 90% of the defined MUST criteria.
 * *am 16.12.24 abgeschickt*
 
 
