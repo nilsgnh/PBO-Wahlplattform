@@ -7,8 +7,8 @@ const store = useWahlStore();
 </script>
 
 <template>
-  <p class="font-bold text-2xl">Zusammenfassung</p>
-  <p class="pb-5 text-base"> Sie haben folgende Stimmen abgegeben:</p>
+  <p class="font-bold text-2xl">{{ $t('summary') }}</p>
+  <p class="pb-5 text-base">{{ $t('summaryinfo') }}</p>
   <!-- Erststimme -->
   <WahlInfoBox
     title="Erststimme"
@@ -24,7 +24,7 @@ const store = useWahlStore();
   />
   <br>
   <hr>
-  <p class="font-bold pt-8 text-2xl"> Sicherheitsinformationen </p>
+  <p class="font-bold pt-8 text-2xl"> {{ $t('securityinfo') }} </p>
   <p class="pb-3 text-xs">
     <b> 1. </b> {{store.sicherheitsinformationen[2]}} {{store.sicherheitsinformationen[3]}} {{store.sicherheitsinformationen[4]}}
     ({{store.sicherheitsinformationen[0]}} {{store.sicherheitsinformationen[1]}}). <br>
@@ -38,7 +38,7 @@ const store = useWahlStore();
       class="checkbox text-xl"
     />
     <label for="sicherheits-check" class="checkbox-label text-base">
-      Ich habe die Sicherheitsinformationen gelesen und stimme zu.
+      {{ $t('securitycheck') }}
     </label>
   </div>
   <br>
