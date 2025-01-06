@@ -1,25 +1,25 @@
 <template>
   <div id="wahl">
     <!-- Hauptüberschrift für die Bundestagswahl -->
-    <h1 class="text-3xl font-bold p-2">Bundestagswahl 2025</h1>
+    <h1 class="text-3xl font-bold p-2">{{$t('h1bundestagswahl')}}</h1>
     <!-- Anzeige für nicht verifizierte Nutzer -->
     <div v-if="start && !authStore.isAuthenticated" class="start-end-container">
       <!-- Hinweis zur Verifizierung -->
-      <div class="text-xl">Sie müssen sich erst verifizieren, um wählen zu können. <br> Bitte loggen sie sich ein. </div>
+      <div class="text-xl">{{$t('verificationmessage1')}}<br> {{$t('verificationmessage2')}} </div>
       <!-- Navigation zur Anmeldeseite -->
       <NavigationButton
         type="next"
         @Click="gettoLogin()"
       >
         <template v-slot:buttonText>
-          Zur Anmeldung
+          {{ $t('gotologin') }}
         </template>
       </NavigationButton>
     </div>
     <!-- Anzeige, wenn der Nutzer bereits gewählt hat -->
     <div v-if="start && statesStore.gewaehlt" class="start-end-container">
       <!-- Hinweis, dass der Nutzer bereits gewählt hat -->
-      <div class="text-xl">Sie haben bereits gewählt. <br> Vielen Dank für Ihre Teilnahme an der Wahl.</div>
+      <div class="text-xl">{{ $t('alreadyvoted1') }} <br> {{ $t('alreadyvoted2') }}</div>
       <br>
       <!-- Navigation zurück zum Dashboard -->
       <NavigationButton
@@ -27,13 +27,13 @@
         @Click="gettoDashboard"
       >
         <template v-slot:buttonText>
-          Zurück zum Dashboard
+          {{ $t('backtodashboard') }}
         </template>
       </NavigationButton>
     </div>
     <!-- Anzeige für Nutzer, die bereit sind zu starten -->
     <div v-if="start && !statesStore.gewaehlt && authStore.isAuthenticated" class="start-end-container">
-      <p class="text-xl">Beginnen Sie mit dem Durchführen der Wahl durch Drücken auf Start:</p>
+      <p class="text-xl">{{ $t('electionbegin') }}</p>
       <NavigationButton
         type="next"
         @Click="getStarted"
@@ -54,7 +54,7 @@
             @Click="gettoStart"
           >
             <template v-slot:buttonText>
-              Abbrechen
+              {{ $t('cancel') }}
             </template>
           </NavigationButton>
         </div>
@@ -64,7 +64,7 @@
             @Click="getErststimme"
           >
             <template v-slot:buttonText>
-              Weiter
+              {{ $t('continue') }}
             </template>
           </NavigationButton>
         </div>
@@ -81,7 +81,7 @@
             @Click="gettoErststimme"
           >
             <template v-slot:buttonText>
-              Zurück
+              {{ $t('back') }}
             </template>
           </NavigationButton>
         </div>
@@ -91,7 +91,7 @@
             @Click="gettoBestaetigung"
           >
             <template v-slot:buttonText>
-              Weiter
+              {{ $t('continue') }}
             </template>
           </NavigationButton>
         </div>
@@ -108,7 +108,7 @@
             @Click="gettoStart"
           >
             <template v-slot:buttonText>
-              Abbrechen
+              {{ $t('cancel') }}
             </template>
           </NavigationButton>
           <NavigationButton
@@ -116,7 +116,7 @@
             @Click="gettoZweitstimme"
           >
             <template v-slot:buttonText>
-              Zurück
+              {{ $t('back') }}
             </template>
           </NavigationButton>
         </div>
@@ -127,7 +127,7 @@
             :isDisabled="!store.checkboxAgreed"
           >
             <template v-slot:buttonText>
-              Bestätigen
+              {{ $t('submit') }}
             </template>
           </NavigationButton>
         </div>
@@ -136,13 +136,13 @@
   </div>
   <!-- Abschlussanzeige nach der Wahl -->
   <div v-if="!bestaetigung && !start && !erststimme && !zweitstimme" class="start-end-container">
-      <p class="text-xl"> Vielen Dank für Ihre Teilnahme an der Wahl. </p>
+      <p class="text-xl"> {{ $t('aftervotemessage') }}</p>
       <NavigationButton
         type="dashboard"
         @Click="gettoDashboard"
       >
         <template v-slot:buttonText>
-          Zurück zum Dashboard
+          {{ $t('backtodashboard') }}
         </template>
       </NavigationButton>
   </div>
@@ -157,7 +157,7 @@
           :style="{ width: (fortschritt / 4) * 100 + '%' }"
         ></div>
       </div>
-      <span class="progress-text">Schritt {{ fortschritt }} von 4</span>
+      <span class="progress-text">{{ $t('step') }} {{ fortschritt }} {{ $t('of') }} 4</span>
     </div>
   </section>
 

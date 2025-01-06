@@ -114,15 +114,15 @@
       <div id="bg-move"></div>
       <div id="move">
         <ul>
-          <li><RouterLink to="/" @click="closeNav">Dashboard</RouterLink></li>
+          <li><RouterLink to="/" @click="closeNav">{{$t('dashboard')}}</RouterLink></li>
 
           <!-- Zeige "Aktuelle Wahl" nur, wenn der Benutzer verifiziert ist -->
           <li v-if="isAuthenticated">
-            <RouterLink to="/bundestagswahl-2025" @click="closeNav">Aktuelle Wahl</RouterLink>
+            <RouterLink to="/bundestagswahl-2025" @click="closeNav">{{$t('curr_election')}}</RouterLink>
           </li>
 
-          <li><RouterLink to="/ergebnisse" @click="closeNav">Ergebnisse</RouterLink></li>
-          <li><RouterLink to="/verifizierung" @click="closeNav">Verifizierung</RouterLink></li>
+          <li><RouterLink to="/ergebnisse" @click="closeNav">{{$t('results')}}</RouterLink></li>
+          <li><RouterLink to="/verifizierung" @click="closeNav">{{$t('verification')}}</RouterLink></li>
         </ul>
 
       </div>
