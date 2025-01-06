@@ -1,5 +1,8 @@
 <template>
-  <StimmeComponent stimme="Zweitstimme" info=" für die Wahl einer Landesliste (Partei)"/>
+  <StimmeComponent
+  :stimme="$t('zweitstimme')"
+  :info="$t('zweitstimmeInfo')"
+  />
 </template>
 
 <script setup>

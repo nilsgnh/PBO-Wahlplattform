@@ -7,7 +7,7 @@
 
         <!-- Nachricht basierend auf dem Verifizierungsstatus -->
         <h2 v-if="isAuthenticated" ref="usernameRef" class="text-3xl">
-          {{ isAuthenticated ? $t('username') : '' }}
+          {{ user.name }}
         </h2>
         <div v-else class="primaryBtn" @click="navigateToVerification">
           <p class="text-xl">{{ $t('verify') }}</p>

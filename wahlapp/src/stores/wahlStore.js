@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from "vue";
+import { useI18n } from 'vue-i18n';
+
 
 export const useWahlStore = defineStore('wahl', {
   state: () => ({
@@ -22,15 +24,12 @@ export const useWahlStore = defineStore('wahl', {
       { id: 5, name: "Bauer, Karl", text: "Sozialpädagoge, Die Linke", num: 5 },
       { id: 6, name: "Schulze, Maria", text: "Unternehmerin, AfD", num: 6 },
     ],
-    sicherheitsinformationen: ["GG BRD",
-        "Art 38",
-        "(1) Die Abgeordneten des Deutschen Bundestages werden in allgemeiner, unmittelbarer, freier, gleicher und geheimer Wahl gewählt. Sie sind Vertreter des ganzen Volkes, an Aufträge und Weisungen nicht gebunden und nur ihrem Gewissen unterworfen.",
-        "(2) Wahlberechtigt ist, wer das achtzehnte Lebensjahr vollendet hat; wählbar ist, wer das Alter erreicht hat, mit dem die Volljährigkeit eintritt.",
-        "(3) Das Nähere bestimmt ein Bundesgesetz.",
-        "Ihr Wahl wird sicher und anonym verarbeitet. Mit dem Klick auf \"Bestätigen\" ist die getroffene Auswahl nicht mehr änderbar."
-        ],
   }),
   actions: {
+    getSicherheitsinformationen() {
+      const i18n = useI18n();
+      return i18n.t('sicherheitsinformationen');
+    },
     setErststimme(stimme) {
       this.selectedErststimme = stimme;
     },

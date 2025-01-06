@@ -14,59 +14,59 @@ const messages = {
     contact: "Kontakt",
     verify: "Bitte verifzieren Sie sich",
     datenschutzContent: `
-## Datenschutz
-Wir nehmen den Schutz Ihrer persönlichen Daten ernst. Auf dieser Seite informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer Daten im Rahmen unserer App.
-### Erhebung von Daten
-Wir erfassen personenbezogene Daten nur, wenn Sie diese freiwillig im Rahmen der Nutzung unserer Dienste angeben. Dazu gehören beispielsweise Name, E-Mail-Adresse oder andere Kontaktdaten.
-### Nutzung von Daten
-Ihre Daten werden ausschließlich für die Bereitstellung unserer Dienste genutzt und niemals an Dritte weitergegeben.
-### Ihre Rechte
-Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten Daten zu erhalten sowie deren Löschung oder Berichtigung zu verlangen.
-Falls Sie Fragen zum Datenschutz haben, wenden Sie sich bitte an unseren Support.
+    ## Datenschutz
+    Wir nehmen den Schutz Ihrer persönlichen Daten ernst. Auf dieser Seite informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer Daten im Rahmen unserer App.
+    ### Erhebung von Daten
+    Wir erfassen personenbezogene Daten nur, wenn Sie diese freiwillig im Rahmen der Nutzung unserer Dienste angeben. Dazu gehören beispielsweise Name, E-Mail-Adresse oder andere Kontaktdaten.
+    ### Nutzung von Daten
+    Ihre Daten werden ausschließlich für die Bereitstellung unserer Dienste genutzt und niemals an Dritte weitergegeben.
+    ### Ihre Rechte
+    Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten Daten zu erhalten sowie deren Löschung oder Berichtigung zu verlangen.
+    Falls Sie Fragen zum Datenschutz haben, wenden Sie sich bitte an unseren Support.
 
-Datum: 08.12.2024
+    Datum: 08.12.2024
     `,
     impressumContent: `
-## Impressum
+    ## Impressum
 
-Verantwortlich für den Inhalt:
+    Verantwortlich für den Inhalt:
 
-Max Mustermann
+    Max Mustermann
 
-Musterstraße 1
+    Musterstraße 1
 
-12345 Musterstadt
+    12345 Musterstadt
 
-Deutschland
+    Deutschland
 
-Telefon: +49 123 456789
+    Telefon: +49 123 456789
 
-E-Mail: kontakt(at)musterfirma.de
+    E-Mail: kontakt(at)musterfirma.de
 
-### Haftungsausschluss
-Alle Inhalte auf dieser Website wurden mit größter Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte.
+    ### Haftungsausschluss
+    Alle Inhalte auf dieser Website wurden mit größter Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte.
 
-Datum: 08.12.2024
+    Datum: 08.12.2024
     `,
     contactContent: `
-## Kontakt
+    ## Kontakt
 
-Wir freuen uns über Ihre Nachricht! Nutzen Sie die unten stehenden Kontaktdaten, um uns zu erreichen:
+    Wir freuen uns über Ihre Nachricht! Nutzen Sie die unten stehenden Kontaktdaten, um uns zu erreichen:
 
-### Adresse
-Max Mustermann
+    ### Adresse
+    Max Mustermann
 
-Musterstraße 1
+    Musterstraße 1
 
-12345 Musterstadt
+    12345 Musterstadt
 
-Deutschland
+    Deutschland
 
-### Telefon
-+49 123 456789
+    ### Telefon
+    +49 123 456789
 
-### E-Mail
-kontakt(at)musterfirma.de
+    ### E-Mail
+    kontakt(at)musterfirma.de
     `,
     dashboard: "Dashboard",
     curr_election: "Aktuelle Wahl",
@@ -92,6 +92,28 @@ kontakt(at)musterfirma.de
     summaryinfo: " Sie haben folgende Stimmen abgegeben:",
     securityinfo: "Sicherheitsinformationen",
     securitycheck: " Ich habe die Sicherheitsinformationen gelesen und stimme zu.",
+    erststimme: "Erststimme",
+    zweitstimme: "Zweitstimme",
+    erststimmeInfo: " für die Wahl eines oder einer Wahlkreisabgeordneten",
+    zweitstimmeInfo: " für die Wahl einer Landesliste (Partei)",
+    yourVote: "Sie haben eine Stimme",
+    sicherheitsinformationen: [
+      "GG BRD",
+      "Art 38",
+      "(1) Die Abgeordneten des Deutschen Bundestages werden in allgemeiner, unmittelbarer, freier, gleicher und geheimer Wahl gewählt. Sie sind Vertreter des ganzen Volkes, an Aufträge und Weisungen nicht gebunden und nur ihrem Gewissen unterworfen.",
+      "(2) Wahlberechtigt ist, wer das achtzehnte Lebensjahr vollendet hat; wählbar ist, wer das Alter erreicht hat, mit dem die Volljährigkeit eintritt.",
+      "(3) Das Nähere bestimmt ein Bundesgesetz.",
+      "Ihr Wahl wird sicher und anonym verarbeitet. Mit dem Klick auf \"Bestätigen\" ist die getroffene Auswahl nicht mehr änderbar."
+    ],
+    confirmAbort: "Sind Sie sicher, dass Sie die Wahl abbrechen möchten? Alle bisher getroffenen Auswahlen gehen verloren.",
+    confirmSubmit: "Sind Sie sicher, dass Sie die Wahl bestätigen möchten? Nach Bestätigung ist keine Änderung mehr möglich.",
+    electionResults: "Wahlergebnisse 2021",
+    auswertung: "Gewinne und Verluste",
+    trueVerification: "Sie sind erfolgreich verifiziert",
+    register: "Mit BundID anmelden oder registrieren",
+    login: "Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu nutzen.",
+    goOn: "Weiter mit BundID",
+    redirect: "Sie werden zu BundId.de weitergeleitet, um den Authentifizierungsprozess fortzusetzen.",
   },
   en: {
     welcome: "Welcome",
@@ -105,64 +127,64 @@ kontakt(at)musterfirma.de
     contact: "Contact",
     verify: "Please verify yourself",
     datenschutzContent: `
-## Privacy Policy
+    ## Privacy Policy
 
-We take the protection of your personal data seriously. On this page, we inform you about the collection, processing, and use of your data within our app.
+    We take the protection of your personal data seriously. On this page, we inform you about the collection, processing, and use of your data within our app.
 
-### Data Collection
-We only collect personal data if you voluntarily provide it during the use of our services. This includes, for example, your name, email address, or other contact information.
+    ### Data Collection
+    We only collect personal data if you voluntarily provide it during the use of our services. This includes, for example, your name, email address, or other contact information.
 
-### Data Usage
-Your data is used solely to provide our services and is never shared with third parties.
+    ### Data Usage
+    Your data is used solely to provide our services and is never shared with third parties.
 
-### Your Rights
-You have the right to request information about the data we have stored at any time, as well as to request its deletion or correction.
+    ### Your Rights
+    You have the right to request information about the data we have stored at any time, as well as to request its deletion or correction.
 
-If you have any questions about data protection, please contact our support team.
+    If you have any questions about data protection, please contact our support team.
 
-Date: 08.12.2024
+    Date: 08.12.2024
     `,
     impressumContent: `
-## Legal Notice
+    ## Legal Notice
 
-Responsible for the content:
+    Responsible for the content:
 
-Max Mustermann
+    Max Mustermann
 
-Example Street 1
+    Example Street 1
 
-12345 Example City
+    12345 Example City
 
-Germany
+    Germany
 
-Phone: +49 123 456789
+    Phone: +49 123 456789
 
-Email: contact(at)examplecompany.com
+    Email: contact(at)examplecompany.com
 
-### Disclaimer
-All content on this website has been created with the utmost care. However, we do not guarantee the accuracy, completeness, or timeliness of the content.
+    ### Disclaimer
+    All content on this website has been created with the utmost care. However, we do not guarantee the accuracy, completeness, or timeliness of the content.
 
-Date: 08.12.2024
+    Date: 08.12.2024
     `,
     contactContent: `
-## Contact
+    ## Contact
 
-We look forward to hearing from you! Use the contact information below to reach us:
+    We look forward to hearing from you! Use the contact information below to reach us:
 
-### Address
-Max Mustermann
+    ### Address
+    Max Mustermann
 
-Example Street 1
+    Example Street 1
 
-12345 Example City
+    12345 Example City
 
-Germany
+    Germany
 
-### Phone
-+49 123 456789
+    ### Phone
+    +49 123 456789
 
-### Email
-contact(at)examplecompany.com
+    ### Email
+    contact(at)examplecompany.com
     `,
     dashboard: "Dashboard",
     curr_election: "Current Election",
@@ -188,6 +210,28 @@ contact(at)examplecompany.com
     summaryinfo: "You have cast the following votes:",
     securityinfo: "Security Information",
     securitycheck: " I have read and agree to the security information.",
+    erststimme: "First Vote",
+    zweitstimme: "Second Vote",
+    erststimmeInfo: " for the election of a constituency representative",
+    zweitstimmeInfo: " for the election of a state list (party)",
+    yourVote: "You have one Vote",
+    sicherheitsinformationen: [
+      "GG BRD",
+      "Art 38",
+      "(1) Members of the German Bundestag are elected by general, direct, free, equal, and secret ballot. They are representatives of the whole people, not bound by orders and instructions, and are only subject to their conscience.",
+      "(2) Anyone who has reached the age of eighteen is eligible to vote; anyone who has reached the age of majority is eligible for election.",
+      "(3) Further details are determined by a federal law.",
+      "Your vote will be processed securely and anonymously. Once you click \"Confirm,\" the selected choice can no longer be changed."
+    ],
+    confirmAbort: "Are you sure you want to cancel the election? All previous selections will be lost.",
+    confirmSubmit: "Are you sure you want to confirm your vote? After confirmation, no changes can be made.",
+    electionResults: "Election Results 2021",
+    auswertung: "Gains and Losses",
+    trueVerification: "You have been successfully verified",
+    register: "Log in or register with BundID",
+    login: "Log in with your electronic ID card via BundID to continue using the Digital Voting Platform.",
+    goOn: "Continue with BundID",
+    redirect: "You will be redirected to BundID.de to continue the authentication process.",
   },
 };
 

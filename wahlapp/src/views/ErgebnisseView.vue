@@ -9,19 +9,19 @@
     <div class="chart-area">
       <!-- Abschnitt für das erste Diagramm (Wahlergebnisse 2021 im Balkendiagramm) -->
       <section class="chart-section" v-if="currentChart === 0">
-        <h2>Wahlergebnisse 2021</h2>
+        <h2>{{ $t('electionResults') }}</h2>
         <BarChart :chartType="'ergebnisse'" />
       </section>
 
       <!-- Abschnitt für das zweite Diagramm (Wahlergebnisse 2021 im Kreisdiagramm) -->
       <section class="chart-section" v-else-if="currentChart === 1">
-        <h2>Wahlergebnisse 2021</h2>
+        <h2>{{ $t('electionResults') }}</h2>
         <PieChart :chartType="'ergebnisse'" />
       </section>
 
       <!-- Abschnitt für das dritte Diagramm (Gewinne und Verluste im Balkendiagramm) -->
       <section class="chart-section" v-else-if="currentChart === 2">
-        <h2>Gewinne und Verluste</h2>
+        <h2>{{ $t('auswertung') }}</h2>
         <BarChart :chartType="'gewinneUndVerluste'" />
       </section>
     </div>
@@ -40,6 +40,7 @@ import { ref } from 'vue';
 import BarChart from '../components/BarChart.vue';
 import PieChart from '../components/PieChart.vue';
 import ButtonSlide from '@/components/ButtonSlide.vue';
+
 
 // Ref für den Index des aktuellen Diagramms
 const currentChart = ref(0);

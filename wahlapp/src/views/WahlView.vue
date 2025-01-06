@@ -170,6 +170,7 @@ import { onMounted, ref } from "vue";
 import { useWahlStore } from "@/stores/wahlStore";
 import { useStatesStore } from "@/stores/statesStore.js";
 import { useAuthStore } from "@/stores/useAuth.js";
+import { useI18n } from 'vue-i18n';
 
 // Importieren der benötigten Komponenten und Router
 import ErststimmeComponent from "@/components/ErststimmeComponent.vue";
@@ -182,6 +183,7 @@ import router from "@/router/index.js";
 const store = useWahlStore();
 const statesStore = useStatesStore();
 const authStore = useAuthStore();
+const { t } = useI18n();
 
 // Reactive Variablen für die Benutzerinteraktion und UI-Zustände
 const start = ref(false); // Initialzustand: Startseite
@@ -223,7 +225,7 @@ function gettoDashboard() {
 // Funktion: Zurück zum Start der Wahl, mit Benutzerbestätigung
 function gettoStart() {
   const confirmed = window.confirm(
-    "Sind Sie sicher, dass Sie die Wahl abbrechen möchten? Alle bisher getroffenen Auswahlen gehen verloren."
+    t('confirmAbort') // Dynamische Übersetzung
   );
   // Abfrage, ob Bestätigung des Abbruchs positiv ist
   if (confirmed) {
@@ -284,7 +286,7 @@ function gettoEnd() {
 // Funktion: Absenden der Wahl mit Benutzerbestätigung
 function submit() {
   const confirmed = window.confirm(
-    "Sind Sie sicher, dass Sie die Wahl bestätigen möchten? Nach Bestätigung ist keine Änderung mehr möglich."
+    t('confirmSubmit') // Dynamische Übersetzung
   );
   if (confirmed) {
     // Wahl abschließen (und Daten speichern)

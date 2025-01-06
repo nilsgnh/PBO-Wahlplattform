@@ -1,22 +1,21 @@
 <template>
   <div v-if="authStore.isAuthenticated" class="centered-header">
-    <h1 class="text-3xl font-bold p-2">Sie sind erfolgreich verifiziert, {{ authStore.user.name }}</h1>
+    <h1 class="text-3xl font-bold p-2">{{ $t('trueVerification') }}, {{ authStore.user.name }}</h1>
   </div>
   <div v-else class="background">
-    <h1 class="text-3xl font-bold p-2">Mit BundID anmelden oder registrieren</h1>
+    <h1 class="text-3xl font-bold p-2">{{ $t('register') }}</h1>
     <p class="text-xl">
-      Melden Sie sich mit Ihrem elektronischen Personalausweis über BundID an, um weiter Digitale Wahlplattform zu
-      nutzen.
+      {{ $t('login') }}
     </p>
     <div class="login-box">
-      <button @click="authStore.login" class="login-button">Weiter mit BundId →</button>
+      <button @click="authStore.login" class="login-button">{{ $t('goOn') }} →</button>
     </div>
     <div v-if="authStore.showModal" class="modal-overlay">
       <div class="modal">
         <p>Sie werden zu BundId.de weitergeleitet, um den Authentifizierungsprozess fortzusetzen.</p>
         <div class="button-container">
-          <div class="secondaryBtn" @click="authStore.cancelLogin">Abbrechen</div>
-          <div class="primaryBtn" @click="authStore.confirmLogin">Weiter</div>
+          <div class="secondaryBtn" @click="authStore.cancelLogin">{{ $t('cancel') }}</div>
+          <div class="primaryBtn" @click="authStore.confirmLogin">{{ $t('continue') }}</div>
         </div>
       </div>
     </div>

@@ -26,10 +26,15 @@ const store = useWahlStore();
   <hr>
   <p class="font-bold pt-8 text-2xl"> {{ $t('securityinfo') }} </p>
   <p class="pb-3 text-xs">
-    <b> 1. </b> {{store.sicherheitsinformationen[2]}} {{store.sicherheitsinformationen[3]}} {{store.sicherheitsinformationen[4]}}
-    ({{store.sicherheitsinformationen[0]}} {{store.sicherheitsinformationen[1]}}). <br>
-    <b> 2. </b> {{store.sicherheitsinformationen[5]}}
+    <b> 1. </b>
+    {{ $t('sicherheitsinformationen[2]') }}
+    {{ $t('sicherheitsinformationen[3]') }}
+    {{ $t('sicherheitsinformationen[4]') }}
+    ({{ $t('sicherheitsinformationen[0]') }} {{ $t('sicherheitsinformationen[1]') }}). <br>
+    <b> 2. </b>
+    {{ $t('sicherheitsinformationen[5]') }}
   </p>
+
   <div class="checkbox-container">
     <input
       type="checkbox"

@@ -2,7 +2,7 @@
   <!-- Anzeige der Überschrift mit der Stimme (z. B. "Erststimme" oder "Zweitstimme") -->
   <p class="font-bold text-2xl"> {{ stimme }} </p>
   <!-- Anzeige eines erklärenden Textes mit zusätzlicher Info -->
-  <p class="text-base pb-3">Sie haben eine Stimme{{info}}.</p>
+  <p class="text-base pb-3">{{ $t('yourVote') }} {{info}}.</p> 
   <hr>
   <!-- Container für die Auswahl der Parteien -->
   <div class="flex flex-row" id="wahl">
@@ -30,6 +30,7 @@ import { reactive, ref, defineProps, computed, onMounted, watch, defineExpose } 
 import ParteiboxComponent from "@/components/ParteiboxComponent.vue"; // Box-Komponente für die Parteien
 import { useWahlStore } from "@/stores/wahlStore"; // Zugriff auf den Wahl-Store
 
+
 // Zugriff auf den Wahl-Store
 const store = useWahlStore();
 
@@ -47,7 +48,8 @@ const listenplaetze = reactive(store.listenplaetze);
 
 // Berechnung, welche Elemente angezeigt werden sollen (abhängig von der Art der Stimme)
 const itemsToDisplay = computed(() => {
-  return props.stimme === "Erststimme" ? listenplaetze : parteien;
+  return props.stimme === "Erststimme" || props.stimme === "First Vote" ? listenplaetze : parteien;
+
 });
 
 // Aktuell ausgewählte Partei (initial null)
@@ -60,7 +62,7 @@ function handleBoxClick(num) {
   if (selectedPartei.value === num) {
     // Wenn bereits ausgewählt, die Auswahl zurücksetzen
     selectedPartei.value = null;
-    if (props.stimme === "Erststimme") {
+    if (props.stimme === "Erststimme" || props.stimme === "First Vote") {
       store.setErststimme(null); // Rücksetzen der Erststimme im Store
     } else {
       store.setZweitstimme(null); // Rücksetzen der Zweitstimme im Store
@@ -68,7 +70,7 @@ function handleBoxClick(num) {
   } else {
     // Wenn nicht ausgewählt, die neue Auswahl setzen
     selectedPartei.value = num;
-    if (props.stimme === "Erststimme") {
+    if (props.stimme === "Erststimme" || props.stimme === "First Vote") {
       store.setErststimme(num); // Speichern der Erststimme im Store
     } else {
       store.setZweitstimme(num); // Speichern der Zweitstimme im Store
@@ -78,7 +80,7 @@ function handleBoxClick(num) {
 
 // Initialisieren der Auswahl beim Laden der Komponente
 onMounted(() => {
-  if (props.stimme === "Erststimme") {
+  if (props.stimme === "Erststimme" || props.stimme === "First Vote") {
     // Laden der Erststimme aus dem Store oder Setzen auf null
     selectedPartei.value = store.selectedErststimme || null;
   } else {
@@ -89,7 +91,7 @@ onMounted(() => {
 
 // Beobachten von Änderungen der Auswahl im Store
 watch(
-  () => (props.stimme === "Erststimme" ? store.selectedErststimme : store.selectedZweitstimme),
+  () => (props.stimme === "Erststimme" || props.stimme === "First Vote" ? store.selectedErststimme : store.selectedZweitstimme),
   (newValue) => {
     console.log("Aktuell ausgewählte Partei:", newValue); // Ausgabe der aktuellen Auswahl
     console.log(
